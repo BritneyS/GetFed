@@ -13,6 +13,7 @@
 		0663B1A7219F4970000B2754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0663B1A5219F4970000B2754 /* LaunchScreen.storyboard */; };
 		0663B1B3219F4EFA000B2754 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1B2219F4EFA000B2754 /* Constants.swift */; };
 		0663B1B5219F6A64000B2754 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1B4219F6A64000B2754 /* Identity.swift */; };
+		0663B1B8219FC68C000B2754 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1B7219FC68C000B2754 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0663B1A8219F4970000B2754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0663B1B2219F4EFA000B2754 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0663B1B4219F6A64000B2754 /* Identity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
+		0663B1B7219FC68C000B2754 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		0663B1B0219F4DDB000B2754 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0663B1B7219FC68C000B2754 /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				0663B19D219F496E000B2754 /* AppDelegate.swift in Sources */,
 				0663B1B5219F6A64000B2754 /* Identity.swift in Sources */,
 				0663B1B3219F4EFA000B2754 /* Constants.swift in Sources */,
+				0663B1B8219FC68C000B2754 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
