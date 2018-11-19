@@ -16,6 +16,7 @@
 		0663B1B8219FC68C000B2754 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1B7219FC68C000B2754 /* HomeViewController.swift */; };
 		0663B1BC21A0731A000B2754 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1BB21A0731A000B2754 /* Food.swift */; };
 		0663B1BF21A339F6000B2754 /* FoodSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1BE21A339F6000B2754 /* FoodSearchViewController.swift */; };
+		0663B1C221A347FD000B2754 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C121A347FD000B2754 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0663B1B7219FC68C000B2754 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0663B1BB21A0731A000B2754 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		0663B1BE21A339F6000B2754 /* FoodSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchViewController.swift; sourceTree = "<group>"; };
+		0663B1C121A347FD000B2754 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				0663B1B2219F4EFA000B2754 /* Constants.swift */,
 				0663B1B4219F6A64000B2754 /* Identity.swift */,
+				0663B1C121A347FD000B2754 /* DataManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				0663B19D219F496E000B2754 /* AppDelegate.swift in Sources */,
 				0663B1B5219F6A64000B2754 /* Identity.swift in Sources */,
 				0663B1BF21A339F6000B2754 /* FoodSearchViewController.swift in Sources */,
+				0663B1C221A347FD000B2754 /* DataManager.swift in Sources */,
 				0663B1BC21A0731A000B2754 /* Food.swift in Sources */,
 				0663B1B3219F4EFA000B2754 /* Constants.swift in Sources */,
 				0663B1B8219FC68C000B2754 /* HomeViewController.swift in Sources */,
