@@ -8,25 +8,36 @@
 
 import Foundation
 
-struct Food {
-    let label: String
-    let nutrients: Nutrient
+struct SearchResults {
+    let results: [Food]
     
-    struct Nutrient {
-        let calories: Double
-        let protein: Double
-        let fat: Double
-        let carbs: Double
-        
-        enum NutrientCodingKeys: String, CodingKey {
-            case calories = "ENERC_KCAL"
-            case protein = "PROCNT"
-            case fat = "FAT"
-            case carbs = "CHOCDF"
-        }
+    enum SearchResultsCodingKeys: String, CodingKey {
+        case results = "hints"
     }
+    
+    struct Food {
+        let label: String
+        let nutrients: Nutrient
+        
+        struct Nutrient {
+            let calories: Double
+            let protein: Double
+            let fat: Double
+            let carbs: Double
+            
+            enum NutrientCodingKeys: String, CodingKey {
+                case calories = "ENERC_KCAL"
+                case protein = "PROCNT"
+                case fat = "FAT"
+                case carbs = "CHOCDF"
+            }
+        }
+    } 
 }
 
+
+
+let sampleURL = "https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id={your app_id}&app_key={your app_key}"
 
 let sampleData = """
 {
