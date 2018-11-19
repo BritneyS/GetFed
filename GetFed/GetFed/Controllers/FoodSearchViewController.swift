@@ -9,9 +9,19 @@
 import UIKit
 
 class FoodSearchViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        setupSearchBar()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    func setupSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
 }
