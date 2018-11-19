@@ -19,7 +19,22 @@ struct SearchResults: Decodable {
         let label: String
         let nutrients: Nutrient
         let category: String
-        let brand: String
+        let brand: String?
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: FoodCodingKeys.self)
+            label = try container.decode(String.self, forKey: .label)
+            nutrients = try container.decode(Nutrient.self, forKey: .nutrients)
+            category = try container.decode(String.self, forKey: .category)
+            brand = try container.decodeIfPresent(String.self, forKey: .brand)
+        }
+        
+        enum FoodCodingKeys: CodingKey {
+            case label
+            case nutrients
+            case category
+            case brand
+        }
         
         struct Nutrient: Decodable {
             let calories: Double
