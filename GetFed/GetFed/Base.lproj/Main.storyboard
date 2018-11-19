@@ -38,7 +38,7 @@
                                             <color key="titleColor" red="0.99774772690000002" green="1" blue="0.97488382910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="eoP-H5-PUG" kind="show" id="Csl-jx-NKu"/>
+                                            <segue destination="eoP-H5-PUG" kind="show" identifier="homeToFoodSearch" id="Csl-jx-NKu"/>
                                         </connections>
                                     </button>
                                 </subviews>
