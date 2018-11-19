@@ -10,11 +10,24 @@ import Foundation
 
 enum Identity: String {
     case homeVC
+    
+    case homeToFoodSearchSegue
 
     var viewControllerID: String {
         switch self {
         case .homeVC:
             return "homeViewController"
+        default:
+            return ""
+        }
+    }
+    
+    var segueID: String {
+        switch self {
+        case .homeToFoodSearchSegue:
+            return "homeToFoodSearch"
+        default:
+            return ""
         }
     }
     
