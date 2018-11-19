@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct SearchResults {
+struct SearchResults: Decodable {
     let results: [Food]
     
     enum SearchResultsCodingKeys: String, CodingKey {
         case results = "hints"
     }
     
-    struct Food {
+    struct Food: Decodable {
         let label: String
         let nutrients: Nutrient
         let category: String
         let brand: String
         
-        struct Nutrient {
+        struct Nutrient: Decodable {
             let calories: Double
             let protein: Double
             let fat: Double
