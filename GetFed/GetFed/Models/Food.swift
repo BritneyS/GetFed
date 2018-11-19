@@ -18,6 +18,8 @@ struct SearchResults {
     struct Food {
         let label: String
         let nutrients: Nutrient
+        let category: String
+        let brand: String
         
         struct Nutrient {
             let calories: Double
@@ -32,7 +34,7 @@ struct SearchResults {
                 case carbs = "CHOCDF"
             }
         }
-    } 
+    }
 }
 
 
