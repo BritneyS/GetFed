@@ -1,5 +1,5 @@
 //
-//  DataManager.swift
+//  APIClient.swift
 //  GetFed
 //
 //  Created by Britney Smith on 11/19/18.
@@ -8,14 +8,15 @@
 
 import Foundation
 
-class DataManager {
+class APIClient {
     let appId = EdamamAppID
     let appKey = EdamamAppKey
-    var url = ""
+    var url: URL?
     var text = ""
     
     init(text: String) {
         self.text = text
+        self.url = setURL(with: self.text)
     }
     
     func setURL(with searchText: String) -> URL? {
@@ -24,5 +25,7 @@ class DataManager {
         guard let url = URL(string: urlString) else { return nil }
         return url
     }
+    
+    
 
 }
