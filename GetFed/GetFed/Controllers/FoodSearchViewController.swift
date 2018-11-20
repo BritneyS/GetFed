@@ -32,6 +32,9 @@ class FoodSearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    
+    func makeRequest() {
+        guard let text = navigationItem.searchController?.searchBar.text else { return }
+        APIClient(text: text)
+    }
 
 }
