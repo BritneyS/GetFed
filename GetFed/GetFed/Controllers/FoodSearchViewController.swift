@@ -11,13 +11,18 @@ import UIKit
 class FoodSearchViewController: UIViewController {
     
     // MARK - Properties
-    
+    let apiClient = APIClient()
+    let appId = EdamamAppID
+    let appKey = EdamamAppKey
+    var url: URL?
+    var text = ""
     var searchResults: SearchResults?
     
     // MARK - Lifecylce
     
     override func viewDidLoad() {
         setupSearchBar()
+        makeRequest(with: URL(string: "[redacted]")!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -32,9 +37,24 @@ class FoodSearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func makeRequest() {
-        guard let text = navigationItem.searchController?.searchBar.text else { return }
-        APIClient(text: text)
-    }
+}
+// MARK - API Request
 
+extension FoodSearchViewController {
+    
+    func setURL(with searchText: String) -> URL? {
+        guard let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
+        let urlString = String(format: "https://api.edamam.com/api/food-database/parser?ingr=%@&app_id=\(appId)&app_key=\(appKey)", encodedText)
+        guard let url = URL(string: urlString) else { return nil }
+        return url
+    }
+    
+    func makeRequest(with url: URL) {
+        guard let text = navigationItem.searchController?.searchBar.text else { return }
+        apiClient.fetchData(url: url) { (results: SearchResults) in
+            //load data into searchResults
+            self.searchResults = results
+            print(results)
+        }
+    }
 }

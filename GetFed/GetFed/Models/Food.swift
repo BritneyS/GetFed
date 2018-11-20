@@ -9,23 +9,32 @@
 import Foundation
 
 struct SearchResults: Decodable {
-    let results: [Food]
+    let results: [FoodResults]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: SearchResultsCodingKeys.self)
+        results = try container.decode([FoodResults].self, forKey: .results)
+    }
     
     enum SearchResultsCodingKeys: String, CodingKey {
         case results = "hints"
     }
 }
 
+struct FoodResults: Decodable {
+    let food: Food
+}
+
 struct Food: Decodable {
     let label: String
-    let nutrients: Nutrient
+    let nutrients: Nutrients
     let category: String
     let brand: String?
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: FoodCodingKeys.self)
         label = try container.decode(String.self, forKey: .label)
-        nutrients = try container.decode(Nutrient.self, forKey: .nutrients)
+        nutrients = try container.decode(Nutrients.self, forKey: .nutrients)
         category = try container.decode(String.self, forKey: .category)
         brand = try container.decodeIfPresent(String.self, forKey: .brand)
     }
@@ -38,13 +47,21 @@ struct Food: Decodable {
     }
 }
 
-struct Nutrient: Decodable {
+struct Nutrients: Decodable {
     let calories: Double
-    let protein: Double
-    let fat: Double
+    let protein: Double?
+    let fat: Double?
     let carbs: Double
     
-    enum NutrientCodingKeys: String, CodingKey {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: NutrientsCodingKeys.self)
+        calories = try container.decode(Double.self, forKey: .calories)
+        protein = try container.decodeIfPresent(Double.self, forKey: .protein)
+        fat = try container.decodeIfPresent(Double.self, forKey: .fat)
+        carbs = try container.decode(Double.self, forKey: .carbs)
+    }
+    
+    enum NutrientsCodingKeys: String, CodingKey {
         case calories = "ENERC_KCAL"
         case protein = "PROCNT"
         case fat = "FAT"
