@@ -14,45 +14,43 @@ struct SearchResults: Decodable {
     enum SearchResultsCodingKeys: String, CodingKey {
         case results = "hints"
     }
+}
+
+struct Food: Decodable {
+    let label: String
+    let nutrients: Nutrient
+    let category: String
+    let brand: String?
     
-    struct Food: Decodable {
-        let label: String
-        let nutrients: Nutrient
-        let category: String
-        let brand: String?
-        
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: FoodCodingKeys.self)
-            label = try container.decode(String.self, forKey: .label)
-            nutrients = try container.decode(Nutrient.self, forKey: .nutrients)
-            category = try container.decode(String.self, forKey: .category)
-            brand = try container.decodeIfPresent(String.self, forKey: .brand)
-        }
-        
-        enum FoodCodingKeys: CodingKey {
-            case label
-            case nutrients
-            case category
-            case brand
-        }
-        
-        struct Nutrient: Decodable {
-            let calories: Double
-            let protein: Double
-            let fat: Double
-            let carbs: Double
-            
-            enum NutrientCodingKeys: String, CodingKey {
-                case calories = "ENERC_KCAL"
-                case protein = "PROCNT"
-                case fat = "FAT"
-                case carbs = "CHOCDF"
-            }
-        }
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: FoodCodingKeys.self)
+        label = try container.decode(String.self, forKey: .label)
+        nutrients = try container.decode(Nutrient.self, forKey: .nutrients)
+        category = try container.decode(String.self, forKey: .category)
+        brand = try container.decodeIfPresent(String.self, forKey: .brand)
+    }
+    
+    enum FoodCodingKeys: CodingKey {
+        case label
+        case nutrients
+        case category
+        case brand
     }
 }
 
-
+struct Nutrient: Decodable {
+    let calories: Double
+    let protein: Double
+    let fat: Double
+    let carbs: Double
+    
+    enum NutrientCodingKeys: String, CodingKey {
+        case calories = "ENERC_KCAL"
+        case protein = "PROCNT"
+        case fat = "FAT"
+        case carbs = "CHOCDF"
+    }
+}
 
 let sampleURL = "https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id={your app_id}&app_key={your app_key}"
 

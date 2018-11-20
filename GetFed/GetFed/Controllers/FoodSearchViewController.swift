@@ -10,6 +10,12 @@ import UIKit
 
 class FoodSearchViewController: UIViewController {
     
+    // MARK - Properties
+    
+    var searchResults: SearchResults?
+    
+    // MARK - Lifecylce
+    
     override func viewDidLoad() {
         setupSearchBar()
     }
@@ -18,10 +24,17 @@ class FoodSearchViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    // MARK - Methods
+    
     func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    func makeRequest() {
+        guard let text = navigationItem.searchController?.searchBar.text else { return }
+        APIClient(text: text)
     }
 
 }
