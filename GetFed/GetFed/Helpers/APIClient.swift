@@ -39,7 +39,14 @@ class APIClient {
     }
     
     func fetchData(url: URL, queue: DispatchQueue = .main, completion: @escaping (SearchResults) -> ()) {
-        Alamofire.request(url).responseData { response in
+        Alamofire.request(url).validate().responseData { response in
+            switch response.result {
+            case .success:
+                print("Successful server response!")
+            case .failure(let error):
+                print("Error in server response: \(error)")
+            }
+            
             if let data = response.result.value {
                 guard let result = self.parseData(data) else { return }
                 queue.async { completion(result) }
