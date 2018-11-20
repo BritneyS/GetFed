@@ -21,11 +21,13 @@ class FoodSearchViewController: UIViewController {
     // MARK - Lifecylce
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupSearchBar()
         makeRequest(with: URL(string: "[redacted]")!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -35,6 +37,12 @@ class FoodSearchViewController: UIViewController {
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    func getSearchText() -> String? {
+        let searchBar = navigationItem.searchController?.searchBar
+        let searchText = searchBar?.text
+        return searchText
     }
     
 }
