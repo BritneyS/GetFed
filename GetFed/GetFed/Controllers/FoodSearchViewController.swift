@@ -13,7 +13,6 @@ class FoodSearchViewController: UIViewController {
     // MARK - Properties
     
     var searchResults: SearchResults?
-    //let apiClient = APIClient()
     
     // MARK - Lifecylce
     
