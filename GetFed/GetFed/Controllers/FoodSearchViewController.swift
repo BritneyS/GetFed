@@ -12,6 +12,7 @@ class FoodSearchViewController: UIViewController {
 
     // MARK - Properties
     
+    var searchController: UISearchController!
     let apiClient = APIClient()
     let appId = EdamamAppID
     let appKey = EdamamAppKey
@@ -38,15 +39,15 @@ class FoodSearchViewController: UIViewController {
 extension FoodSearchViewController: UISearchBarDelegate {
     
     func setupSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
+        searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     func getSearchText() -> String? {
-        let searchBar = navigationItem.searchController?.searchBar
-        let searchText = searchBar?.text
+        let searchBar = searchController.searchBar
+        let searchText = searchBar.text
         return searchText
     }
     
