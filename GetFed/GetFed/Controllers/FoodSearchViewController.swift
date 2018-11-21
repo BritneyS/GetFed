@@ -9,10 +9,9 @@
 import UIKit
 
 class FoodSearchViewController: UIViewController {
-    
-    
-    
+
     // MARK - Properties
+    
     let apiClient = APIClient()
     let appId = EdamamAppID
     let appKey = EdamamAppKey
@@ -20,36 +19,28 @@ class FoodSearchViewController: UIViewController {
     var text = ""
     var searchResults: SearchResults?
     
-    // MARK - Lifecylce
+    // MARK - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.dataSource = self
-        //filteredData = data
         setupSearchBar()
         definesPresentationContext = true
-        //makeRequest(with: URL(string: "[redacted]")!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-    
-    // MARK - Methods
- 
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation
 
-extension FoodSearchViewController: UISearchBarDelegate /*, UISearchResultsUpdating*/ {
+extension FoodSearchViewController: UISearchBarDelegate {
     
     func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
-       // searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
-        //searchController.definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
@@ -58,6 +49,7 @@ extension FoodSearchViewController: UISearchBarDelegate /*, UISearchResultsUpdat
         let searchText = searchBar?.text
         return searchText
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("👍 pressed")
         if let text = searchBar.text {
@@ -86,9 +78,7 @@ extension FoodSearchViewController {
     }
     
     func makeRequest(with url: URL) {
-        //guard let text = navigationItem.searchController?.searchBar.text else { return }
         apiClient.fetchData(url: url) { (results: SearchResults) in
-            //load data into searchResults
             self.searchResults = results
             print(results)
         }
