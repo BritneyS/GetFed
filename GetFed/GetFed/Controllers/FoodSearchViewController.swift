@@ -54,12 +54,15 @@ extension FoodSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("👍 pressed")
         if let text = searchBar.text {
-            print("Text: \(text)")
-            if let url = setURL(with: text) {
-                makeRequest(with: url)
+            if !text.isEmpty {
+                print("Text: \(text)")
+                if let url = setURL(with: text) {
+                    makeRequest(with: url)
+                }
+            } else {
+                print("No text")
+                //TODO: alert "please enter text"
             }
-        } else {
-            print("No text")
         }
     }
     
