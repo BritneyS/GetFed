@@ -9,8 +9,10 @@
 import UIKit
 
 class FoodSearchViewController: UIViewController {
-    
+
     // MARK - Properties
+    
+    var searchController: UISearchController!
     let apiClient = APIClient()
     let appId = EdamamAppID
     let appKey = EdamamAppKey
@@ -18,25 +20,55 @@ class FoodSearchViewController: UIViewController {
     var text = ""
     var searchResults: SearchResults?
     
-    // MARK - Lifecylce
+    // MARK - Lifecycle
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupSearchBar()
-        makeRequest(with: URL(string: "[redacted]")!)
+        definesPresentationContext = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-    
-    // MARK - Methods
+}
+
+// MARK - UISearchBarDelegate Protocol Implementation
+
+extension FoodSearchViewController: UISearchBarDelegate {
     
     func setupSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
+        searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
+    func getSearchText() -> String? {
+        let searchBar = searchController.searchBar
+        let searchText = searchBar.text
+        return searchText
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("👍 pressed")
+        if let text = searchBar.text {
+            if !text.isEmpty {
+                print("Text: \(text)")
+                if let url = setURL(with: text) {
+                    makeRequest(with: url)
+                }
+            } else {
+                print("No text")
+                //TODO: alert "please enter text"
+            }
+        }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        //
+    }
 }
 // MARK - API Request
 
@@ -50,9 +82,7 @@ extension FoodSearchViewController {
     }
     
     func makeRequest(with url: URL) {
-        guard let text = navigationItem.searchController?.searchBar.text else { return }
         apiClient.fetchData(url: url) { (results: SearchResults) in
-            //load data into searchResults
             self.searchResults = results
             print(results)
         }

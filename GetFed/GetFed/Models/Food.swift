@@ -48,17 +48,17 @@ struct Food: Decodable {
 }
 
 struct Nutrients: Decodable {
-    let calories: Double
+    let calories: Double?
     let protein: Double?
     let fat: Double?
-    let carbs: Double
+    let carbs: Double?
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: NutrientsCodingKeys.self)
-        calories = try container.decode(Double.self, forKey: .calories)
+        calories = try container.decodeIfPresent(Double.self, forKey: .calories)
         protein = try container.decodeIfPresent(Double.self, forKey: .protein)
         fat = try container.decodeIfPresent(Double.self, forKey: .fat)
-        carbs = try container.decode(Double.self, forKey: .carbs)
+        carbs = try container.decodeIfPresent(Double.self, forKey: .carbs)
     }
     
     enum NutrientsCodingKeys: String, CodingKey {
