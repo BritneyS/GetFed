@@ -61,6 +61,8 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Identity.foodSearchResultCell.cellID, for: indexPath) as? FoodResultTableViewCell else { return UITableViewCell() }
+        cell.foodLabel.text = searchResults?.results[indexPath.row].food.label
+        cell.brandLabel.text = searchResults?.results[indexPath.row].food.brand
         return cell
     }
     
@@ -86,10 +88,10 @@ extension FoodSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("👍 pressed")
-        if let text = searchBar.text {
-            if !text.isEmpty {
-                print("Text: \(text)")
-                if let url = setURL(with: text) {
+        if let inputText = searchBar.text {
+            if !inputText.isEmpty {
+                print("Text: \(inputText)")
+                if let url = setURL(with: inputText) {
                     makeRequest(with: url)
                 }
             } else {

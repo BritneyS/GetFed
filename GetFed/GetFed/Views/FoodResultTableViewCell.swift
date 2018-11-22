@@ -10,6 +10,11 @@ import UIKit
 
 class FoodResultTableViewCell: UITableViewCell {
 
+    // MARK - Outlets
+    
+    @IBOutlet weak var foodLabel: UILabel!
+    @IBOutlet weak var brandLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
