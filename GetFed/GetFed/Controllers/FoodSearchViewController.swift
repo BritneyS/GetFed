@@ -9,7 +9,11 @@
 import UIKit
 
 class FoodSearchViewController: UIViewController {
-
+    
+    // MARK - Outlets
+    
+    @IBOutlet weak var foodTableView: UITableView!
+    
     // MARK - Properties
     
     var searchController: UISearchController!
@@ -24,6 +28,8 @@ class FoodSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        foodTableView.dataSource = self
+        foodTableView.delegate = self
         setupSearchBar()
         definesPresentationContext = true
     }
@@ -32,6 +38,20 @@ class FoodSearchViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
+}
+
+// MARK - UITableViewDataSource & UITableViewDelegate Protocol Implementation
+
+extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation
