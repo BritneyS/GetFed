@@ -43,6 +43,7 @@ class FoodSearchViewController: UIViewController {
 // MARK - UITableViewDataSource & UITableViewDelegate Protocol Implementation
 
 extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -51,7 +52,7 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
-    
+    /// TODO: didSelectRowAt
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation
@@ -81,7 +82,7 @@ extension FoodSearchViewController: UISearchBarDelegate {
                 }
             } else {
                 print("No text")
-                //TODO: alert "please enter text"
+                /// TODO: alert "please enter text"
             }
         }
     }
