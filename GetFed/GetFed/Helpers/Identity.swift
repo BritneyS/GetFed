@@ -12,6 +12,10 @@ enum Identity: String {
     case homeVC
     
     case homeToFoodSearchSegue
+    
+    case foodSearchResultCell
+    
+    case FoodResultTableViewCell
 
     var viewControllerID: String {
         switch self {
@@ -26,6 +30,24 @@ enum Identity: String {
         switch self {
         case .homeToFoodSearchSegue:
             return "homeToFoodSearch"
+        default:
+            return ""
+        }
+    }
+    
+    var cellID: String {
+        switch self {
+        case .foodSearchResultCell:
+            return "foodSearchResultCell"
+        default:
+            return ""
+        }
+    }
+    
+    var nibID: String {
+        switch self {
+        case .FoodResultTableViewCell:
+            return "FoodResultTableViewCell"
         default:
             return ""
         }

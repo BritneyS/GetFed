@@ -46,18 +46,22 @@ class FoodSearchViewController: UIViewController {
 extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func registerFoodResultTableViewCell() {
-        let cell = UINib(nibName: "FoodResultTableViewCell", bundle: nil)
-        foodTableView.register(cell, forCellReuseIdentifier: "foodSearchResultCell")
+        let cell = UINib(nibName: Identity.FoodResultTableViewCell.nibID, bundle: nil)
+        foodTableView.register(cell, forCellReuseIdentifier: Identity.foodSearchResultCell.cellID)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let rowCount = searchResults?.results.count else { return 0 }
+        if rowCount == 0 {
+            return 1
+        } else {
+            return rowCount
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "foodSearchResultCell", for: indexPath) as? FoodResultTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identity.foodSearchResultCell.cellID, for: indexPath) as? FoodResultTableViewCell else { return UITableViewCell() }
         return cell
-        
     }
     
     /// TODO: didSelectRowAt
@@ -114,6 +118,7 @@ extension FoodSearchViewController {
         apiClient.fetchData(url: url) { (results: SearchResults) in
             self.searchResults = results
             print(results)
+            self.foodTableView.reloadData()
         }
     }
 }
