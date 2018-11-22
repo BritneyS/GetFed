@@ -28,6 +28,7 @@ class FoodSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerFoodResultTableViewCell()
         foodTableView.dataSource = self
         foodTableView.delegate = self
         setupSearchBar()
@@ -44,12 +45,19 @@ class FoodSearchViewController: UIViewController {
 
 extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func registerFoodResultTableViewCell() {
+        let cell = UINib(nibName: "FoodResultTableViewCell", bundle: nil)
+        foodTableView.register(cell, forCellReuseIdentifier: "foodSearchResultCell")
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "foodSearchResultCell", for: indexPath) as? FoodResultTableViewCell else { return UITableViewCell() }
+        return cell
+        
     }
     
     /// TODO: didSelectRowAt
