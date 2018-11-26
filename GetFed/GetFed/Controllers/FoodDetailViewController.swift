@@ -10,7 +10,13 @@ import UIKit
 
 class FoodDetailViewController: UIViewController {
 
+    // MARK - Outlets
+    
+    @IBOutlet var foodNameLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
+    
     // MARK - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

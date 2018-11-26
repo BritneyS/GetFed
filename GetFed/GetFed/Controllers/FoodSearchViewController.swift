@@ -70,6 +70,20 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK - Segue Data Passing
+
+extension FoodSearchViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Identity.homeToFoodSearchSegue.segueID:
+            // pass data
+            return
+        default:
+            return
+        }
+    }
+}
+
 // MARK - UISearchBarDelegate Protocol Implementation
 
 extension FoodSearchViewController: UISearchBarDelegate {
