@@ -17,6 +17,8 @@
 		0663B1BC21A0731A000B2754 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1BB21A0731A000B2754 /* Food.swift */; };
 		0663B1BF21A339F6000B2754 /* FoodSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1BE21A339F6000B2754 /* FoodSearchViewController.swift */; };
 		0663B1C221A347FD000B2754 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C121A347FD000B2754 /* APIClient.swift */; };
+		0663B1C521A63000000B2754 /* FoodResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C321A63000000B2754 /* FoodResultTableViewCell.swift */; };
+		0663B1C621A63000000B2754 /* FoodResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */; };
 		4EBFAFE8A5DF71DB25281C1F /* Pods_GetFed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47EB7B8A39DA18E491DD2D1 /* Pods_GetFed.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		0663B1BB21A0731A000B2754 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		0663B1BE21A339F6000B2754 /* FoodSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchViewController.swift; sourceTree = "<group>"; };
 		0663B1C121A347FD000B2754 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		0663B1C321A63000000B2754 /* FoodResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodResultTableViewCell.swift; sourceTree = "<group>"; };
+		0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodResultTableViewCell.xib; sourceTree = "<group>"; };
 		27E1F1A676CD7A4435C6EB69 /* Pods-GetFed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetFed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetFed/Pods-GetFed.debug.xcconfig"; sourceTree = "<group>"; };
 		B47EB7B8A39DA18E491DD2D1 /* Pods_GetFed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetFed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF8590CD873BED214503BF2 /* Pods-GetFed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetFed.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetFed/Pods-GetFed.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		0663B1AF219F4DC2000B2754 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0663B1C321A63000000B2754 /* FoodResultTableViewCell.swift */,
+				0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 			files = (
 				0663B1A7219F4970000B2754 /* LaunchScreen.storyboard in Resources */,
 				0663B1A4219F4970000B2754 /* Assets.xcassets in Resources */,
+				0663B1C621A63000000B2754 /* FoodResultTableViewCell.xib in Resources */,
 				0663B1A2219F496E000B2754 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +264,7 @@
 			files = (
 				0663B19D219F496E000B2754 /* AppDelegate.swift in Sources */,
 				0663B1B5219F6A64000B2754 /* Identity.swift in Sources */,
+				0663B1C521A63000000B2754 /* FoodResultTableViewCell.swift in Sources */,
 				0663B1BF21A339F6000B2754 /* FoodSearchViewController.swift in Sources */,
 				0663B1C221A347FD000B2754 /* APIClient.swift in Sources */,
 				0663B1BC21A0731A000B2754 /* Food.swift in Sources */,

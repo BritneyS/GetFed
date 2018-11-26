@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var foodSearchButton: UIButton!
+    @IBOutlet var foodSearchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -83,6 +83,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="czE-wx-KZJ"/>
                     </view>
+                    <connections>
+                        <outlet property="foodTableView" destination="GkZ-49-xUo" id="GVc-om-qra"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nts-7g-0EP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

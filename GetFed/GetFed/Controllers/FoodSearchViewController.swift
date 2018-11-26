@@ -9,7 +9,11 @@
 import UIKit
 
 class FoodSearchViewController: UIViewController {
-
+    
+    // MARK - Outlets
+    
+    @IBOutlet var foodTableView: UITableView!
+    
     // MARK - Properties
     
     var searchController: UISearchController!
@@ -24,6 +28,9 @@ class FoodSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerFoodResultTableViewCell()
+        foodTableView.dataSource = self
+        foodTableView.delegate = self
         setupSearchBar()
         definesPresentationContext = true
     }
@@ -32,6 +39,32 @@ class FoodSearchViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
+}
+
+// MARK - UITableViewDataSource & UITableViewDelegate Protocol Implementation
+
+extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func registerFoodResultTableViewCell() {
+        let cell = UINib(nibName: Identity.foodResultTableViewCellNib.nibID, bundle: nil)
+        foodTableView.register(cell, forCellReuseIdentifier: Identity.foodSearchResultCell.cellID)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let rowCount = searchResults?.results.count else { return 0 }
+        return (rowCount == 0) ? 1 : rowCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identity.foodSearchResultCell.cellID, for: indexPath) as? FoodResultTableViewCell else {
+            fatalError("Fatal error: No cell")
+        }
+        cell.foodLabel.text = searchResults?.results[indexPath.row].food.label
+        cell.brandLabel.text = searchResults?.results[indexPath.row].food.brand
+        return cell
+    }
+    
+    /// TODO: didSelectRowAt
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation
@@ -53,16 +86,15 @@ extension FoodSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("👍 pressed")
-        if let text = searchBar.text {
-            if !text.isEmpty {
-                print("Text: \(text)")
-                if let url = setURL(with: text) {
-                    makeRequest(with: url)
-                }
-            } else {
-                print("No text")
-                //TODO: alert "please enter text"
-            }
+        guard let inputText = searchBar.text,
+              let url = setURL(with: inputText)
+        else { return }
+        
+        if !inputText.isEmpty {
+            makeRequest(with: url)
+        } else {
+            print("No text")
+            /// TODO: alert "please enter text"
         }
     }
     
@@ -85,6 +117,7 @@ extension FoodSearchViewController {
         apiClient.fetchData(url: url) { (results: SearchResults) in
             self.searchResults = results
             print(results)
+            self.foodTableView.reloadData()
         }
     }
 }
