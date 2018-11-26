@@ -64,7 +64,10 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    /// TODO: didSelectRowAt
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? FoodResultTableViewCell
+        performSegue(withIdentifier: Identity.foodSearchToFoodDetailSegue.segueID, sender: cell)
+    }
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation
