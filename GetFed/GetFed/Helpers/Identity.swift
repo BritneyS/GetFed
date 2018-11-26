@@ -9,13 +9,18 @@
 import Foundation
 
 enum Identity: String {
+    
+    // ViewController Identifiers
     case homeVC
     
+    // Segue Identifiers
     case homeToFoodSearchSegue
     
+    // Cell Identifiers
     case foodSearchResultCell
     
-    case FoodResultTableViewCell
+    // Nib Identifiers
+    case foodResultTableViewCellNib
 
     var viewControllerID: String {
         switch self {
@@ -46,7 +51,7 @@ enum Identity: String {
     
     var nibID: String {
         switch self {
-        case .FoodResultTableViewCell:
+        case .foodResultTableViewCellNib:
             return "FoodResultTableViewCell"
         default:
             return ""

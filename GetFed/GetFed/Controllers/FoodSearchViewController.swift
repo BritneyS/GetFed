@@ -12,7 +12,7 @@ class FoodSearchViewController: UIViewController {
     
     // MARK - Outlets
     
-    @IBOutlet weak var foodTableView: UITableView!
+    @IBOutlet var foodTableView: UITableView!
     
     // MARK - Properties
     
@@ -46,21 +46,19 @@ class FoodSearchViewController: UIViewController {
 extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func registerFoodResultTableViewCell() {
-        let cell = UINib(nibName: Identity.FoodResultTableViewCell.nibID, bundle: nil)
+        let cell = UINib(nibName: Identity.foodResultTableViewCellNib.nibID, bundle: nil)
         foodTableView.register(cell, forCellReuseIdentifier: Identity.foodSearchResultCell.cellID)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let rowCount = searchResults?.results.count else { return 0 }
-        if rowCount == 0 {
-            return 1
-        } else {
-            return rowCount
-        }
+        return (rowCount == 0) ? 1 : rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identity.foodSearchResultCell.cellID, for: indexPath) as? FoodResultTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identity.foodSearchResultCell.cellID, for: indexPath) as? FoodResultTableViewCell else {
+            fatalError("Fatal error: No cell")
+        }
         cell.foodLabel.text = searchResults?.results[indexPath.row].food.label
         cell.brandLabel.text = searchResults?.results[indexPath.row].food.brand
         return cell
@@ -88,16 +86,15 @@ extension FoodSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("👍 pressed")
-        if let inputText = searchBar.text {
-            if !inputText.isEmpty {
-                print("Text: \(inputText)")
-                if let url = setURL(with: inputText) {
-                    makeRequest(with: url)
-                }
-            } else {
-                print("No text")
-                /// TODO: alert "please enter text"
-            }
+        guard let inputText = searchBar.text,
+              let url = setURL(with: inputText)
+        else { return }
+        
+        if !inputText.isEmpty {
+            makeRequest(with: url)
+        } else {
+            print("No text")
+            /// TODO: alert "please enter text"
         }
     }
     

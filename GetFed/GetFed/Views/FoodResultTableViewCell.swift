@@ -12,13 +12,8 @@ class FoodResultTableViewCell: UITableViewCell {
 
     // MARK - Outlets
     
-    @IBOutlet weak var foodLabel: UILabel!
-    @IBOutlet weak var brandLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet var foodLabel: UILabel!
+    @IBOutlet var brandLabel: UILabel!
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
