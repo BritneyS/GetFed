@@ -23,6 +23,7 @@ class FoodSearchViewController: UIViewController {
     var url: URL?
     var text = ""
     var searchResults: SearchResults?
+    var selectedIndex: Int?
     
     // MARK - Lifecycle
     
@@ -66,6 +67,7 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? FoodResultTableViewCell
+        selectedIndex = indexPath.row
         performSegue(withIdentifier: Identity.foodSearchToFoodDetailSegue.segueID, sender: cell)
     }
 }
@@ -75,8 +77,11 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension FoodSearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case Identity.homeToFoodSearchSegue.segueID:
-            // pass data
+        case Identity.foodSearchToFoodDetailSegue.segueID:
+            guard let foodDetailViewController = segue.destination as? FoodDetailViewController else { return }
+            foodDetailViewController.foodNameLabel.text = searchResults?.results[selectedIndex!].food.label
+            foodDetailViewController.caloriesLabel.text = searchResults?.results[selectedIndex!].food.nutrients.calories
+            //print("🍞:\(searchResults?.results[selectedIndex!].food.label)")
             return
         default:
             return
