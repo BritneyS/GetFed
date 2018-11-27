@@ -60,8 +60,10 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Identity.foodSearchResultCell.cellID, for: indexPath) as? FoodResultTableViewCell else {
             fatalError("Fatal error: No cell")
         }
-        cell.foodLabel.text = searchResults?.results[indexPath.row].food.label
-        cell.brandLabel.text = searchResults?.results[indexPath.row].food.brand
+        if let searchResults = searchResults {
+            cell.foodLabel.text = searchResults.results[indexPath.row].food.label
+            cell.brandLabel.text = searchResults.results[indexPath.row].food.brand
+        }
         return cell
     }
     
@@ -78,9 +80,15 @@ extension FoodSearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Identity.foodSearchToFoodDetailSegue.segueID:
-            guard let foodDetailViewController = segue.destination as? FoodDetailViewController else { return }
-            foodDetailViewController.foodName = searchResults?.results[selectedIndex!].food.label
-            foodDetailViewController.calories = String(format: "%.0f", (searchResults?.results[selectedIndex!].food.nutrients.calories)!)
+            guard let foodDetailViewController = segue.destination as? FoodDetailViewController,
+                  let selectedIndex = selectedIndex,
+                  let searchResults = searchResults,
+                  let nutrients = searchResults.results[selectedIndex].food.nutrients,
+                  let foodName = searchResults.results[selectedIndex].food.label,
+                  let calories = nutrients.calories
+            else { return }
+            foodDetailViewController.foodName = foodName
+            foodDetailViewController.calories = String(format: "%.02f", calories)
         default:
             return
         }
