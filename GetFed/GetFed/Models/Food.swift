@@ -26,9 +26,9 @@ struct FoodResults: Decodable {
 }
 
 struct Food: Decodable {
-    let label: String?
-    let nutrients: Nutrients?
-    let category: String?
+    let label: String
+    let nutrients: Nutrients
+    let category: String
     let brand: String?
     
     init(from decoder: Decoder) throws {
