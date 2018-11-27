@@ -17,6 +17,7 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet var caloriesLabel: UILabel!
     @IBOutlet var brandNameLabel: UILabel!
     @IBOutlet var macroNutrientChart: PieChartView!
+    @IBOutlet var foodDetailStackView: UIStackView!
     
     
     
@@ -32,6 +33,7 @@ class FoodDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.view.addSubview(macroNutrientChart)
         populateLabels()
         populateMacroNutrientChartData()
         //print("No chart data:\(macroNutrientChart.noDataText)")
@@ -121,8 +123,12 @@ extension FoodDetailViewController {
         let data = PieChartData(dataSet: dataSet)
         macroNutrientChart.data = data
         
+        print("Chart data: \(macroNutrientChart.data?.dataSets)")
+        macroNutrientChart.setNeedsDisplay()
+        //self.view.addSubview(macroNutrientChart)
+        foodDetailStackView.addArrangedSubview(macroNutrientChart)
         macroNutrientChart.notifyDataSetChanged()
         
-        print("Chart data: \(macroNutrientChart.data?.dataSets)")
+       
     }
 }
