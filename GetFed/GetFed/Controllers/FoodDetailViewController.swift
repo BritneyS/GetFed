@@ -19,21 +19,35 @@ class FoodDetailViewController: UIViewController {
     
     var foodName: String?
     var calories: String?
+    var protein: Double?
+    var carbs: Double?
+    var fat: Double?
     
     // MARK - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let foodName = foodName,
-              let calories = calories
-        else { return }
-        foodNameLabel.text = foodName
-        caloriesLabel.text = "Calories: \(calories)"
+        populateLabels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    // MARK - Methods
+    
+    func populateLabels() {
+        guard let foodName = foodName,
+            let calories = calories,
+            let protein = protein,
+            let carbs = carbs,
+            let fat = fat
+            else { return }
+        foodNameLabel.text = foodName
+        caloriesLabel.text = "Calories: \(calories)"
+        
+        print("Protein: \(protein), Carbs: \(carbs), Fat: \(fat)")
     }
 
 }

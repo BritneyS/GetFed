@@ -85,10 +85,16 @@ extension FoodSearchViewController {
                   let searchResults = searchResults,
                   let nutrients = searchResults.results[selectedIndex].food.nutrients,
                   let foodName = searchResults.results[selectedIndex].food.label,
-                  let calories = nutrients.calories
+                  let calories = nutrients.calories,
+                  let protein = nutrients.protein,
+                  let carbs = nutrients.carbs,
+                  let fat = nutrients.fat
             else { return }
             foodDetailViewController.foodName = foodName
             foodDetailViewController.calories = String(format: "%.02f", calories)
+            foodDetailViewController.protein = protein
+            foodDetailViewController.carbs = carbs
+            foodDetailViewController.fat = fat
         default:
             return
         }
