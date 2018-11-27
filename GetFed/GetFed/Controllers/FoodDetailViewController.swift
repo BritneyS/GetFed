@@ -24,8 +24,11 @@ class FoodDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let foodName = foodName,
+              let calories = calories
+        else { return }
         foodNameLabel.text = foodName
-        caloriesLabel.text = "Calories: \(calories!)"
+        caloriesLabel.text = "Calories: \(calories)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
