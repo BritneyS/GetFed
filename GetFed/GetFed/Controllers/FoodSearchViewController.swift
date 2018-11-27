@@ -23,6 +23,7 @@ class FoodSearchViewController: UIViewController {
     var url: URL?
     var text = ""
     var searchResults: SearchResults?
+    var selectedIndex: Int?
     
     // MARK - Lifecycle
     
@@ -59,12 +60,36 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Identity.foodSearchResultCell.cellID, for: indexPath) as? FoodResultTableViewCell else {
             fatalError("Fatal error: No cell")
         }
-        cell.foodLabel.text = searchResults?.results[indexPath.row].food.label
-        cell.brandLabel.text = searchResults?.results[indexPath.row].food.brand
+        if let searchResults = searchResults {
+            cell.foodLabel.text = searchResults.results[indexPath.row].food.label
+            cell.brandLabel.text = searchResults.results[indexPath.row].food.brand
+        }
         return cell
     }
     
-    /// TODO: didSelectRowAt
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? FoodResultTableViewCell
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: Identity.foodSearchToFoodDetailSegue.segueID, sender: cell)
+    }
+}
+
+// MARK - Segue Data Passing
+
+extension FoodSearchViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Identity.foodSearchToFoodDetailSegue.segueID:
+            guard let foodDetailViewController = segue.destination as? FoodDetailViewController,
+                  let selectedIndex = selectedIndex,
+                  let searchResults = searchResults
+            else { return }
+            let selectedFood = searchResults.results[selectedIndex].food
+            foodDetailViewController.food = selectedFood
+        default:
+            return
+        }
+    }
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation

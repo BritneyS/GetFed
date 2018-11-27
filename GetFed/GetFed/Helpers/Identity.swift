@@ -15,6 +15,7 @@ enum Identity: String {
     
     // Segue Identifiers
     case homeToFoodSearchSegue
+    case foodSearchToFoodDetailSegue
     
     // Cell Identifiers
     case foodSearchResultCell
@@ -35,6 +36,8 @@ enum Identity: String {
         switch self {
         case .homeToFoodSearchSegue:
             return "homeToFoodSearch"
+        case .foodSearchToFoodDetailSegue:
+            return "foodSearchToFoodDetailSegue"
         default:
             return ""
         }
