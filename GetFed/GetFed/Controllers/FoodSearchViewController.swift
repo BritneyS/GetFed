@@ -79,10 +79,8 @@ extension FoodSearchViewController {
         switch segue.identifier {
         case Identity.foodSearchToFoodDetailSegue.segueID:
             guard let foodDetailViewController = segue.destination as? FoodDetailViewController else { return }
-            foodDetailViewController.foodNameLabel.text = searchResults?.results[selectedIndex!].food.label
-            foodDetailViewController.caloriesLabel.text = searchResults?.results[selectedIndex!].food.nutrients.calories
-            //print("🍞:\(searchResults?.results[selectedIndex!].food.label)")
-            return
+            foodDetailViewController.foodName = searchResults?.results[selectedIndex!].food.label
+            foodDetailViewController.calories = String(format: "%.0f", (searchResults?.results[selectedIndex!].food.nutrients.calories)!)
         default:
             return
         }

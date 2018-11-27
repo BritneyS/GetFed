@@ -15,10 +15,17 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet var foodNameLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
     
+    // MARK - Properties
+    
+    var foodName: String?
+    var calories: String?
+    
     // MARK - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        foodNameLabel.text = foodName
+        caloriesLabel.text = "Calories: \(calories!)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
