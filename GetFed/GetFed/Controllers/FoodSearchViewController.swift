@@ -82,19 +82,10 @@ extension FoodSearchViewController {
         case Identity.foodSearchToFoodDetailSegue.segueID:
             guard let foodDetailViewController = segue.destination as? FoodDetailViewController,
                   let selectedIndex = selectedIndex,
-                  let searchResults = searchResults,
-                  let nutrients = searchResults.results[selectedIndex].food.nutrients,
-                  let foodName = searchResults.results[selectedIndex].food.label,
-                  let calories = nutrients.calories,
-                  let protein = nutrients.protein,
-                  let carbs = nutrients.carbs,
-                  let fat = nutrients.fat
+                  let searchResults = searchResults
             else { return }
-            foodDetailViewController.foodName = foodName
-            foodDetailViewController.calories = String(format: "%.02f", calories)
-            foodDetailViewController.protein = protein
-            foodDetailViewController.carbs = carbs
-            foodDetailViewController.fat = fat
+            let selectedFood = searchResults.results[selectedIndex].food
+            foodDetailViewController.food = selectedFood
         default:
             return
         }

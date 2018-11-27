@@ -13,15 +13,12 @@ class FoodDetailViewController: UIViewController {
     // MARK - Outlets
     
     @IBOutlet var foodNameLabel: UILabel!
-    @IBOutlet weak var caloriesLabel: UILabel!
+    @IBOutlet var caloriesLabel: UILabel!
+    @IBOutlet var brandNameLabel: UILabel!
     
     // MARK - Properties
-    
-    var foodName: String?
-    var calories: String?
-    var protein: Double?
-    var carbs: Double?
-    var fat: Double?
+    var food: Food?
+
     
     // MARK - Lifecycle
     
@@ -38,13 +35,17 @@ class FoodDetailViewController: UIViewController {
     // MARK - Methods
     
     func populateLabels() {
-        guard let foodName = foodName,
-            let calories = calories,
-            let protein = protein,
-            let carbs = carbs,
-            let fat = fat
-            else { return }
+        guard let food = food,
+            let nutrients = food.nutrients,
+            let foodName = food.label,
+            let brandName = food.brand,
+            let calories = nutrients.calories,
+            let protein = nutrients.protein,
+            let carbs = nutrients.carbs,
+            let fat = nutrients.fat
+        else { return }
         foodNameLabel.text = foodName
+        brandNameLabel.text = brandName
         caloriesLabel.text = "Calories: \(calories)"
         
         print("Protein: \(protein), Carbs: \(carbs), Fat: \(fat)")
