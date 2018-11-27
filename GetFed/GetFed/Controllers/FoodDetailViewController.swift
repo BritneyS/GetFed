@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class FoodDetailViewController: UIViewController {
 
@@ -15,12 +16,16 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet var foodNameLabel: UILabel!
     @IBOutlet var caloriesLabel: UILabel!
     @IBOutlet var brandNameLabel: UILabel!
+    @IBOutlet var macroNutrientChart: PieChartView!
+    
+    
     
     // MARK - Properties
     var food: Food?
     var protein: Double?
     var carbs: Double?
     var fat: Double?
+    var macroNutrientData: [Double?] = []
 
     
     // MARK - Lifecycle
@@ -28,6 +33,8 @@ class FoodDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         populateLabels()
+        populateMacroNutrientChartData()
+        //print("No chart data:\(macroNutrientChart.noDataText)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,4 +93,36 @@ class FoodDetailViewController: UIViewController {
         }
     }
 
+}
+
+// MARK - Pie Chart Methods
+extension FoodDetailViewController {
+    func populateMacroNutrientChartData() {
+        guard let proteinData = self.protein else {
+            print("No protein data")
+            return
+        }
+        
+        guard let carbsData = self.carbs else {
+            print("No carbs data")
+            return
+        }
+        
+        guard let fatData = self.fat else {
+            print("No fat data")
+            return
+        }
+        
+        let entryOne = PieChartDataEntry(value: proteinData, label: "Protein")
+        let entryTwo = PieChartDataEntry(value: carbsData, label: "Carbs")
+        let entryThree = PieChartDataEntry(value: fatData, label: "Fat")
+        
+        let dataSet = PieChartDataSet(values: [entryOne, entryTwo, entryThree], label: "samplechartlabel")
+        let data = PieChartData(dataSet: dataSet)
+        macroNutrientChart.data = data
+        
+        macroNutrientChart.notifyDataSetChanged()
+        
+        print("Chart data: \(macroNutrientChart.data?.dataSets)")
+    }
 }
