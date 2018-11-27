@@ -18,6 +18,9 @@ class FoodDetailViewController: UIViewController {
     
     // MARK - Properties
     var food: Food?
+    var protein: Double?
+    var carbs: Double?
+    var fat: Double?
 
     
     // MARK - Lifecycle
@@ -35,20 +38,52 @@ class FoodDetailViewController: UIViewController {
     // MARK - Methods
     
     func populateLabels() {
-        guard let food = food,
-            let nutrients = food.nutrients,
-            let foodName = food.label,
-            let brandName = food.brand,
-            let calories = nutrients.calories,
-            let protein = nutrients.protein,
-            let carbs = nutrients.carbs,
-            let fat = nutrients.fat
-        else { return }
-        foodNameLabel.text = foodName
-        brandNameLabel.text = brandName
-        caloriesLabel.text = "Calories: \(calories)"
+        print("Food: \(food)")
         
-        print("Protein: \(protein), Carbs: \(carbs), Fat: \(fat)")
+        if let food = food {
+            let nutrients = food.nutrients
+            let foodName = food.label
+            
+            foodNameLabel.text = foodName
+            
+            if let brandName = food.brand {
+                brandNameLabel.text = brandName
+            } else {
+                brandNameLabel.isHidden = true
+            }
+            
+            if let calories = nutrients.calories {
+                let caloriesString = String(format: "%.0f", calories)
+                caloriesLabel.text = "Calories: \(caloriesString)"
+            } else {
+                caloriesLabel.text = "No calorie data"
+            }
+            
+            if let protein = nutrients.protein {
+                self.protein = protein
+                print("Protein: \(self.protein!)")
+            } else {
+                self.protein = nil
+            }
+            
+            if let carbs = nutrients.carbs {
+                self.carbs = carbs
+                print("Carbs: \(self.carbs!)")
+            } else {
+                self.carbs = nil
+            }
+            
+            if let fat = nutrients.fat {
+                self.fat = fat
+                print("Fat: \(self.fat!)")
+            } else {
+                self.fat = nil
+            }
+        } else {
+            foodNameLabel.text = "No food data"
+            brandNameLabel.isHidden = true
+            caloriesLabel.isHidden = true
+        }
     }
 
 }

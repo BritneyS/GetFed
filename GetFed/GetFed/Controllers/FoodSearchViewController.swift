@@ -63,6 +63,9 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         if let searchResults = searchResults {
             cell.foodLabel.text = searchResults.results[indexPath.row].food.label
             cell.brandLabel.text = searchResults.results[indexPath.row].food.brand
+        } else {
+            cell.foodLabel.text = "No food data"
+            cell.brandLabel.isHidden = true
         }
         return cell
     }
