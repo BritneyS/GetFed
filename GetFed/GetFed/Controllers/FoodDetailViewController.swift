@@ -33,6 +33,7 @@ class FoodDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         populateLabels()
         populateMacroNutrientChartData()
     }
@@ -124,11 +125,20 @@ extension FoodDetailViewController {
         macroNutrientChart.data = data
         
         /// Chart customization
+        let chartLabelColor = UIColor(red:0.93, green:0.42, blue:0.53, alpha:1.0)
         dataSet.colors = ChartColorTemplates.customTemplateBright()
-        let measurementFormatter = MeasurementFormatter()
+        dataSet.entryLabelColor = chartLabelColor
+        dataSet.valueFont = UIFont(name:"HelveticaNeue-Bold", size: 18.0)!
+        dataSet.xValuePosition = .outsideSlice
+        dataSet.valueLineColor = chartLabelColor
+        dataSet.valueLinePart1Length = 0.75
+        dataSet.valueLinePart2Length = 0.2
         
+        let measurementFormatter = MeasurementFormatter()
         let customValueFormatter = CustomValueFormatter(measurementFormatter: measurementFormatter)
         dataSet.valueFormatter = customValueFormatter
+        
+        macroNutrientChart.legend.enabled = false
         print("Chart data: \(macroNutrientChart.data?.dataSets)")
         
         /// Keep as the last line
