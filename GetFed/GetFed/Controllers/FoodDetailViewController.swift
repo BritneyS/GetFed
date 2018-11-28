@@ -122,9 +122,16 @@ extension FoodDetailViewController {
         let dataSet = PieChartDataSet(values: [entryOne, entryTwo, entryThree], label: "samplechartlabel")
         let data = PieChartData(dataSet: dataSet)
         macroNutrientChart.data = data
+        
+        /// Chart customization
         dataSet.colors = ChartColorTemplates.customTemplateBright()
+        let numberFormatter = NumberFormatter()
+        //numberFormatter.numberStyle = .decimal
+        let customValueFormatter = CustomValueFormatter(numberFormatter: numberFormatter)
+        dataSet.valueFormatter = customValueFormatter
         print("Chart data: \(macroNutrientChart.data?.dataSets)")
         
+        /// Keep as the last line
         macroNutrientChart.notifyDataSetChanged()  
     }
     
