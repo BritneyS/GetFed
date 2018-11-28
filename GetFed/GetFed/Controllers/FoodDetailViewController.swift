@@ -42,6 +42,8 @@ class FoodDetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+
+    
     // MARK - Methods
     
     func populateLabels() {
