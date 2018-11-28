@@ -33,10 +33,8 @@ class FoodDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.addSubview(macroNutrientChart)
         populateLabels()
         populateMacroNutrientChartData()
-        //print("No chart data:\(macroNutrientChart.noDataText)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,11 +122,7 @@ extension FoodDetailViewController {
         macroNutrientChart.data = data
         
         print("Chart data: \(macroNutrientChart.data?.dataSets)")
-        macroNutrientChart.setNeedsDisplay()
-        //self.view.addSubview(macroNutrientChart)
-        foodDetailStackView.addArrangedSubview(macroNutrientChart)
-        macroNutrientChart.notifyDataSetChanged()
         
-       
+        macroNutrientChart.notifyDataSetChanged()  
     }
 }
