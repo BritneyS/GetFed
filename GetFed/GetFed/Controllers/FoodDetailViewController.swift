@@ -125,17 +125,13 @@ extension FoodDetailViewController {
         
         /// Chart customization
         dataSet.colors = ChartColorTemplates.customTemplateBright()
-        let numberFormatter = NumberFormatter()
-        //numberFormatter.numberStyle = .decimal
-        let customValueFormatter = CustomValueFormatter(numberFormatter: numberFormatter)
+        let measurementFormatter = MeasurementFormatter()
+        
+        let customValueFormatter = CustomValueFormatter(measurementFormatter: measurementFormatter)
         dataSet.valueFormatter = customValueFormatter
         print("Chart data: \(macroNutrientChart.data?.dataSets)")
         
         /// Keep as the last line
         macroNutrientChart.notifyDataSetChanged()  
-    }
-    
-    func setChartStyle() {
-        
     }
 }

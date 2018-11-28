@@ -11,16 +11,24 @@ import Charts
 
 public class CustomValueFormatter: NSObject, IValueFormatter {
     
-    fileprivate var numberFormatter: NumberFormatter?
+    fileprivate var measurementFormatter: MeasurementFormatter?
     
-    convenience init(numberFormatter: NumberFormatter) {
+    convenience init(measurementFormatter: MeasurementFormatter) {
         self.init()
-        self.numberFormatter = numberFormatter
+        self.measurementFormatter = measurementFormatter
     }
     
     public func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        guard let numberFormatter = numberFormatter else { return "" }
-        return numberFormatter.string(for: value) ?? "" + "g"
+        guard let measurementFormatter = measurementFormatter else { return "" }
+        
+        let valueInGrams = Measurement(value: value, unit: UnitMass.grams)
+        measurementFormatter.unitOptions = .providedUnit
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .none
+        measurementFormatter.numberFormatter = numberFormatter
+        
+        return measurementFormatter.string(for: valueInGrams) ?? ""
     }
     
     
