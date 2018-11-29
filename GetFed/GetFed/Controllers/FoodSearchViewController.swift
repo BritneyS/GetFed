@@ -19,7 +19,6 @@ class FoodSearchViewController: UIViewController {
     let appId = EdamamAppID
     let appKey = EdamamAppKey
     var url: URL?
-    var text = ""
     var searchResults: SearchResults?
     var selectedIndex: Int?
     

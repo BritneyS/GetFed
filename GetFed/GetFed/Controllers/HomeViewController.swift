@@ -16,10 +16,11 @@ class HomeViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
 }
