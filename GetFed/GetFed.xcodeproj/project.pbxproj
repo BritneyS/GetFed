@@ -20,6 +20,8 @@
 		0663B1C521A63000000B2754 /* FoodResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C321A63000000B2754 /* FoodResultTableViewCell.swift */; };
 		0663B1C621A63000000B2754 /* FoodResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */; };
 		0663B1C821AC8F58000B2754 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C721AC8F58000B2754 /* FoodDetailViewController.swift */; };
+		06FF832121AEF3810066424C /* CustomColorTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832021AEF3810066424C /* CustomColorTemplate.swift */; };
+		06FF832321AEF8430066424C /* CustomValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832221AEF8420066424C /* CustomValueFormatter.swift */; };
 		4EBFAFE8A5DF71DB25281C1F /* Pods_GetFed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47EB7B8A39DA18E491DD2D1 /* Pods_GetFed.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		0663B1C321A63000000B2754 /* FoodResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodResultTableViewCell.swift; sourceTree = "<group>"; };
 		0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodResultTableViewCell.xib; sourceTree = "<group>"; };
 		0663B1C721AC8F58000B2754 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
+		06FF832021AEF3810066424C /* CustomColorTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorTemplate.swift; sourceTree = "<group>"; };
+		06FF832221AEF8420066424C /* CustomValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValueFormatter.swift; sourceTree = "<group>"; };
 		27E1F1A676CD7A4435C6EB69 /* Pods-GetFed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetFed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetFed/Pods-GetFed.debug.xcconfig"; sourceTree = "<group>"; };
 		B47EB7B8A39DA18E491DD2D1 /* Pods_GetFed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetFed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF8590CD873BED214503BF2 /* Pods-GetFed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetFed.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetFed/Pods-GetFed.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				0663B1B2219F4EFA000B2754 /* Constants.swift */,
 				0663B1B4219F6A64000B2754 /* Identity.swift */,
 				0663B1C121A347FD000B2754 /* APIClient.swift */,
+				06FF832021AEF3810066424C /* CustomColorTemplate.swift */,
+				06FF832221AEF8420066424C /* CustomValueFormatter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -224,12 +230,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GetFed/Pods-GetFed-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -266,11 +274,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0663B1C821AC8F58000B2754 /* FoodDetailViewController.swift in Sources */,
+				06FF832121AEF3810066424C /* CustomColorTemplate.swift in Sources */,
 				0663B19D219F496E000B2754 /* AppDelegate.swift in Sources */,
 				0663B1B5219F6A64000B2754 /* Identity.swift in Sources */,
 				0663B1C521A63000000B2754 /* FoodResultTableViewCell.swift in Sources */,
 				0663B1BF21A339F6000B2754 /* FoodSearchViewController.swift in Sources */,
 				0663B1C221A347FD000B2754 /* APIClient.swift in Sources */,
+				06FF832321AEF8430066424C /* CustomValueFormatter.swift in Sources */,
 				0663B1BC21A0731A000B2754 /* Food.swift in Sources */,
 				0663B1B3219F4EFA000B2754 /* Constants.swift in Sources */,
 				0663B1B8219FC68C000B2754 /* HomeViewController.swift in Sources */,

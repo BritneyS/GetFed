@@ -97,31 +97,43 @@
             <objects>
                 <viewController id="h24-TU-c8c" customClass="FoodDetailViewController" customModule="GetFed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1TL-bW-qLt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eCX-Cu-0gX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXi-uR-aoY">
-                                        <rect key="frame" x="76" y="0.0" width="223.5" height="244.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodNameLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXi-uR-aoY">
+                                        <rect key="frame" x="76" y="0.0" width="223.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="28"/>
                                         <color key="textColor" red="0.37506285919999999" green="0.066743286639999996" blue="0.32412731210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="brandNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW6-qa-hZr">
-                                        <rect key="frame" x="122" y="244.5" width="131.5" height="175"/>
+                                        <rect key="frame" x="122" y="28" width="131.5" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.43968416960000001" green="0.44130747129999998" blue="0.41126847030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-XM-Q4W" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="30" y="48" width="315" height="534"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="500" id="3hB-x6-O7e"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caloriesLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJc-Io-5qD">
-                                        <rect key="frame" x="116.5" y="419.5" width="142" height="183.5"/>
+                                        <rect key="frame" x="116.5" y="582" width="142" height="21"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="21"/>
                                         <color key="textColor" red="0.0062921650150000001" green="0.37506285919999999" blue="0.028588568389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="jXi-uR-aoY" firstAttribute="top" secondItem="eCX-Cu-0gX" secondAttribute="top" constant="10" id="Qt7-3d-aAS"/>
+                                    <constraint firstItem="aDn-XM-Q4W" firstAttribute="leading" secondItem="eCX-Cu-0gX" secondAttribute="leading" constant="30" id="tan-EH-oHE"/>
+                                    <constraint firstAttribute="trailing" secondItem="aDn-XM-Q4W" secondAttribute="trailing" constant="30" id="z4L-wL-aoo"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,10 +145,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="trq-zP-X1R"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="brandNameLabel" destination="hW6-qa-hZr" id="eQG-nx-ffQ"/>
                         <outlet property="caloriesLabel" destination="hJc-Io-5qD" id="Hgk-at-2TE"/>
                         <outlet property="foodNameLabel" destination="jXi-uR-aoY" id="cSO-tI-Xdd"/>
+                        <outlet property="macroNutrientChart" destination="aDn-XM-Q4W" id="Axw-OT-DPv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t5Z-hq-KYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
