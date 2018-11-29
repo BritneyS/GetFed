@@ -19,9 +19,6 @@ class FoodDetailViewController: UIViewController {
     
     // MARK - Properties
     var food: Food?
-    var protein: Double?
-    var carbs: Double?
-    var fat: Double?
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -32,7 +29,7 @@ class FoodDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
 
     // MARK - Methods
@@ -57,34 +54,12 @@ class FoodDetailViewController: UIViewController {
             } else {
                 caloriesLabel.text = "No calorie data"
             }
-            
-            if let protein = nutrients.protein {
-                self.protein = protein
-                print("Protein: \(self.protein!)")
-            } else {
-                self.protein = nil
-            }
-            
-            if let carbs = nutrients.carbs {
-                self.carbs = carbs
-                print("Carbs: \(self.carbs!)")
-            } else {
-                self.carbs = nil
-            }
-            
-            if let fat = nutrients.fat {
-                self.fat = fat
-                print("Fat: \(self.fat!)")
-            } else {
-                self.fat = nil
-            }
         } else {
             foodNameLabel.text = "No food data"
             brandNameLabel.isHidden = true
             caloriesLabel.isHidden = true
         }
     }
-
 }
 
 // MARK - Pie Chart Methods
@@ -97,17 +72,19 @@ extension FoodDetailViewController {
     }
     
     func populateMacroNutrientChartData() -> PieChartDataSet? {
-        guard let proteinData = self.protein else {
+        guard let food = food else { return nil }
+        
+        guard let proteinData = food.nutrients.protein else {
             print("No protein data")
             return nil
         }
         
-        guard let carbsData = self.carbs else {
+        guard let carbsData = food.nutrients.carbs else {
             print("No carbs data")
             return nil
         }
         
-        guard let fatData = self.fat else {
+        guard let fatData = food.nutrients.fat else {
             print("No fat data")
             return nil
         }
