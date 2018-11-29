@@ -16,7 +16,6 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet var caloriesLabel: UILabel!
     @IBOutlet var brandNameLabel: UILabel!
     @IBOutlet var macroNutrientChart: PieChartView!
-    @IBOutlet var foodDetailStackView: UIStackView!
     
     // MARK - Properties
     var food: Food?

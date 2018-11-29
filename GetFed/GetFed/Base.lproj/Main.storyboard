@@ -149,7 +149,6 @@
                     <connections>
                         <outlet property="brandNameLabel" destination="hW6-qa-hZr" id="eQG-nx-ffQ"/>
                         <outlet property="caloriesLabel" destination="hJc-Io-5qD" id="Hgk-at-2TE"/>
-                        <outlet property="foodDetailStackView" destination="eCX-Cu-0gX" id="sHe-2g-vIq"/>
                         <outlet property="foodNameLabel" destination="jXi-uR-aoY" id="cSO-tI-Xdd"/>
                         <outlet property="macroNutrientChart" destination="aDn-XM-Q4W" id="Axw-OT-DPv"/>
                     </connections>
