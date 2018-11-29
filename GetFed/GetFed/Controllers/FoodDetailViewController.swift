@@ -12,43 +12,31 @@ import Charts
 class FoodDetailViewController: UIViewController {
 
     // MARK - Outlets
-    
     @IBOutlet var foodNameLabel: UILabel!
     @IBOutlet var caloriesLabel: UILabel!
     @IBOutlet var brandNameLabel: UILabel!
     @IBOutlet var macroNutrientChart: PieChartView!
     @IBOutlet var foodDetailStackView: UIStackView!
     
-    
-    
     // MARK - Properties
     var food: Food?
     var protein: Double?
     var carbs: Double?
     var fat: Double?
-    var macroNutrientData: [Double?] = []
-    //var dataSet: PieChartDataSet?
     
     // MARK - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         populateLabels()
-        let dataSet = populateMacroNutrientChartData()
-        //guard let dataSet = dataSet else { return }
-        formatChartValues(with: dataSet)
-        styleMacroNutrientChart(with: dataSet)
+        chartSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-    
 
-    
     // MARK - Methods
-    
     func populateLabels() {
         print("Food: \(food)")
         
@@ -102,6 +90,13 @@ class FoodDetailViewController: UIViewController {
 
 // MARK - Pie Chart Methods
 extension FoodDetailViewController {
+    
+    func chartSetup() {
+        let dataSet = populateMacroNutrientChartData()
+        formatChartValues(with: dataSet)
+        styleMacroNutrientChart(with: dataSet)
+    }
+    
     func populateMacroNutrientChartData() -> PieChartDataSet? {
         guard let proteinData = self.protein else {
             print("No protein data")
@@ -124,30 +119,12 @@ extension FoodDetailViewController {
         let dataEntries = [entryOne, entryTwo, entryThree]
         
         let dataSet = PieChartDataSet(values: dataEntries, label: "samplechartlabel")
-        //guard let dataSet = dataSet else { return }
         let data = PieChartData(dataSet: dataSet)
         macroNutrientChart.data = data
         
-        /// Chart customization
-//        let chartLabelColor = UIColor(red:0.38, green:0.07, blue:0.33, alpha:1.0)
-//        dataSet.colors = ChartColorTemplates.customTemplateBright()
-//        dataSet.valueTextColor = chartLabelColor
-//        dataSet.valueFont = UIFont(name:"HelveticaNeue-Bold", size: 18.0)!
-//        dataSet.xValuePosition = .outsideSlice
-//        dataSet.yValuePosition = .outsideSlice
-//        dataSet.valueLineColor = chartLabelColor
-//        dataSet.valueLinePart1Length = 0.45
-//        dataSet.valueLinePart2Length = 0.1
-        
-//        let measurementFormatter = MeasurementFormatter()
-//        let customValueFormatter = CustomValueFormatter(measurementFormatter: measurementFormatter)
-//        dataSet.valueFormatter = customValueFormatter
-        
-//        macroNutrientChart.animate(yAxisDuration: 0.9, easingOption: .easeInSine)
-//        macroNutrientChart.legend.enabled = false
         print("Chart data: \(macroNutrientChart.data?.dataSets)")
         
-        /// Keep as the last line
+        /// Keep as the last line before return
         macroNutrientChart.notifyDataSetChanged()
         return dataSet
     }

@@ -11,11 +11,9 @@ import UIKit
 class FoodSearchViewController: UIViewController {
     
     // MARK - Outlets
-    
     @IBOutlet var foodTableView: UITableView!
     
     // MARK - Properties
-    
     var searchController: UISearchController!
     let apiClient = APIClient()
     let appId = EdamamAppID
@@ -26,7 +24,6 @@ class FoodSearchViewController: UIViewController {
     var selectedIndex: Int?
     
     // MARK - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerFoodResultTableViewCell()
@@ -43,7 +40,6 @@ class FoodSearchViewController: UIViewController {
 }
 
 // MARK - UITableViewDataSource & UITableViewDelegate Protocol Implementation
-
 extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func registerFoodResultTableViewCell() {
@@ -78,7 +74,6 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK - Segue Data Passing
-
 extension FoodSearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -96,7 +91,6 @@ extension FoodSearchViewController {
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation
-
 extension FoodSearchViewController: UISearchBarDelegate {
     
     func setupSearchBar() {
@@ -131,7 +125,6 @@ extension FoodSearchViewController: UISearchBarDelegate {
     }
 }
 // MARK - API Request
-
 extension FoodSearchViewController {
     
     func setURL(with searchText: String) -> URL? {
