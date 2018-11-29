@@ -116,7 +116,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-XM-Q4W" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="67.5" y="48" width="240" height="534"/>
+                                        <rect key="frame" x="30" y="48" width="315" height="534"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="500" id="3hB-x6-O7e"/>
@@ -131,8 +131,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="jXi-uR-aoY" firstAttribute="top" secondItem="eCX-Cu-0gX" secondAttribute="top" constant="10" id="Qt7-3d-aAS"/>
-                                    <constraint firstItem="aDn-XM-Q4W" firstAttribute="leading" secondItem="eCX-Cu-0gX" secondAttribute="leading" constant="67.5" id="tan-EH-oHE"/>
-                                    <constraint firstAttribute="trailing" secondItem="aDn-XM-Q4W" secondAttribute="trailing" constant="67.5" id="z4L-wL-aoo"/>
+                                    <constraint firstItem="aDn-XM-Q4W" firstAttribute="leading" secondItem="eCX-Cu-0gX" secondAttribute="leading" constant="30" id="tan-EH-oHE"/>
+                                    <constraint firstAttribute="trailing" secondItem="aDn-XM-Q4W" secondAttribute="trailing" constant="30" id="z4L-wL-aoo"/>
                                 </constraints>
                             </stackView>
                         </subviews>

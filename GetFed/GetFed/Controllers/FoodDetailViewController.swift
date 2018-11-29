@@ -125,19 +125,21 @@ extension FoodDetailViewController {
         macroNutrientChart.data = data
         
         /// Chart customization
-        let chartLabelColor = UIColor(red:0.93, green:0.42, blue:0.53, alpha:1.0)
+        let chartLabelColor = UIColor(red:0.38, green:0.07, blue:0.33, alpha:1.0)
         dataSet.colors = ChartColorTemplates.customTemplateBright()
-        dataSet.entryLabelColor = chartLabelColor
+        dataSet.valueTextColor = chartLabelColor
         dataSet.valueFont = UIFont(name:"HelveticaNeue-Bold", size: 18.0)!
-        dataSet.xValuePosition = .outsideSlice
+        //dataSet.xValuePosition = .outsideSlice
+        //dataSet.yValuePosition = .outsideSlice
         dataSet.valueLineColor = chartLabelColor
-        dataSet.valueLinePart1Length = 0.75
-        dataSet.valueLinePart2Length = 0.2
+        dataSet.valueLinePart1Length = 0.35
+        dataSet.valueLinePart2Length = 0.1
         
         let measurementFormatter = MeasurementFormatter()
         let customValueFormatter = CustomValueFormatter(measurementFormatter: measurementFormatter)
         dataSet.valueFormatter = customValueFormatter
         
+        macroNutrientChart.animate(yAxisDuration: 0.9, easingOption: .easeInSine)
         macroNutrientChart.legend.enabled = false
         print("Chart data: \(macroNutrientChart.data?.dataSets)")
         
