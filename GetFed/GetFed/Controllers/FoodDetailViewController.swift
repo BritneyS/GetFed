@@ -119,8 +119,9 @@ extension FoodDetailViewController {
         let entryOne = PieChartDataEntry(value: proteinData, label: "Protein")
         let entryTwo = PieChartDataEntry(value: carbsData, label: "Carbs")
         let entryThree = PieChartDataEntry(value: fatData, label: "Fat")
+        let dataEntries = [entryOne, entryTwo, entryThree]
         
-        let dataSet = PieChartDataSet(values: [entryOne, entryTwo, entryThree], label: "samplechartlabel")
+        let dataSet = PieChartDataSet(values: dataEntries, label: "samplechartlabel")
         let data = PieChartData(dataSet: dataSet)
         macroNutrientChart.data = data
         
@@ -129,10 +130,10 @@ extension FoodDetailViewController {
         dataSet.colors = ChartColorTemplates.customTemplateBright()
         dataSet.valueTextColor = chartLabelColor
         dataSet.valueFont = UIFont(name:"HelveticaNeue-Bold", size: 18.0)!
-        //dataSet.xValuePosition = .outsideSlice
-        //dataSet.yValuePosition = .outsideSlice
+        dataSet.xValuePosition = .outsideSlice
+        dataSet.yValuePosition = .outsideSlice
         dataSet.valueLineColor = chartLabelColor
-        dataSet.valueLinePart1Length = 0.35
+        dataSet.valueLinePart1Length = 0.45
         dataSet.valueLinePart2Length = 0.1
         
         let measurementFormatter = MeasurementFormatter()
