@@ -94,7 +94,7 @@ extension FoodDetailViewController {
         let entryThree = PieChartDataEntry(value: fatData, label: "Fat")
         let dataEntries = [entryOne, entryTwo, entryThree]
         
-        let dataSet = PieChartDataSet(values: dataEntries, label: "samplechartlabel")
+        let dataSet = PieChartDataSet(values: dataEntries, label: "")
         let data = PieChartData(dataSet: dataSet)
         macroNutrientChart.data = data
         
@@ -115,8 +115,12 @@ extension FoodDetailViewController {
     
     func styleMacroNutrientChart(with dataSet: PieChartDataSet?) {
         
+        guard let legendFont = UIFont(name:"HelveticaNeue-Bold", size: 18.0) else { return }
         macroNutrientChart.animate(yAxisDuration: 0.9, easingOption: .easeInSine)
-        macroNutrientChart.legend.enabled = false
+        //macroNutrientChart.legend.enabled = false
+        macroNutrientChart.legend.font = legendFont
+        macroNutrientChart.legend.formSize = 20.0
+        macroNutrientChart.legend.orientation = .vertical
         
         if let dataSet = dataSet {
             let chartLabelColor = UIColor(red:0.38, green:0.07, blue:0.33, alpha:1.0)
@@ -124,11 +128,11 @@ extension FoodDetailViewController {
             dataSet.colors = ChartColorTemplates.customTemplateBright()
             dataSet.valueTextColor = chartLabelColor
             dataSet.valueFont = customFont
-            dataSet.xValuePosition = .outsideSlice
-            dataSet.yValuePosition = .outsideSlice
+            //dataSet.xValuePosition = .outsideSlice
+            //dataSet.yValuePosition = .outsideSlice
             dataSet.valueLineColor = chartLabelColor
-            dataSet.valueLinePart1Length = 0.45
-            dataSet.valueLinePart2Length = 0.1
+            //dataSet.valueLinePart1Length = 0.25
+            //dataSet.valueLinePart2Length = 0.1
         }
     }
 }
