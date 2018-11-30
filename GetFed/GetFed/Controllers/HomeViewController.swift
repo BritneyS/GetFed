@@ -9,10 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
-    // MARK - Outlets
-    @IBOutlet var foodSearchButton: UIButton!
-    
+
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

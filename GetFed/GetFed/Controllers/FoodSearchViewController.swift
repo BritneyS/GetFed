@@ -42,8 +42,8 @@ class FoodSearchViewController: UIViewController {
 extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func registerFoodResultTableViewCell() {
-        let cell = UINib(nibName: Identity.foodResultTableViewCellNib.nibID, bundle: nil)
-        foodTableView.register(cell, forCellReuseIdentifier: Identity.foodSearchResultCell.cellID)
+        let cell = UINib(nibName: NibID.FoodResultTableViewCell.rawValue, bundle: nil)
+        foodTableView.register(cell, forCellReuseIdentifier: CellID.foodSearchResultCell.rawValue)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +52,7 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identity.foodSearchResultCell.cellID, for: indexPath) as? FoodResultTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellID.foodSearchResultCell.rawValue, for: indexPath) as? FoodResultTableViewCell else {
             fatalError("Fatal error: No cell")
         }
         if let searchResults = searchResults {
@@ -68,7 +68,7 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? FoodResultTableViewCell
         selectedIndex = indexPath.row
-        performSegue(withIdentifier: Identity.foodSearchToFoodDetailSegue.segueID, sender: cell)
+        performSegue(withIdentifier: SegueID.foodSearchToFoodDetailSegue.rawValue, sender: cell)
     }
 }
 
@@ -76,7 +76,7 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension FoodSearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case Identity.foodSearchToFoodDetailSegue.segueID:
+        case SegueID.foodSearchToFoodDetailSegue.rawValue:
             guard let foodDetailViewController = segue.destination as? FoodDetailViewController,
                   let selectedIndex = selectedIndex,
                   let searchResults = searchResults
