@@ -58,9 +58,6 @@
                         <viewLayoutGuide key="safeArea" id="rtn-VN-gk8"/>
                     </view>
                     <navigationItem key="navigationItem" id="cxT-1R-zPW"/>
-                    <connections>
-                        <outlet property="foodSearchButton" destination="TbK-UU-xng" id="ZJy-Z9-9AQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBv-WY-JPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -6,65 +6,7 @@
 //  Copyright © 2018 Britney Smith. All rights reserved.
 //
 
-import Foundation
-
-enum Identity: String {
-    
-    // ViewController Identifiers
-    case homeVC
-    
-    // Segue Identifiers
-    case homeToFoodSearchSegue
-    case foodSearchToFoodDetailSegue
-    
-    // Cell Identifiers
-    case foodSearchResultCell
-    
-    // Nib Identifiers
-    case foodResultTableViewCellNib
-
-    var viewControllerID: String {
-        switch self {
-        case .homeVC:
-            return "homeViewController"
-        default:
-            return ""
-        }
-    }
-    
-    var segueID: String {
-        switch self {
-        case .homeToFoodSearchSegue:
-            return "homeToFoodSearch"
-        case .foodSearchToFoodDetailSegue:
-            return "foodSearchToFoodDetailSegue"
-        default:
-            return ""
-        }
-    }
-    
-    var cellID: String {
-        switch self {
-        case .foodSearchResultCell:
-            return "foodSearchResultCell"
-        default:
-            return ""
-        }
-    }
-    
-    var nibID: String {
-        switch self {
-        case .foodResultTableViewCellNib:
-            return "FoodResultTableViewCell"
-        default:
-            return ""
-        }
-    }
-    
-}
-// segueID, cellID, nibID, colorID
 enum SegueID: String {
-    case homeToFoodSearchSegue
     case foodSearchToFoodDetailSegue
 }
 
@@ -73,5 +15,11 @@ enum CellID: String {
 }
 
 enum NibID: String {
-    case foodResultTableViewCellNib
+    case FoodResultTableViewCell
+}
+
+enum ColorID: String {
+    case ProteinColor
+    case CarbsColor
+    case FatColor
 }

@@ -13,9 +13,9 @@ import Charts
 extension ChartColorTemplates {
     
     public class func customTemplateBright() -> [UIColor] {
-        guard let proteinColor = UIColor(named: "ProteinColor"),
-              let carbsColor = UIColor(named: "CarbsColor"),
-              let fatColor = UIColor(named: "FatColor")
+        guard let proteinColor = UIColor(named: ColorID.ProteinColor.rawValue),
+              let carbsColor = UIColor(named: ColorID.CarbsColor.rawValue),
+              let fatColor = UIColor(named: ColorID.FatColor.rawValue)
             else {
                     print("No colors!")
                     return []
