@@ -1,5 +1,5 @@
 //
-//  ColorTemplate.swift
+//  CustomColorTemplate.swift
 //  GetFed
 //
 //  Created by Britney Smith on 11/28/18.
