@@ -16,6 +16,10 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet var caloriesLabel: UILabel!
     @IBOutlet var brandNameLabel: UILabel!
     @IBOutlet var macroNutrientChart: PieChartView!
+    @IBOutlet var proteinLabel: UILabel!
+    @IBOutlet var carbsLabel: UILabel!
+    @IBOutlet var fatLabel: UILabel!
+    
     
     // MARK - Properties
     var food: Food?
@@ -54,10 +58,26 @@ class FoodDetailViewController: UIViewController {
             } else {
                 caloriesLabel.text = "No calorie data"
             }
+            
+            if let protein = nutrients.protein {
+                proteinLabel.text = "\(Int(protein)) g"
+            }
+            
+            if let carbs = nutrients.carbs {
+                carbsLabel.text = "\(Int(carbs)) g"
+            }
+            
+            if let fat = nutrients.fat {
+                fatLabel.text = "\(Int(fat)) g"
+            }
+            
         } else {
             foodNameLabel.text = "No food data"
             brandNameLabel.isHidden = true
             caloriesLabel.isHidden = true
+            proteinLabel.isHidden = true
+            carbsLabel.isHidden = true
+            fatLabel.isHidden = true
         }
     }
 }
@@ -120,7 +140,7 @@ extension FoodDetailViewController {
         //macroNutrientChart.legend.enabled = false
         macroNutrientChart.legend.font = legendFont
         macroNutrientChart.legend.formSize = 20.0
-        macroNutrientChart.legend.orientation = .vertical
+        macroNutrientChart.legend.orientation = .horizontal
         
         if let dataSet = dataSet {
             let chartLabelColor = UIColor(red:0.38, green:0.07, blue:0.33, alpha:1.0)

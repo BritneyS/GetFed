@@ -113,14 +113,37 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-XM-Q4W" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="30" y="48" width="315" height="0.0"/>
+                                        <rect key="frame" x="30" y="48" width="315" height="513.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="500" id="3hB-x6-O7e"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dga-vQ-3Df">
+                                        <rect key="frame" x="61.5" y="561.5" width="252" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="proteinLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-t2-S3O">
+                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="carbsLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgo-Yg-tdL">
+                                                <rect key="frame" x="100.5" y="0.0" width="84.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fatLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6g-er-nys">
+                                                <rect key="frame" x="190" y="0.0" width="62" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caloriesLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJc-Io-5qD">
-                                        <rect key="frame" x="116.5" y="48" width="142" height="555"/>
+                                        <rect key="frame" x="116.5" y="582" width="142" height="21"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="21"/>
                                         <color key="textColor" red="0.0062921650150000001" green="0.37506285919999999" blue="0.028588568389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -146,8 +169,11 @@
                     <connections>
                         <outlet property="brandNameLabel" destination="hW6-qa-hZr" id="eQG-nx-ffQ"/>
                         <outlet property="caloriesLabel" destination="hJc-Io-5qD" id="Hgk-at-2TE"/>
+                        <outlet property="carbsLabel" destination="xgo-Yg-tdL" id="CFi-Du-7xa"/>
+                        <outlet property="fatLabel" destination="n6g-er-nys" id="5cO-r9-FQ3"/>
                         <outlet property="foodNameLabel" destination="jXi-uR-aoY" id="cSO-tI-Xdd"/>
                         <outlet property="macroNutrientChart" destination="aDn-XM-Q4W" id="Axw-OT-DPv"/>
+                        <outlet property="proteinLabel" destination="Cf6-t2-S3O" id="odm-ma-Zvf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t5Z-hq-KYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
