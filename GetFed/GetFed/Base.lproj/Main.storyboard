@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -113,20 +114,45 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-XM-Q4W" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="30" y="48" width="315" height="0.0"/>
+                                        <rect key="frame" x="30" y="48" width="315" height="476.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="500" id="3hB-x6-O7e"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dga-vQ-3Df">
+                                        <rect key="frame" x="50" y="524.5" width="275" height="57.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="proteinLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-t2-S3O">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="57.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="48"/>
+                                                <color key="textColor" name="ProteinColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="carbsLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgo-Yg-tdL">
+                                                <rect key="frame" x="5" y="0.0" width="79" height="57.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="48"/>
+                                                <color key="textColor" name="CarbsColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="fatLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6g-er-nys">
+                                                <rect key="frame" x="89" y="0.0" width="186" height="57.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="48"/>
+                                                <color key="textColor" name="FatColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caloriesLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJc-Io-5qD">
-                                        <rect key="frame" x="116.5" y="48" width="142" height="555"/>
+                                        <rect key="frame" x="116.5" y="582" width="142" height="21"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="21"/>
                                         <color key="textColor" red="0.0062921650150000001" green="0.37506285919999999" blue="0.028588568389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Dga-vQ-3Df" secondAttribute="trailing" constant="50" id="74L-sp-kKo"/>
+                                    <constraint firstItem="Dga-vQ-3Df" firstAttribute="leading" secondItem="eCX-Cu-0gX" secondAttribute="leading" constant="50" id="DKt-Cu-KtZ"/>
                                     <constraint firstItem="jXi-uR-aoY" firstAttribute="top" secondItem="eCX-Cu-0gX" secondAttribute="top" constant="10" id="Qt7-3d-aAS"/>
                                     <constraint firstItem="aDn-XM-Q4W" firstAttribute="leading" secondItem="eCX-Cu-0gX" secondAttribute="leading" constant="30" id="tan-EH-oHE"/>
                                     <constraint firstAttribute="trailing" secondItem="aDn-XM-Q4W" secondAttribute="trailing" constant="30" id="z4L-wL-aoo"/>
@@ -146,8 +172,11 @@
                     <connections>
                         <outlet property="brandNameLabel" destination="hW6-qa-hZr" id="eQG-nx-ffQ"/>
                         <outlet property="caloriesLabel" destination="hJc-Io-5qD" id="Hgk-at-2TE"/>
+                        <outlet property="carbsLabel" destination="xgo-Yg-tdL" id="CFi-Du-7xa"/>
+                        <outlet property="fatLabel" destination="n6g-er-nys" id="5cO-r9-FQ3"/>
                         <outlet property="foodNameLabel" destination="jXi-uR-aoY" id="cSO-tI-Xdd"/>
                         <outlet property="macroNutrientChart" destination="aDn-XM-Q4W" id="Axw-OT-DPv"/>
+                        <outlet property="proteinLabel" destination="Cf6-t2-S3O" id="odm-ma-Zvf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t5Z-hq-KYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,4 +202,15 @@
             <point key="canvasLocation" x="-47.200000000000003" y="59.820089955022496"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="CarbsColor">
+            <color red="0.0099999997764825821" green="0.99000000953674316" blue="0.73000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FatColor">
+            <color red="0.9100000262260437" green="0.88999998569488525" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ProteinColor">
+            <color red="0.75" green="0.8399999737739563" blue="0.92000001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
