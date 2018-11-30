@@ -60,15 +60,15 @@ class FoodDetailViewController: UIViewController {
             }
             
             if let protein = nutrients.protein {
-                proteinLabel.text = "\(Int(protein)) g"
+                proteinLabel.text = "\(Int(protein))g"
             }
             
             if let carbs = nutrients.carbs {
-                carbsLabel.text = "\(Int(carbs)) g"
+                carbsLabel.text = "\(Int(carbs))g"
             }
             
             if let fat = nutrients.fat {
-                fatLabel.text = "\(Int(fat)) g"
+                fatLabel.text = "\(Int(fat))g"
             }
             
         } else {
