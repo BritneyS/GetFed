@@ -62,4 +62,16 @@ enum Identity: String {
     }
     
 }
+// segueID, cellID, nibID, colorID
+enum SegueID: String {
+    case homeToFoodSearchSegue
+    case foodSearchToFoodDetailSegue
+}
 
+enum CellID: String {
+    case foodSearchResultCell
+}
+
+enum NibID: String {
+    case foodResultTableViewCellNib
+}
