@@ -137,22 +137,20 @@ extension FoodDetailViewController {
         
         guard let legendFont = UIFont(name:"HelveticaNeue-Bold", size: 18.0) else { return }
         macroNutrientChart.animate(yAxisDuration: 0.9, easingOption: .easeInSine)
-        //macroNutrientChart.legend.enabled = false
         macroNutrientChart.legend.font = legendFont
         macroNutrientChart.legend.formSize = 20.0
         macroNutrientChart.legend.orientation = .horizontal
+        macroNutrientChart.legend.horizontalAlignment = .center
+        macroNutrientChart.drawEntryLabelsEnabled = false
         
         if let dataSet = dataSet {
             let chartLabelColor = UIColor(red:0.38, green:0.07, blue:0.33, alpha:1.0)
             guard let customFont = UIFont(name:"HelveticaNeue-Bold", size: 18.0) else { return }
+            dataSet.drawValuesEnabled = false
             dataSet.colors = ChartColorTemplates.customTemplateBright()
             dataSet.valueTextColor = chartLabelColor
             dataSet.valueFont = customFont
-            //dataSet.xValuePosition = .outsideSlice
-            //dataSet.yValuePosition = .outsideSlice
             dataSet.valueLineColor = chartLabelColor
-            //dataSet.valueLinePart1Length = 0.25
-            //dataSet.valueLinePart2Length = 0.1
         }
     }
 }
