@@ -114,7 +114,7 @@ extension FoodDetailViewController {
         let entryThree = PieChartDataEntry(value: fatData, label: "Fat")
         let dataEntries = [entryOne, entryTwo, entryThree]
         
-        let dataSet = PieChartDataSet(values: dataEntries, label: "")
+        let dataSet = PieChartDataSet(values: dataEntries, label: "per 100 grams")
         let data = PieChartData(dataSet: dataSet)
         macroNutrientChart.data = data
         
