@@ -11,12 +11,14 @@ import Charts
 
 public class CustomValueFormatter: NSObject, IValueFormatter {
     
-    private let measurementFormatter: MeasurementFormatter
+    //private let measurementFormatter: MeasurementFormatter
     
-    init(measurementFormatter: MeasurementFormatter) {
-        self.measurementFormatter = measurementFormatter
-        super.init()
-    }
+    private let measurementFormatter = MeasurementFormatter()
+    
+//    init(measurementFormatter: MeasurementFormatter) {
+//        self.measurementFormatter = measurementFormatter
+//        super.init()
+//    }
     
     public func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
         
@@ -29,6 +31,4 @@ public class CustomValueFormatter: NSObject, IValueFormatter {
         
         return measurementFormatter.string(for: valueInGrams)!
     }
-    
-    
 }
