@@ -25,7 +25,7 @@ public class CustomValueFormatter: NSObject, IValueFormatter {
 //        return measurementFormatter.string(for: valueInGrams)!
 //    }
     
-    private var measurementFormatter: MeasurementFormatter = {
+    private let measurementFormatter: MeasurementFormatter = {
         let measurementFormatter = MeasurementFormatter()
         measurementFormatter.unitOptions = .providedUnit
         
