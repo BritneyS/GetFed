@@ -127,7 +127,6 @@ extension FoodDetailViewController {
     
     func formatChartValues(with dataSet: PieChartDataSet?) {
         if let dataSet = dataSet {
-            //let measurementFormatter = MeasurementFormatter()
             let customValueFormatter = CustomValueFormatter()
             dataSet.valueFormatter = customValueFormatter
         }
