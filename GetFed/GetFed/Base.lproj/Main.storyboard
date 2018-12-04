@@ -95,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9k6-gS-BUM">
-                                <rect key="frame" x="25" y="239" width="325" height="425"/>
+                                <rect key="frame" x="25" y="114" width="325" height="425"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="S9c-if-MJV">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="365"/>
@@ -255,14 +255,19 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="41W-1g-jcJ" secondAttribute="bottom" id="csv-EG-Sht"/>
+                                    <constraint firstAttribute="trailing" secondItem="41W-1g-jcJ" secondAttribute="trailing" id="csy-2e-ANM"/>
+                                    <constraint firstItem="41W-1g-jcJ" firstAttribute="leading" secondItem="9k6-gS-BUM" secondAttribute="leading" id="mBO-VY-KYN"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9k6-gS-BUM" firstAttribute="top" secondItem="ryl-eW-WfL" secondAttribute="top" constant="175" id="CVc-1Y-ESd"/>
+                            <constraint firstItem="9k6-gS-BUM" firstAttribute="top" secondItem="ryl-eW-WfL" secondAttribute="top" constant="50" id="CVc-1Y-ESd"/>
                             <constraint firstItem="ryl-eW-WfL" firstAttribute="trailing" secondItem="9k6-gS-BUM" secondAttribute="trailing" constant="25" id="K8d-EC-7I0"/>
                             <constraint firstItem="9k6-gS-BUM" firstAttribute="leading" secondItem="ryl-eW-WfL" secondAttribute="leading" constant="25" id="dLd-wE-fgJ"/>
-                            <constraint firstItem="ryl-eW-WfL" firstAttribute="bottom" secondItem="9k6-gS-BUM" secondAttribute="bottom" constant="175" id="omG-yb-1ww"/>
+                            <constraint firstItem="ryl-eW-WfL" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9k6-gS-BUM" secondAttribute="bottom" constant="10" id="omG-yb-1ww"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ryl-eW-WfL"/>
                     </view>
