@@ -93,7 +93,37 @@
                     <view key="view" contentMode="scaleToFill" id="sMa-4f-rWs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S9c-if-MJV">
+                                <rect key="frame" x="25" y="89" width="325" height="553"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Food" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Tbo-Gj-lit">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="553"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzV-UP-cyX">
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="foodTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1y-0Q-NCC">
+                                                <rect key="frame" x="0.0" y="20.5" width="325" height="532.5"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S9c-if-MJV" firstAttribute="leading" secondItem="ryl-eW-WfL" secondAttribute="leading" constant="25" id="RXz-WF-85p"/>
+                            <constraint firstItem="ryl-eW-WfL" firstAttribute="trailing" secondItem="S9c-if-MJV" secondAttribute="trailing" constant="25" id="Vjt-rw-CVg"/>
+                            <constraint firstItem="S9c-if-MJV" firstAttribute="top" secondItem="ryl-eW-WfL" secondAttribute="top" constant="25" id="Yp7-Pa-fGN"/>
+                            <constraint firstItem="ryl-eW-WfL" firstAttribute="bottom" secondItem="S9c-if-MJV" secondAttribute="bottom" constant="25" id="dJG-YO-lJw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ryl-eW-WfL"/>
                     </view>
                 </viewController>
