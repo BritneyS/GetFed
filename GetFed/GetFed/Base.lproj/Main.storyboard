@@ -228,6 +228,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ryl-eW-WfL"/>
                     </view>
+                    <connections>
+                        <outlet property="brandTextField" destination="jnd-X3-13o" id="gTK-NY-BGP"/>
+                        <outlet property="carbsTextField" destination="KtU-NS-OKS" id="4G9-Ee-JQb"/>
+                        <outlet property="fatTextField" destination="gvS-7T-Fnk" id="oYY-NM-Cdn"/>
+                        <outlet property="foodTextField" destination="M1y-0Q-NCC" id="9Rc-0T-QIu"/>
+                        <outlet property="proteinTextField" destination="MWS-Hp-BmK" id="ghV-Qm-pb1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfY-pd-ivc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

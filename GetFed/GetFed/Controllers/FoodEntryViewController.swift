@@ -10,6 +10,12 @@ import UIKit
 
 class FoodEntryViewController: UIViewController {
     
+    // MARK - Outlets
+    @IBOutlet var foodTextField: UITextField!
+    @IBOutlet var brandTextField: UITextField!
+    @IBOutlet var proteinTextField: UITextField!
+    @IBOutlet var carbsTextField: UITextField!
+    @IBOutlet var fatTextField: UITextField!
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -21,4 +27,6 @@ class FoodEntryViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
 
+    
+    
 }
