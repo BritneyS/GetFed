@@ -83,6 +83,21 @@
             </objects>
             <point key="canvasLocation" x="892" y="59.820089955022496"/>
         </scene>
+        <!--Food Entry View Controller-->
+        <scene sceneID="YDY-92-eQv">
+            <objects>
+                <viewController id="GUX-mL-Ygv" customClass="FoodEntryViewController" customModule="GetFed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sMa-4f-rWs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ryl-eW-WfL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jfY-pd-ivc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1977" y="-90"/>
+        </scene>
         <!--Food Search View Controller-->
         <scene sceneID="K15-kv-ocW">
             <objects>
@@ -107,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nts-7g-0EP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2162" y="75"/>
+            <point key="canvasLocation" x="1977" y="654"/>
         </scene>
         <!--Food Detail View Controller-->
         <scene sceneID="XbU-TW-66P">
@@ -200,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t5Z-hq-KYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3131" y="78"/>
+            <point key="canvasLocation" x="3095" y="654"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IpI-tR-bRq">
