@@ -120,7 +120,7 @@ extension FoodSearchViewController: UISearchBarDelegate {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        //
+        ///
     }
 }
 // MARK - API Request
