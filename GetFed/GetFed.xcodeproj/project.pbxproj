@@ -23,6 +23,7 @@
 		06FF832121AEF3810066424C /* CustomColorTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832021AEF3810066424C /* CustomColorTemplate.swift */; };
 		06FF832321AEF8430066424C /* CustomValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832221AEF8420066424C /* CustomValueFormatter.swift */; };
 		06FF832521B1981D0066424C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06FF832421B1981D0066424C /* Colors.xcassets */; };
+		06FF832821B6C1260066424C /* GetFed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832621B6C1260066424C /* GetFed.xcdatamodeld */; };
 		4EBFAFE8A5DF71DB25281C1F /* Pods_GetFed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47EB7B8A39DA18E491DD2D1 /* Pods_GetFed.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		06FF832021AEF3810066424C /* CustomColorTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorTemplate.swift; sourceTree = "<group>"; };
 		06FF832221AEF8420066424C /* CustomValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValueFormatter.swift; sourceTree = "<group>"; };
 		06FF832421B1981D0066424C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		06FF832721B6C1260066424C /* GetFed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GetFed.xcdatamodel; sourceTree = "<group>"; };
 		27E1F1A676CD7A4435C6EB69 /* Pods-GetFed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetFed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetFed/Pods-GetFed.debug.xcconfig"; sourceTree = "<group>"; };
 		B47EB7B8A39DA18E491DD2D1 /* Pods_GetFed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetFed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF8590CD873BED214503BF2 /* Pods-GetFed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetFed.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetFed/Pods-GetFed.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				0663B1A5219F4970000B2754 /* LaunchScreen.storyboard */,
 				0663B1A8219F4970000B2754 /* Info.plist */,
 				06FF832421B1981D0066424C /* Colors.xcassets */,
+				06FF832621B6C1260066424C /* GetFed.xcdatamodeld */,
 			);
 			path = GetFed;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			files = (
 				0663B1C821AC8F58000B2754 /* FoodDetailViewController.swift in Sources */,
 				06FF832121AEF3810066424C /* CustomColorTemplate.swift in Sources */,
+				06FF832821B6C1260066424C /* GetFed.xcdatamodeld in Sources */,
 				0663B19D219F496E000B2754 /* AppDelegate.swift in Sources */,
 				0663B1B5219F6A64000B2754 /* Identity.swift in Sources */,
 				0663B1C521A63000000B2754 /* FoodResultTableViewCell.swift in Sources */,
@@ -487,6 +491,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		06FF832621B6C1260066424C /* GetFed.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				06FF832721B6C1260066424C /* GetFed.xcdatamodel */,
+			);
+			currentVersion = 06FF832721B6C1260066424C /* GetFed.xcdatamodel */;
+			path = GetFed.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0663B191219F496E000B2754 /* Project object */;
 }
