@@ -27,6 +27,13 @@ class FoodEntryViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
 
+    // MARK - Actions
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+    }
     
     
 }
