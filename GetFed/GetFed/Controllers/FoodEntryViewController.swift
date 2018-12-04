@@ -20,11 +20,21 @@ class FoodEntryViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTextFieldPlaceholderText()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+    }
+    
+    // MARK - Methods
+    func setTextFieldPlaceholderText() {
+        foodTextField.placeholder = "ex: \"cookies\""
+        brandTextField.placeholder = "ex: \"Cookies Inc\""
+        proteinTextField.placeholder = "ex: \"5\""
+        carbsTextField.placeholder = "ex: \"35\""
+        fatTextField.placeholder = "ex: \"15\""
     }
 
     // MARK - Actions
@@ -33,6 +43,11 @@ class FoodEntryViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        print("🍞 Food: \(foodTextField.text)")
+        print("🍞 Brand: \(brandTextField.text)")
+        print("🍞 Protein: \(proteinTextField.text)")
+        print("🍞 Carbs: \(carbsTextField.text)")
+        print("🍞 Fat: \(fatTextField.text)")
     }
     
     
