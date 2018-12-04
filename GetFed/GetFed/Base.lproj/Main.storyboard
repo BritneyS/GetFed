@@ -98,7 +98,7 @@
                                 <rect key="frame" x="25" y="89" width="325" height="553"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="Food" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Tbo-Gj-lit">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="371.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="311"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzV-UP-cyX">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
@@ -107,7 +107,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="foodTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1y-0Q-NCC">
-                                                <rect key="frame" x="0.0" y="20.5" width="325" height="351"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="325" height="290.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -115,7 +115,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="Food" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RDL-df-qcQ">
-                                        <rect key="frame" x="0.0" y="381.5" width="325" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="321" width="325" height="50.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="brandLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIW-Kn-UL9">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
@@ -133,7 +133,7 @@
                                         <viewLayoutGuide key="safeArea" id="sOc-q6-lbm"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="Food" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fWT-HG-CMv">
-                                        <rect key="frame" x="0.0" y="442" width="325" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="381.5" width="325" height="50.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="proteinLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMr-lm-Wwn">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
@@ -151,7 +151,7 @@
                                         <viewLayoutGuide key="safeArea" id="XFm-Bk-d5Y"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="Food" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EAC-nU-VJP">
-                                        <rect key="frame" x="0.0" y="502.5" width="325" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="442" width="325" height="50.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="carbsLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzu-iU-PFb">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
@@ -167,6 +167,24 @@
                                             </textField>
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="HgD-de-duo"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="Food" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q5T-mK-HsP">
+                                        <rect key="frame" x="0.0" y="502.5" width="325" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fatLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA0-5V-DVR">
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fatTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gvS-7T-Fnk">
+                                                <rect key="frame" x="0.0" y="20.5" width="325" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <viewLayoutGuide key="safeArea" id="cKp-4c-LCY"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
