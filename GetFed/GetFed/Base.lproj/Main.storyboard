@@ -23,16 +23,28 @@
                                 <rect key="frame" x="25" y="89" width="325" height="553"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GetFed" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Av-dc-ZJx">
-                                        <rect key="frame" x="95" y="0.0" width="135" height="189"/>
+                                        <rect key="frame" x="95" y="0.0" width="135" height="94"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="48"/>
                                         <color key="textColor" red="0.0062921650152418648" green="0.37506285919540228" blue="0.028588568390094854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fQH-3o-N8x">
-                                        <rect key="frame" x="82.5" y="478" width="160" height="75"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fQH-3o-N8x">
+                                        <rect key="frame" x="82.5" y="383" width="160" height="170"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbK-UU-xng">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSD-hB-mW9">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="75"/>
+                                                <color key="backgroundColor" red="0.37506285919999999" green="0.066743286639999996" blue="0.32412731210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="75" id="STk-I9-2FK"/>
+                                                    <constraint firstAttribute="width" constant="160" id="mTE-ib-kMA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="21"/>
+                                                <state key="normal" title="Food Entry">
+                                                    <color key="titleColor" red="0.99774772690000002" green="1" blue="0.97488382910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbK-UU-xng">
+                                                <rect key="frame" x="0.0" y="95" width="160" height="75"/>
                                                 <color key="backgroundColor" red="0.37506285919540228" green="0.066743286643183783" blue="0.32412731209726553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="MvY-Yp-4em"/>
