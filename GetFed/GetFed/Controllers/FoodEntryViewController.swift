@@ -16,11 +16,17 @@ class FoodEntryViewController: UIViewController {
     @IBOutlet var proteinTextField: UITextField!
     @IBOutlet var carbsTextField: UITextField!
     @IBOutlet var fatTextField: UITextField!
+    @IBOutlet var foodLabel: UILabel!
+    @IBOutlet var brandLabel: UILabel!
+    @IBOutlet var proteinLabel: UILabel!
+    @IBOutlet var carbsLabel: UILabel!
+    @IBOutlet var fatLabel: UILabel!
     
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextFieldPlaceholderText()
+        setLabelText()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +41,14 @@ class FoodEntryViewController: UIViewController {
         proteinTextField.placeholder = "ex: \"5\""
         carbsTextField.placeholder = "ex: \"35\""
         fatTextField.placeholder = "ex: \"15\""
+    }
+    
+    func setLabelText() {
+        foodLabel.text = "Food Name:"
+        brandLabel.text = "Brand Name:"
+        proteinLabel.text = "Protein amount in grams (per 100 grams)"
+        carbsLabel.text = "Carbs amount in grams (per 100 grams)"
+        fatLabel.text = "Fat amount in grams (per 100 grams)"
     }
 
     // MARK - Actions
