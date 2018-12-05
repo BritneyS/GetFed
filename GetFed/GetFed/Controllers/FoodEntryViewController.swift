@@ -26,9 +26,10 @@ class FoodEntryViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
         setTextFieldPlaceholderText()
         setLabelText()
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
+        setKeyboardTypes()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +52,12 @@ class FoodEntryViewController: UIViewController {
         proteinLabel.text = "Protein amount in grams (per 100 grams)"
         carbsLabel.text = "Carbs amount in grams (per 100 grams)"
         fatLabel.text = "Fat amount in grams (per 100 grams)"
+    }
+    
+    func setKeyboardTypes() {
+        proteinTextField.keyboardType = .decimalPad
+        carbsTextField.keyboardType = .decimalPad
+        fatTextField.keyboardType = .decimalPad
     }
 
     // MARK - Actions
