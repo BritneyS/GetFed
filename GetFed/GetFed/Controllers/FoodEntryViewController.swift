@@ -73,6 +73,7 @@ class FoodEntryViewController: UIViewController {
         print("🍞 Carbs: \(carbsTextField.text)")
         print("🍞 Fat: \(fatTextField.text)")
         self.view.endEditing(true)
+        /// TODO: alert: "Food Entry Saved!"
     }
 }
 
