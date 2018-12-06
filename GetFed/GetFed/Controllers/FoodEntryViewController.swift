@@ -25,7 +25,6 @@ class FoodEntryViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTextFieldPlaceholderText()
         setLabelText()
         setKeyboardTypes()
     }
@@ -36,14 +35,6 @@ class FoodEntryViewController: UIViewController {
     }
     
     // MARK - Methods
-    func setTextFieldPlaceholderText() {
-        foodTextField.placeholder = "ex: \"cookies\""
-        brandTextField.placeholder = "ex: \"Cookies Inc\""
-        proteinTextField.placeholder = "ex: \"5\""
-        carbsTextField.placeholder = "ex: \"35\""
-        fatTextField.placeholder = "ex: \"15\""
-    }
-    
     func setLabelText() {
         foodLabel.text = "Food Name:"
         brandLabel.text = "Brand Name:"
@@ -70,7 +61,7 @@ class FoodEntryViewController: UIViewController {
         print("🍞 Protein: \(proteinTextField.text)")
         print("🍞 Carbs: \(carbsTextField.text)")
         print("🍞 Fat: \(fatTextField.text)")
-        self.view.endEditing(true)
+        view.endEditing(true)
         /// TODO: alert: "Food Entry Saved!"
     }
 }
