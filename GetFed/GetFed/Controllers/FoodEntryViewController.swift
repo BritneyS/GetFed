@@ -35,7 +35,7 @@ class FoodEntryViewController: UIViewController {
     // MARK - Actions
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
