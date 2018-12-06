@@ -25,7 +25,6 @@ class FoodEntryViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setKeyboardTypes()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,13 +32,6 @@ class FoodEntryViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    // MARK - Methods
-    func setKeyboardTypes() {
-        proteinTextField.keyboardType = .decimalPad
-        carbsTextField.keyboardType = .decimalPad
-        fatTextField.keyboardType = .decimalPad
-    }
-
     // MARK - Actions
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
