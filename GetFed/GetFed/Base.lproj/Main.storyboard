@@ -302,7 +302,6 @@
                         <outlet property="foodTextField" destination="M1y-0Q-NCC" id="9Rc-0T-QIu"/>
                         <outlet property="proteinLabel" destination="wMr-lm-Wwn" id="0VV-Ew-SWe"/>
                         <outlet property="proteinTextField" destination="MWS-Hp-BmK" id="ghV-Qm-pb1"/>
-                        <outlet property="scrollView" destination="mWU-tC-fcY" id="M3G-uM-Uh6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfY-pd-ivc" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -21,12 +21,10 @@ class FoodEntryViewController: UIViewController {
     @IBOutlet var proteinLabel: UILabel!
     @IBOutlet var carbsLabel: UILabel!
     @IBOutlet var fatLabel: UILabel!
-    @IBOutlet var scrollView: UIScrollView!
     
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
         setTextFieldPlaceholderText()
         setLabelText()
         setKeyboardTypes()
