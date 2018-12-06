@@ -61,14 +61,20 @@ class FoodDetailViewController: UIViewController {
             
             if let protein = nutrients.protein {
                 proteinLabel.text = "\(Int(protein))g"
+            } else {
+                proteinLabel.isHidden = true
             }
             
             if let carbs = nutrients.carbs {
                 carbsLabel.text = "\(Int(carbs))g"
+            } else {
+                carbsLabel.isHidden = true
             }
             
             if let fat = nutrients.fat {
                 fatLabel.text = "\(Int(fat))g"
+            } else {
+                fatLabel.isHidden = true
             }
             
         } else {
