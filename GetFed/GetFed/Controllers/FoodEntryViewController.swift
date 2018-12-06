@@ -26,7 +26,7 @@ class FoodEntryViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
+        //scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
         setTextFieldPlaceholderText()
         setLabelText()
         setKeyboardTypes()
