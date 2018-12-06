@@ -25,7 +25,6 @@ class FoodEntryViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabelText()
         setKeyboardTypes()
     }
     
@@ -35,14 +34,6 @@ class FoodEntryViewController: UIViewController {
     }
     
     // MARK - Methods
-    func setLabelText() {
-        foodLabel.text = "Food Name:"
-        brandLabel.text = "Brand Name:"
-        proteinLabel.text = "Protein amount in grams (per 100 grams)"
-        carbsLabel.text = "Carbs amount in grams (per 100 grams)"
-        fatLabel.text = "Fat amount in grams (per 100 grams)"
-    }
-    
     func setKeyboardTypes() {
         proteinTextField.keyboardType = .decimalPad
         carbsTextField.keyboardType = .decimalPad
