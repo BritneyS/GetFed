@@ -241,7 +241,7 @@
                                                                     <color key="titleColor" red="0.99774772690000002" green="1" blue="0.97488382910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="cancelButtonTapped:" destination="GUX-mL-Ygv" eventType="touchUpInside" id="JrD-Tn-miR"/>
+                                                                    <action selector="cancel:" destination="GUX-mL-Ygv" eventType="touchUpInside" id="JrD-Tn-miR"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnV-Pb-qpV">
@@ -255,7 +255,7 @@
                                                                     <color key="titleColor" red="0.99774772690000002" green="1" blue="0.97488382910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="saveButtonTapped:" destination="GUX-mL-Ygv" eventType="touchUpInside" id="nrL-HT-cR4"/>
+                                                                    <action selector="save:" destination="GUX-mL-Ygv" eventType="touchUpInside" id="nrL-HT-cR4"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>

@@ -33,12 +33,12 @@ class FoodEntryViewController: UIViewController {
     }
     
     // MARK - Actions
-    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+    @IBAction func cancel(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
         view.endEditing(true)
     }
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
+    @IBAction func save(_ sender: UIButton) {
         print("🍞 Food: \(foodTextField.text)")
         print("🍞 Brand: \(brandTextField.text)")
         print("🍞 Protein: \(proteinTextField.text)")
