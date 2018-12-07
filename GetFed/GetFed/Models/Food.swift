@@ -9,6 +9,10 @@
 import Foundation
 import CoreData
 
+extension CodingUserInfoKey {
+    static let context = CodingUserInfoKey(rawValue: "context")
+}
+
 struct SearchResults: Decodable {
     let results: [FoodResults]
     
@@ -22,53 +26,64 @@ struct SearchResults: Decodable {
     }
 }
 
-class FoodResults: NSManagedObject, Decodable {
+struct FoodResults: NSManagedObject, Decodable {
     let food: Food?
 }
-//
-//struct Food: Decodable {
-//    let label: String
-//    let nutrients: Nutrients
-//    let category: String
-//    let brand: String?
-//
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: FoodCodingKeys.self)
-//        label = try container.decode(String.self, forKey: .label)
-//        nutrients = try container.decode(Nutrients.self, forKey: .nutrients)
-//        category = try container.decode(String.self, forKey: .category)
-//        brand = try container.decodeIfPresent(String.self, forKey: .brand)
-//    }
-//
-//    enum FoodCodingKeys: CodingKey {
-//        case label
-//        case nutrients
-//        case category
-//        case brand
-//    }
-//}
-//
-//class Nutrients: NSManagedObject, Decodable {
-//    @NSManaged var calories: Double?
-//    let protein: Double?
-//    let fat: Double?
-//    let carbs: Double?
-//
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: NutrientsCodingKeys.self)
-//        calories = try container.decodeIfPresent(Double.self, forKey: .calories)
-//        protein = try container.decodeIfPresent(Double.self, forKey: .protein)
-//        fat = try container.decodeIfPresent(Double.self, forKey: .fat)
-//        carbs = try container.decodeIfPresent(Double.self, forKey: .carbs)
-//    }
-//
-//    enum NutrientsCodingKeys: String, CodingKey {
-//        case calories = "ENERC_KCAL"
-//        case protein = "PROCNT"
-//        case fat = "FAT"
-//        case carbs = "CHOCDF"
-//    }
-//}
+
+@objc(Food)
+class Food: Decodable {
+    let label: String
+    let nutrients: Nutrients
+    let category: String
+    let brand: String?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: FoodCodingKeys.self)
+        label = try container.decode(String.self, forKey: .label)
+        nutrients = try container.decode(Nutrients.self, forKey: .nutrients)
+        category = try container.decode(String.self, forKey: .category)
+        brand = try container.decodeIfPresent(String.self, forKey: .brand)
+    }
+
+    enum FoodCodingKeys: CodingKey {
+        case label
+        case nutrients
+        case category
+        case brand
+    }
+}
+
+@objc(Nutrients)
+class Nutrients: NSManagedObject, Decodable {
+    @NSManaged var calories: NSNumber?
+    @NSManaged var protein: NSNumber?
+    @NSManaged var fat: NSNumber?
+    @NSManaged var carbs: NSNumber?
+
+    required convenience init(from decoder: Decoder) throws {
+        guard let contextUserInfoKey = CodingUserInfoKey.context,
+              let managedObjectContext = decoder.userInfo[contextUserInfoKey] as? NSManagedObjectContext,
+              let entity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedObjectContext)
+        else {
+                fatalError("Failed to decode Nutrients!")
+        }
+        
+        self.init(entity: entity, insertInto: nil)
+        
+        let container = try decoder.container(keyedBy: NutrientsCodingKeys.self)
+        calories = try container.decodeIfPresent(Double.self, forKey: .calories) as NSNumber?
+        protein = try container.decodeIfPresent(Double.self, forKey: .protein) as NSNumber?
+        fat = try container.decodeIfPresent(Double.self, forKey: .fat) as NSNumber?
+        carbs = try container.decodeIfPresent(Double.self, forKey: .carbs) as NSNumber?
+    }
+
+    enum NutrientsCodingKeys: String, CodingKey {
+        case calories = "ENERC_KCAL"
+        case protein = "PROCNT"
+        case fat = "FAT"
+        case carbs = "CHOCDF"
+    }
+}
 
 let sampleURL = "https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id={your app_id}&app_key={your app_key}"
 
