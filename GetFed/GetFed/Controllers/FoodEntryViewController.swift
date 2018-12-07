@@ -25,6 +25,11 @@ class FoodEntryViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        foodTextField.underlined()
+        brandTextField.underlined()
+        proteinTextField.underlined()
+        carbsTextField.underlined()
+        fatTextField.underlined()
     }
     
     override func viewWillAppear(_ animated: Bool) {
