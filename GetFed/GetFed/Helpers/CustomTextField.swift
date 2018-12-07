@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 
-extension UITextField {
-    func underlined() {
+class CustomTextField: UITextField {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        underline()
+    }
+    
+    func underline() {
         let border = CALayer()
         let width = CGFloat(1.0)
         
