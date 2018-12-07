@@ -26,29 +26,35 @@ struct SearchResults: Decodable {
     }
 }
 
-struct FoodResults: NSManagedObject, Decodable {
+struct FoodResults: Decodable {
     let food: Food?
 }
 
 @objc(Food)
-class Food: Decodable {
-    let label: String
-    let nutrients: Nutrients
-    let category: String
-    let brand: String?
+class Food: NSManagedObject, Decodable {
+    @NSManaged var label: String
+    @NSManaged var nutrients: Nutrients
+    @NSManaged var brand: String?
 
-    init(from decoder: Decoder) throws {
+    required convenience init(from decoder: Decoder) throws {
+        guard let contextUserInfoKey = CodingUserInfoKey.context,
+              let managedObjectContent = decoder.userInfo[contextUserInfoKey] as? NSManagedObjectContext,
+              let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedObjectContent)
+        else {
+                fatalError("Failed to decode Food!")
+        }
+        
+        self.init(entity: entity, insertInto: nil)
+        
         let container = try decoder.container(keyedBy: FoodCodingKeys.self)
         label = try container.decode(String.self, forKey: .label)
         nutrients = try container.decode(Nutrients.self, forKey: .nutrients)
-        category = try container.decode(String.self, forKey: .category)
         brand = try container.decodeIfPresent(String.self, forKey: .brand)
     }
 
     enum FoodCodingKeys: CodingKey {
         case label
         case nutrients
-        case category
         case brand
     }
 }

@@ -115,9 +115,9 @@ extension FoodDetailViewController {
             return nil
         }
         
-        let entryOne = PieChartDataEntry(value: proteinData, label: "Protein")
-        let entryTwo = PieChartDataEntry(value: carbsData, label: "Carbs")
-        let entryThree = PieChartDataEntry(value: fatData, label: "Fat")
+        let entryOne = PieChartDataEntry(value: Double(truncating: proteinData), label: "Protein")
+        let entryTwo = PieChartDataEntry(value: Double(truncating: carbsData), label: "Carbs")
+        let entryThree = PieChartDataEntry(value: Double(truncating: fatData), label: "Fat")
         let dataEntries = [entryOne, entryTwo, entryThree]
         
         let dataSet = PieChartDataSet(values: dataEntries, label: "per 100 grams")
