@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct SearchResults: Decodable {
     let results: [FoodResults]
@@ -21,53 +22,53 @@ struct SearchResults: Decodable {
     }
 }
 
-struct FoodResults: Decodable {
-    let food: Food
+class FoodResults: NSManagedObject, Decodable {
+    let food: Food?
 }
-
-struct Food: Decodable {
-    let label: String
-    let nutrients: Nutrients
-    let category: String
-    let brand: String?
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: FoodCodingKeys.self)
-        label = try container.decode(String.self, forKey: .label)
-        nutrients = try container.decode(Nutrients.self, forKey: .nutrients)
-        category = try container.decode(String.self, forKey: .category)
-        brand = try container.decodeIfPresent(String.self, forKey: .brand)
-    }
-    
-    enum FoodCodingKeys: CodingKey {
-        case label
-        case nutrients
-        case category
-        case brand
-    }
-}
-
-struct Nutrients: Decodable {
-    let calories: Double?
-    let protein: Double?
-    let fat: Double?
-    let carbs: Double?
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: NutrientsCodingKeys.self)
-        calories = try container.decodeIfPresent(Double.self, forKey: .calories)
-        protein = try container.decodeIfPresent(Double.self, forKey: .protein)
-        fat = try container.decodeIfPresent(Double.self, forKey: .fat)
-        carbs = try container.decodeIfPresent(Double.self, forKey: .carbs)
-    }
-    
-    enum NutrientsCodingKeys: String, CodingKey {
-        case calories = "ENERC_KCAL"
-        case protein = "PROCNT"
-        case fat = "FAT"
-        case carbs = "CHOCDF"
-    }
-}
+//
+//struct Food: Decodable {
+//    let label: String
+//    let nutrients: Nutrients
+//    let category: String
+//    let brand: String?
+//
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: FoodCodingKeys.self)
+//        label = try container.decode(String.self, forKey: .label)
+//        nutrients = try container.decode(Nutrients.self, forKey: .nutrients)
+//        category = try container.decode(String.self, forKey: .category)
+//        brand = try container.decodeIfPresent(String.self, forKey: .brand)
+//    }
+//
+//    enum FoodCodingKeys: CodingKey {
+//        case label
+//        case nutrients
+//        case category
+//        case brand
+//    }
+//}
+//
+//class Nutrients: NSManagedObject, Decodable {
+//    @NSManaged var calories: Double?
+//    let protein: Double?
+//    let fat: Double?
+//    let carbs: Double?
+//
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: NutrientsCodingKeys.self)
+//        calories = try container.decodeIfPresent(Double.self, forKey: .calories)
+//        protein = try container.decodeIfPresent(Double.self, forKey: .protein)
+//        fat = try container.decodeIfPresent(Double.self, forKey: .fat)
+//        carbs = try container.decodeIfPresent(Double.self, forKey: .carbs)
+//    }
+//
+//    enum NutrientsCodingKeys: String, CodingKey {
+//        case calories = "ENERC_KCAL"
+//        case protein = "PROCNT"
+//        case fat = "FAT"
+//        case carbs = "CHOCDF"
+//    }
+//}
 
 let sampleURL = "https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id={your app_id}&app_key={your app_key}"
 

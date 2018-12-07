@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FoodEntryViewController: UIViewController {
     
@@ -49,3 +50,11 @@ class FoodEntryViewController: UIViewController {
     }
 }
 
+// MARK - Core Data Management
+extension FoodEntryViewController {
+    
+    func createManagedObjectModel() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+    }
+}
