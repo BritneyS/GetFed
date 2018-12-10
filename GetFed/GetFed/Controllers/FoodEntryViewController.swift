@@ -68,5 +68,11 @@ extension FoodEntryViewController {
         enteredNutrients.setValue(fatTextField.text, forKey: "fat")
         
         enteredFood.setValue(enteredNutrients, forKey: "nutrients")
+        
+        do {
+            try managedContext.save()
+        } catch {
+            print("Save error: \(error)")
+        }
     }
 }
