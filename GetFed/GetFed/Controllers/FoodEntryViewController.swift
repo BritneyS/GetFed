@@ -11,11 +11,11 @@ import UIKit
 class FoodEntryViewController: UIViewController {
     
     // MARK - Outlets
-    @IBOutlet var foodTextField: UITextField!
-    @IBOutlet var brandTextField: UITextField!
-    @IBOutlet var proteinTextField: UITextField!
-    @IBOutlet var carbsTextField: UITextField!
-    @IBOutlet var fatTextField: UITextField!
+    @IBOutlet var foodTextField: CustomTextField!
+    @IBOutlet var brandTextField: CustomTextField!
+    @IBOutlet var proteinTextField: CustomTextField!
+    @IBOutlet var carbsTextField: CustomTextField!
+    @IBOutlet var fatTextField: CustomTextField!
     @IBOutlet var foodLabel: UILabel!
     @IBOutlet var brandLabel: UILabel!
     @IBOutlet var proteinLabel: UILabel!
