@@ -75,6 +75,14 @@ extension FoodEntryViewController {
         } catch {
             print("Save error: \(error)")
         }
+        
+        let foodFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+        var foodRecords = [Food]()
+        do {
+            foodRecords = try managedContext.execute(foodFetch)
+        } catch {
+            print("Fetch error: \(error)")
+        }
     }
     
     func readRecords() {
