@@ -17,11 +17,6 @@ class FoodEntryViewController: UIViewController {
     @IBOutlet var proteinTextField: CustomTextField!
     @IBOutlet var carbsTextField: CustomTextField!
     @IBOutlet var fatTextField: CustomTextField!
-    @IBOutlet var foodLabel: UILabel!
-    @IBOutlet var brandLabel: UILabel!
-    @IBOutlet var proteinLabel: UILabel!
-    @IBOutlet var carbsLabel: UILabel!
-    @IBOutlet var fatLabel: UILabel!
     
     // MARK - Lifecycle
     override func viewDidLoad() {

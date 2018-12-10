@@ -315,16 +315,11 @@
                         <viewLayoutGuide key="safeArea" id="ryl-eW-WfL"/>
                     </view>
                     <connections>
-                        <outlet property="brandLabel" destination="SIW-Kn-UL9" id="6Ba-gg-JcO"/>
                         <outlet property="brandTextField" destination="jnd-X3-13o" id="gTK-NY-BGP"/>
                         <outlet property="caloriesTextField" destination="5K7-y0-zB8" id="SXp-WG-mc1"/>
-                        <outlet property="carbsLabel" destination="wzu-iU-PFb" id="ZM1-Ns-j8f"/>
                         <outlet property="carbsTextField" destination="KtU-NS-OKS" id="4G9-Ee-JQb"/>
-                        <outlet property="fatLabel" destination="XA0-5V-DVR" id="8XT-EP-8vK"/>
                         <outlet property="fatTextField" destination="gvS-7T-Fnk" id="oYY-NM-Cdn"/>
-                        <outlet property="foodLabel" destination="vzV-UP-cyX" id="Lja-lu-YRp"/>
                         <outlet property="foodTextField" destination="M1y-0Q-NCC" id="9Rc-0T-QIu"/>
-                        <outlet property="proteinLabel" destination="wMr-lm-Wwn" id="0VV-Ew-SWe"/>
                         <outlet property="proteinTextField" destination="MWS-Hp-BmK" id="ghV-Qm-pb1"/>
                     </connections>
                 </viewController>
