@@ -13,6 +13,7 @@ class FoodEntryViewController: UIViewController {
     // MARK - Outlets
     @IBOutlet var foodTextField: CustomTextField!
     @IBOutlet var brandTextField: CustomTextField!
+    @IBOutlet var caloriesTextField: CustomTextField!
     @IBOutlet var proteinTextField: CustomTextField!
     @IBOutlet var carbsTextField: CustomTextField!
     @IBOutlet var fatTextField: CustomTextField!
@@ -41,6 +42,7 @@ class FoodEntryViewController: UIViewController {
     @IBAction func save(_ sender: UIButton) {
         print("🍞 Food: \(foodTextField.text)")
         print("🍞 Brand: \(brandTextField.text)")
+        print("🍞 Calories: \(caloriesTextField.text)")
         print("🍞 Protein: \(proteinTextField.text)")
         print("🍞 Carbs: \(carbsTextField.text)")
         print("🍞 Fat: \(fatTextField.text)")
