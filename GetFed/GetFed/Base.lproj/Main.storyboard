@@ -101,10 +101,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9k6-gS-BUM">
-                                                <rect key="frame" x="25" y="50" width="325" height="425"/>
+                                                <rect key="frame" x="25" y="50" width="325" height="501"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="S9c-if-MJV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="365"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="441"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Tbo-Gj-lit">
                                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="61"/>
@@ -153,10 +153,33 @@
                                                                 </subviews>
                                                                 <viewLayoutGuide key="safeArea" id="sOc-q6-lbm"/>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fWT-HG-CMv">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qO3-mw-3aT">
                                                                 <rect key="frame" x="0.0" y="152" width="325" height="61"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Protein amount in grams (per 100 grams):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMr-lm-Wwn">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories in grams (per 100 grams):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C87-kO-76g">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="25"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="25" id="IEt-nS-0mY"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                        <color key="textColor" name="AccentColorA"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex: &quot;400&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5K7-y0-zB8" customClass="CustomTextField" customModule="GetFed" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="25" width="325" height="36"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="36" id="sbb-G1-rWl"/>
+                                                                        </constraints>
+                                                                        <nil key="textColor"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                    </textField>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fWT-HG-CMv">
+                                                                <rect key="frame" x="0.0" y="228" width="325" height="61"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Protein in grams (per 100 grams):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMr-lm-Wwn">
                                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="eig-vB-u3t"/>
@@ -178,9 +201,9 @@
                                                                 <viewLayoutGuide key="safeArea" id="XFm-Bk-d5Y"/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EAC-nU-VJP">
-                                                                <rect key="frame" x="0.0" y="228" width="325" height="61"/>
+                                                                <rect key="frame" x="0.0" y="304" width="325" height="61"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbs amount in grams (per 100 grams):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzu-iU-PFb">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbs in grams (per 100 grams):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzu-iU-PFb">
                                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="WPf-eI-E9H"/>
@@ -202,9 +225,9 @@
                                                                 <viewLayoutGuide key="safeArea" id="HgD-de-duo"/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q5T-mK-HsP">
-                                                                <rect key="frame" x="0.0" y="304" width="325" height="61"/>
+                                                                <rect key="frame" x="0.0" y="380" width="325" height="61"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fat amount in grams (per 100 grams):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA0-5V-DVR">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fat in grams (per 100 grams):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA0-5V-DVR">
                                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="m8i-jo-HzN"/>
@@ -228,7 +251,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="41W-1g-jcJ">
-                                                        <rect key="frame" x="0.0" y="375" width="325" height="50"/>
+                                                        <rect key="frame" x="0.0" y="451" width="325" height="50"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR0-VD-u1Y">
                                                                 <rect key="frame" x="0.0" y="0.0" width="157.5" height="50"/>
@@ -292,15 +315,11 @@
                         <viewLayoutGuide key="safeArea" id="ryl-eW-WfL"/>
                     </view>
                     <connections>
-                        <outlet property="brandLabel" destination="SIW-Kn-UL9" id="6Ba-gg-JcO"/>
                         <outlet property="brandTextField" destination="jnd-X3-13o" id="gTK-NY-BGP"/>
-                        <outlet property="carbsLabel" destination="wzu-iU-PFb" id="ZM1-Ns-j8f"/>
+                        <outlet property="caloriesTextField" destination="5K7-y0-zB8" id="SXp-WG-mc1"/>
                         <outlet property="carbsTextField" destination="KtU-NS-OKS" id="4G9-Ee-JQb"/>
-                        <outlet property="fatLabel" destination="XA0-5V-DVR" id="8XT-EP-8vK"/>
                         <outlet property="fatTextField" destination="gvS-7T-Fnk" id="oYY-NM-Cdn"/>
-                        <outlet property="foodLabel" destination="vzV-UP-cyX" id="Lja-lu-YRp"/>
                         <outlet property="foodTextField" destination="M1y-0Q-NCC" id="9Rc-0T-QIu"/>
-                        <outlet property="proteinLabel" destination="wMr-lm-Wwn" id="0VV-Ew-SWe"/>
                         <outlet property="proteinTextField" destination="MWS-Hp-BmK" id="ghV-Qm-pb1"/>
                     </connections>
                 </viewController>
@@ -346,41 +365,41 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodNameLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXi-uR-aoY">
-                                        <rect key="frame" x="76" y="0.0" width="223.5" height="57"/>
+                                        <rect key="frame" x="76" y="0.0" width="223.5" height="95.5"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="28"/>
                                         <color key="textColor" red="0.37506285919999999" green="0.066743286639999996" blue="0.32412731210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="brandNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW6-qa-hZr">
-                                        <rect key="frame" x="122" y="57" width="131.5" height="40.5"/>
+                                        <rect key="frame" x="122" y="95.5" width="131.5" height="68.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.43968416960000001" green="0.44130747129999998" blue="0.41126847030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-XM-Q4W" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="30" y="97.5" width="315" height="0.0"/>
+                                        <rect key="frame" x="30" y="164" width="315" height="171"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="500" id="3hB-x6-O7e"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dga-vQ-3Df">
-                                        <rect key="frame" x="50" y="97.5" width="275" height="116.5"/>
+                                        <rect key="frame" x="50" y="335" width="275" height="196.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="proteinLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-t2-S3O">
-                                                <rect key="frame" x="0.0" y="29.5" width="265" height="57.5"/>
+                                                <rect key="frame" x="0.0" y="98" width="265" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="48"/>
                                                 <color key="textColor" name="ProteinColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="carbsLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgo-Yg-tdL">
-                                                <rect key="frame" x="270" y="29.5" width="0.0" height="57.5"/>
+                                                <rect key="frame" x="270" y="69.5" width="0.0" height="57.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="48"/>
                                                 <color key="textColor" name="CarbsColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="fatLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6g-er-nys">
-                                                <rect key="frame" x="275" y="29.5" width="0.0" height="57.5"/>
+                                                <rect key="frame" x="275" y="69.5" width="0.0" height="57.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="48"/>
                                                 <color key="textColor" name="FatColor"/>
                                                 <nil key="highlightedColor"/>
@@ -388,7 +407,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caloriesLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJc-Io-5qD">
-                                        <rect key="frame" x="116.5" y="214" width="142" height="389"/>
+                                        <rect key="frame" x="116.5" y="531.5" width="142" height="71.5"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="21"/>
                                         <color key="textColor" red="0.0062921650150000001" green="0.37506285919999999" blue="0.028588568389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
