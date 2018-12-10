@@ -22,4 +22,6 @@ enum ColorID: String {
     case ProteinColor
     case CarbsColor
     case FatColor
+    case AccentColorA
+    case AccentColorB
 }
