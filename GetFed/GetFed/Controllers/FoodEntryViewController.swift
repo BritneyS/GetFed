@@ -43,6 +43,7 @@ class FoodEntryViewController: UIViewController {
         print("🍞 Carbs: \(carbsTextField.text)")
         print("🍞 Fat: \(fatTextField.text)")
         view.endEditing(true)
+        createManagedObjectModel()
         /// TODO: alert: "Food Entry Saved!"
     }
 }
@@ -74,5 +75,9 @@ extension FoodEntryViewController {
         } catch {
             print("Save error: \(error)")
         }
+    }
+    
+    func readRecords() {
+        
     }
 }
