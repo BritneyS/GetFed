@@ -19,6 +19,13 @@ class FoodEntryViewController: UIViewController {
     @IBOutlet var carbsTextField: CustomTextField!
     @IBOutlet var fatTextField: CustomTextField!
     
+    // MARK - Properties
+    var foodRecords: [Food] = []
+    lazy var managedContext: NSManagedObjectContext = {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        return appDelegate.persistentContainer.viewContext
+    }()
+    
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +50,8 @@ class FoodEntryViewController: UIViewController {
         print("🍞 Carbs: \(carbsTextField.text)")
         print("🍞 Fat: \(fatTextField.text)")
         view.endEditing(true)
-        createManagedObjectModel()
+        saveNewFood()
+        readRecords()
         /// TODO: alert: "Food Entry Saved!"
     }
 }
@@ -51,9 +59,7 @@ class FoodEntryViewController: UIViewController {
 // MARK - Core Data Management
 extension FoodEntryViewController {
     
-    func createManagedObjectModel() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return } /// fatalerror
-        let managedContext = appDelegate.persistentContainer.viewContext
+    func saveNewFood() {
         guard let foodEntity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext) else { return }
         guard let nutrientsEntity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedContext) else { return }
         
@@ -92,9 +98,10 @@ extension FoodEntryViewController {
         } catch {
             print("Save error: \(error)")
         }
-        
+    }
+    
+    func readRecords() {
         let foodFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
-        var foodRecords: [Food] = []
         do {
             foodRecords = try managedContext.fetch(foodFetch) as! [Food]
             for record in foodRecords {
@@ -103,9 +110,5 @@ extension FoodEntryViewController {
         } catch {
             print("Fetch error: \(error)")
         }
-    }
-    
-    func readRecords() {
-        
     }
 }
