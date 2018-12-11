@@ -38,7 +38,7 @@ class FoodEntryViewController: UIViewController {
     
     // MARK - Methods
     func savedRecordAlert() {
-        let successAlert = UIAlertController(title: "Success!", message: "New food entry was saved successfully!", preferredStyle: .alert)
+        let successAlert = UIAlertController(title: "Success!", message: "New food entry for \"\(foodTextField.text!)\" was saved successfully!", preferredStyle: .alert)
         successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(successAlert, animated: true, completion: nil)
     }
