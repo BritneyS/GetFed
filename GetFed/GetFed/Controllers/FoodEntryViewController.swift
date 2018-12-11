@@ -63,10 +63,27 @@ extension FoodEntryViewController {
         enteredFood.setValue(foodTextField.text, forKey: "label")
         enteredFood.setValue(brandTextField.text, forKey: "brand")
         
-        enteredNutrients.setValue(caloriesTextField.text, forKey: "calories")
-        enteredNutrients.setValue(proteinTextField.text, forKey: "protein")
-        enteredNutrients.setValue(carbsTextField.text, forKey: "carbs")
-        enteredNutrients.setValue(fatTextField.text, forKey: "fat")
+        guard let caloriesValue = caloriesTextField.text,
+              let proteinValue = proteinTextField.text,
+              let carbsValue = carbsTextField.text,
+              let fatValue = fatTextField.text
+            else { return }
+        
+        if let caloriesInt = Int(caloriesValue) {
+            enteredNutrients.setValue(NSNumber(value: caloriesInt), forKey: "calories")
+        }
+        
+        if let proteinInt = Int(proteinValue) {
+            enteredNutrients.setValue(NSNumber(value: proteinInt), forKey: "protein")
+        }
+        
+        if let carbsInt = Int(carbsValue) {
+            enteredNutrients.setValue(NSNumber(value: carbsInt), forKey: "carbs")
+        }
+        
+        if let fatInt = Int(fatValue) {
+            enteredNutrients.setValue(NSNumber(value: fatInt), forKey: "fat")
+        }
         
         enteredFood.setValue(enteredNutrients, forKey: "nutrients")
         
@@ -77,9 +94,12 @@ extension FoodEntryViewController {
         }
         
         let foodFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
-        var foodRecords = [Food]()
+        var foodRecords: [Food] = []
         do {
-            foodRecords = try managedContext.execute(foodFetch)
+            foodRecords = try managedContext.fetch(foodFetch) as! [Food]
+            for record in foodRecords {
+                print("🍎 Food record: \(record.label), \(record.nutrients.calories)")
+            }
         } catch {
             print("Fetch error: \(error)")
         }
