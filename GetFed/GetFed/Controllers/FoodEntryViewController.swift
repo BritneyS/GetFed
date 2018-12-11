@@ -49,6 +49,15 @@ class FoodEntryViewController: UIViewController {
         self.present(failureAlert, animated: true, completion: nil)
     }
     
+    func clearTextFields() {
+        foodTextField.text = nil
+        brandTextField.text = nil
+        caloriesTextField.text = nil
+        proteinTextField.text = nil
+        carbsTextField.text = nil
+        fatTextField.text = nil
+    }
+    
     // MARK - Actions
     @IBAction func cancel(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -108,6 +117,7 @@ extension FoodEntryViewController {
         do {
             try managedContext.save()
             savedRecordAlert()
+            clearTextFields()
         } catch {
             failedSaveRecordAlert()
             print("Save error: \(error)")
