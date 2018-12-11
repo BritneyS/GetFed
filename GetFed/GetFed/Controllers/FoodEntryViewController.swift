@@ -36,6 +36,19 @@ class FoodEntryViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
+    // MARK - Methods
+    func savedRecordAlert() {
+        let successAlert = UIAlertController(title: "Success!", message: "New food entry was saved successfully!", preferredStyle: .alert)
+        successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(successAlert, animated: true, completion: nil)
+    }
+    
+    func failedSaveRecordAlert() {
+        let failureAlert = UIAlertController(title: "Uh oh!", message: "Error when saving new food entry.", preferredStyle: .alert)
+        failureAlert.addAction(UIAlertAction(title: "Try Again", style: .cancel, handler: nil))
+        self.present(failureAlert, animated: true, completion: nil)
+    }
+    
     // MARK - Actions
     @IBAction func cancel(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -52,7 +65,6 @@ class FoodEntryViewController: UIViewController {
         view.endEditing(true)
         saveNewFood()
         readRecords()
-        /// TODO: alert: "Food Entry Saved!"
     }
 }
 
@@ -95,7 +107,9 @@ extension FoodEntryViewController {
         
         do {
             try managedContext.save()
+            savedRecordAlert()
         } catch {
+            failedSaveRecordAlert()
             print("Save error: \(error)")
         }
     }
