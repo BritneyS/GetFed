@@ -123,7 +123,7 @@ extension FoodEntryViewController {
             print("Save error: \(error)")
         }
     }
-    
+    /// temporary method for testing purposes
     func readRecords() {
         let foodFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
         do {
