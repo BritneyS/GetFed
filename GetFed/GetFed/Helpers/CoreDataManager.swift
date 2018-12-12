@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-final class CoreDataManager/*: NSObject*/ {
+final class CoreDataManager {
     
     // MARK - Properties
     static let sharedManager = CoreDataManager()
