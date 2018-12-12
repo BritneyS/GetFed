@@ -13,7 +13,9 @@ final class CoreDataManager/*: NSObject*/ {
     
     // MARK - Properties
     static let sharedManager = CoreDataManager()
-    
+    lazy var managedContext: NSManagedObjectContext = {
+        return CoreDataManager.sharedManager.persistentContainer.viewContext
+    }()
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "GetFed")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -37,5 +39,32 @@ final class CoreDataManager/*: NSObject*/ {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+}
+
+// MARK: Core Data Record Updates
+extension CoreDataManager {
+    
+    func insertNewFood(label: String, brand: String, calories: Double, protein: Double, carbs: Double, fat: Double) {
+        guard let foodEntity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext) else { return }
+        guard let nutrientsEntity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedContext) else { return }
+        let enteredFood = NSManagedObject(entity: foodEntity, insertInto: managedContext)
+        let enteredNutrients = NSManagedObject(entity: nutrientsEntity, insertInto: managedContext)
+        let caloriesInt = Int(calories)
+        let proteinInt = Int(protein)
+        let carbsInt = Int(carbs)
+        let fatInt = Int(fat)
+        
+        enteredFood.setValue(label, forKey: "label")
+        enteredFood.setValue(brand, forKey: "brand")
+        
+        enteredNutrients.setValue(NSNumber(value: caloriesInt), forKey: "calories")
+        enteredNutrients.setValue(NSNumber(value: proteinInt), forKey: "protein")
+        enteredNutrients.setValue(NSNumber(value: carbsInt), forKey: "carbs")
+        enteredNutrients.setValue(NSNumber(value: fatInt), forKey: "fat")
+        
+        enteredFood.setValue(enteredNutrients, forKey: "nutrients")
+        
+        
     }
 }

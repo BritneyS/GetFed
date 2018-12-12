@@ -21,9 +21,6 @@ class FoodEntryViewController: UIViewController {
     
     // MARK - Properties
     var foodRecords: [Food] = []
-    lazy var managedContext: NSManagedObjectContext = {
-        return CoreDataManager.sharedManager.persistentContainer.viewContext
-    }()
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -80,14 +77,14 @@ class FoodEntryViewController: UIViewController {
 extension FoodEntryViewController {
     
     func saveNewFood() {
-        guard let foodEntity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext) else { return }
-        guard let nutrientsEntity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedContext) else { return }
+//        guard let foodEntity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext) else { return }
+//        guard let nutrientsEntity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedContext) else { return }
+//
+//        let enteredFood = NSManagedObject(entity: foodEntity, insertInto: managedContext)
+//        let enteredNutrients = NSManagedObject(entity: nutrientsEntity, insertInto: managedContext)
         
-        let enteredFood = NSManagedObject(entity: foodEntity, insertInto: managedContext)
-        let enteredNutrients = NSManagedObject(entity: nutrientsEntity, insertInto: managedContext)
-        
-        enteredFood.setValue(foodTextField.text, forKey: "label")
-        enteredFood.setValue(brandTextField.text, forKey: "brand")
+//        enteredFood.setValue(foodTextField.text, forKey: "label")
+//        enteredFood.setValue(brandTextField.text, forKey: "brand")
         
         guard let caloriesValue = caloriesTextField.text,
               let proteinValue = proteinTextField.text,
@@ -95,23 +92,23 @@ extension FoodEntryViewController {
               let fatValue = fatTextField.text
             else { return }
         
-        if let caloriesInt = Int(caloriesValue) {
-            enteredNutrients.setValue(NSNumber(value: caloriesInt), forKey: "calories")
-        }
-        
-        if let proteinInt = Int(proteinValue) {
-            enteredNutrients.setValue(NSNumber(value: proteinInt), forKey: "protein")
-        }
-        
-        if let carbsInt = Int(carbsValue) {
-            enteredNutrients.setValue(NSNumber(value: carbsInt), forKey: "carbs")
-        }
-        
-        if let fatInt = Int(fatValue) {
-            enteredNutrients.setValue(NSNumber(value: fatInt), forKey: "fat")
-        }
-        
-        enteredFood.setValue(enteredNutrients, forKey: "nutrients")
+//        if let caloriesInt = Int(caloriesValue) {
+//            enteredNutrients.setValue(NSNumber(value: caloriesInt), forKey: "calories")
+//        }
+//        
+//        if let proteinInt = Int(proteinValue) {
+//            enteredNutrients.setValue(NSNumber(value: proteinInt), forKey: "protein")
+//        }
+//        
+//        if let carbsInt = Int(carbsValue) {
+//            enteredNutrients.setValue(NSNumber(value: carbsInt), forKey: "carbs")
+//        }
+//        
+//        if let fatInt = Int(fatValue) {
+//            enteredNutrients.setValue(NSNumber(value: fatInt), forKey: "fat")
+//        }
+//        
+//        enteredFood.setValue(enteredNutrients, forKey: "nutrients")
         
         do {
             try managedContext.save()
