@@ -13,8 +13,8 @@ import CoreData
 class APIClient {
     
     func parseData(_ data: Data) -> SearchResults? {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
-        let context = appDelegate.persistentContainer.newBackgroundContext()
+        //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        let context = CoreDataManager.sharedManager.persistentContainer.newBackgroundContext()
         
         do {
             let decoder = JSONDecoder()

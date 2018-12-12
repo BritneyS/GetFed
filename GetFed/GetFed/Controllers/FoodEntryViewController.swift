@@ -22,8 +22,7 @@ class FoodEntryViewController: UIViewController {
     // MARK - Properties
     var foodRecords: [Food] = []
     lazy var managedContext: NSManagedObjectContext = {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        return appDelegate.persistentContainer.viewContext
+        return CoreDataManager.sharedManager.persistentContainer.viewContext
     }()
     
     // MARK - Lifecycle
