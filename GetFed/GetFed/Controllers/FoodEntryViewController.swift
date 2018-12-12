@@ -19,9 +19,6 @@ class FoodEntryViewController: UIViewController {
     @IBOutlet var carbsTextField: CustomTextField!
     @IBOutlet var fatTextField: CustomTextField!
     
-    // MARK - Properties
-    var foodRecords: [Food] = []
-    
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +66,6 @@ class FoodEntryViewController: UIViewController {
         print("🍞 Fat: \(fatTextField.text)")
         view.endEditing(true)
         saveNewFood()
-        readRecords()
     }
 }
 
@@ -77,58 +73,23 @@ class FoodEntryViewController: UIViewController {
 extension FoodEntryViewController {
     
     func saveNewFood() {
-//        guard let foodEntity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext) else { return }
-//        guard let nutrientsEntity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedContext) else { return }
-//
-//        let enteredFood = NSManagedObject(entity: foodEntity, insertInto: managedContext)
-//        let enteredNutrients = NSManagedObject(entity: nutrientsEntity, insertInto: managedContext)
         
-//        enteredFood.setValue(foodTextField.text, forKey: "label")
-//        enteredFood.setValue(brandTextField.text, forKey: "brand")
-        
-        guard let caloriesValue = caloriesTextField.text,
-              let proteinValue = proteinTextField.text,
-              let carbsValue = carbsTextField.text,
-              let fatValue = fatTextField.text
+        guard let foodLabel = foodTextField.text,
+              let brand = brandTextField.text,
+              let caloriesValue = Double(caloriesTextField.text ?? ""),
+              let proteinValue = Double(proteinTextField.text ?? ""),
+              let carbsValue = Double(carbsTextField.text ?? ""),
+              let fatValue = Double(fatTextField.text ?? "")
             else { return }
         
-//        if let caloriesInt = Int(caloriesValue) {
-//            enteredNutrients.setValue(NSNumber(value: caloriesInt), forKey: "calories")
-//        }
-//        
-//        if let proteinInt = Int(proteinValue) {
-//            enteredNutrients.setValue(NSNumber(value: proteinInt), forKey: "protein")
-//        }
-//        
-//        if let carbsInt = Int(carbsValue) {
-//            enteredNutrients.setValue(NSNumber(value: carbsInt), forKey: "carbs")
-//        }
-//        
-//        if let fatInt = Int(fatValue) {
-//            enteredNutrients.setValue(NSNumber(value: fatInt), forKey: "fat")
-//        }
-//        
-//        enteredFood.setValue(enteredNutrients, forKey: "nutrients")
+        CoreDataManager.sharedManager.insertNewFood(label: foodLabel, brand: brand, calories: caloriesValue, protein: proteinValue, carbs: carbsValue, fat: fatValue)
         
-        do {
-            try managedContext.save()
+        if CoreDataManager.sharedManager.isSaved == true {
             savedRecordAlert()
             clearTextFields()
-        } catch {
+            CoreDataManager.sharedManager.fetchAllRecords()
+        } else {
             failedSaveRecordAlert()
-            print("Save error: \(error)")
-        }
-    }
-    /// temporary method for testing purposes
-    func readRecords() {
-        let foodFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
-        do {
-            foodRecords = try managedContext.fetch(foodFetch) as! [Food]
-            for record in foodRecords {
-                print("🍎 Food record: \(record.label), \(record.nutrients.calories)")
-            }
-        } catch {
-            print("Fetch error: \(error)")
         }
     }
 }

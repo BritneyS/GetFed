@@ -25,6 +25,7 @@ final class CoreDataManager/*: NSObject*/ {
         })
         return container
     }()
+    var isSaved = false
     
     private init() {}
     
@@ -65,6 +66,24 @@ extension CoreDataManager {
         
         enteredFood.setValue(enteredNutrients, forKey: "nutrients")
         
-        
+        do {
+            try managedContext.save()
+            isSaved = true
+        } catch {
+            isSaved = false
+            print("Save error: \(error)")
+        }
+    }
+    
+    func fetchAllRecords() {
+        let foodFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+        do {
+            let records = try managedContext.fetch(foodFetch) as! [Food]
+            for record in records {
+                print("🍎 Food record: \(record.label), \(record.nutrients.calories)")
+            }
+        } catch {
+            print("Fetch error: \(error)")
+        }
     }
 }
