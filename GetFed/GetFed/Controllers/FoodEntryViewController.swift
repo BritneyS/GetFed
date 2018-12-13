@@ -7,20 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class FoodEntryViewController: UIViewController {
     
     // MARK - Outlets
     @IBOutlet var foodTextField: CustomTextField!
     @IBOutlet var brandTextField: CustomTextField!
+    @IBOutlet var caloriesTextField: CustomTextField!
     @IBOutlet var proteinTextField: CustomTextField!
     @IBOutlet var carbsTextField: CustomTextField!
     @IBOutlet var fatTextField: CustomTextField!
-    @IBOutlet var foodLabel: UILabel!
-    @IBOutlet var brandLabel: UILabel!
-    @IBOutlet var proteinLabel: UILabel!
-    @IBOutlet var carbsLabel: UILabel!
-    @IBOutlet var fatLabel: UILabel!
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -32,6 +29,28 @@ class FoodEntryViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
+    // MARK - Methods
+    func savedRecordAlert() {
+        let successAlert = UIAlertController(title: "Success!", message: "New food entry for \"\(foodTextField.text!)\" was saved successfully!", preferredStyle: .alert)
+        successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(successAlert, animated: true, completion: nil)
+    }
+    
+    func failedSaveRecordAlert() {
+        let failureAlert = UIAlertController(title: "Uh oh!", message: "Error when saving new food entry.", preferredStyle: .alert)
+        failureAlert.addAction(UIAlertAction(title: "Try Again", style: .cancel, handler: nil))
+        self.present(failureAlert, animated: true, completion: nil)
+    }
+    
+    func clearTextFields() {
+        foodTextField.text = nil
+        brandTextField.text = nil
+        caloriesTextField.text = nil
+        proteinTextField.text = nil
+        carbsTextField.text = nil
+        fatTextField.text = nil
+    }
+    
     // MARK - Actions
     @IBAction func cancel(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -41,11 +60,36 @@ class FoodEntryViewController: UIViewController {
     @IBAction func save(_ sender: UIButton) {
         print("🍞 Food: \(foodTextField.text)")
         print("🍞 Brand: \(brandTextField.text)")
+        print("🍞 Calories: \(caloriesTextField.text)")
         print("🍞 Protein: \(proteinTextField.text)")
         print("🍞 Carbs: \(carbsTextField.text)")
         print("🍞 Fat: \(fatTextField.text)")
         view.endEditing(true)
-        /// TODO: alert: "Food Entry Saved!"
+        saveNewFood()
     }
 }
 
+// MARK - Core Data Management
+extension FoodEntryViewController {
+    
+    func saveNewFood() {
+        
+        guard let foodLabel = foodTextField.text,
+              let brand = brandTextField.text,
+              let caloriesValue = Double(caloriesTextField.text ?? ""),
+              let proteinValue = Double(proteinTextField.text ?? ""),
+              let carbsValue = Double(carbsTextField.text ?? ""),
+              let fatValue = Double(fatTextField.text ?? "")
+            else { return }
+        
+        CoreDataManager.sharedManager.insertNewFood(label: foodLabel, brand: brand, calories: caloriesValue, protein: proteinValue, carbs: carbsValue, fat: fatValue)
+        
+        if CoreDataManager.sharedManager.isSaved == true {
+            savedRecordAlert()
+            clearTextFields()
+            CoreDataManager.sharedManager.fetchAllRecords()
+        } else {
+            failedSaveRecordAlert()
+        }
+    }
+}

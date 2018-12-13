@@ -7,6 +7,11 @@
 //
 
 import Foundation
+import CoreData
+
+extension CodingUserInfoKey {
+    static let context = CodingUserInfoKey(rawValue: "context")
+}
 
 struct SearchResults: Decodable {
     let results: [FoodResults]
@@ -22,45 +27,62 @@ struct SearchResults: Decodable {
 }
 
 struct FoodResults: Decodable {
-    let food: Food
+    let food: Food?
 }
 
-struct Food: Decodable {
-    let label: String
-    let nutrients: Nutrients
-    let category: String
-    let brand: String?
-    
-    init(from decoder: Decoder) throws {
+@objc(Food)
+class Food: NSManagedObject, Decodable {
+    @NSManaged var label: String
+    @NSManaged var nutrients: Nutrients
+    @NSManaged var brand: String?
+
+    required convenience init(from decoder: Decoder) throws {
+        guard let contextUserInfoKey = CodingUserInfoKey.context,
+              let managedObjectContent = decoder.userInfo[contextUserInfoKey] as? NSManagedObjectContext,
+              let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedObjectContent)
+        else {
+                fatalError("Failed to decode Food!")
+        }
+        
+        self.init(entity: entity, insertInto: nil)
+        
         let container = try decoder.container(keyedBy: FoodCodingKeys.self)
         label = try container.decode(String.self, forKey: .label)
         nutrients = try container.decode(Nutrients.self, forKey: .nutrients)
-        category = try container.decode(String.self, forKey: .category)
         brand = try container.decodeIfPresent(String.self, forKey: .brand)
     }
-    
+
     enum FoodCodingKeys: CodingKey {
         case label
         case nutrients
-        case category
         case brand
     }
 }
 
-struct Nutrients: Decodable {
-    let calories: Double?
-    let protein: Double?
-    let fat: Double?
-    let carbs: Double?
-    
-    init(from decoder: Decoder) throws {
+@objc(Nutrients)
+class Nutrients: NSManagedObject, Decodable {
+    @NSManaged var calories: NSNumber?
+    @NSManaged var protein: NSNumber?
+    @NSManaged var fat: NSNumber?
+    @NSManaged var carbs: NSNumber?
+
+    required convenience init(from decoder: Decoder) throws {
+        guard let contextUserInfoKey = CodingUserInfoKey.context,
+              let managedObjectContext = decoder.userInfo[contextUserInfoKey] as? NSManagedObjectContext,
+              let entity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedObjectContext)
+        else {
+                fatalError("Failed to decode Nutrients!")
+        }
+        
+        self.init(entity: entity, insertInto: nil)
+        
         let container = try decoder.container(keyedBy: NutrientsCodingKeys.self)
-        calories = try container.decodeIfPresent(Double.self, forKey: .calories)
-        protein = try container.decodeIfPresent(Double.self, forKey: .protein)
-        fat = try container.decodeIfPresent(Double.self, forKey: .fat)
-        carbs = try container.decodeIfPresent(Double.self, forKey: .carbs)
+        calories = try container.decodeIfPresent(Double.self, forKey: .calories) as NSNumber?
+        protein = try container.decodeIfPresent(Double.self, forKey: .protein) as NSNumber?
+        fat = try container.decodeIfPresent(Double.self, forKey: .fat) as NSNumber?
+        carbs = try container.decodeIfPresent(Double.self, forKey: .carbs) as NSNumber?
     }
-    
+
     enum NutrientsCodingKeys: String, CodingKey {
         case calories = "ENERC_KCAL"
         case protein = "PROCNT"
