@@ -1,8 +1,10 @@
 # GetFed
+**Last Updated: 12-13-18**
 
 ## Project Setup
 
 - After cloning, navigate to directory `GetFed/GetFed` and run `pod install`
+- Remove old 'Constants.swift' file in 'Helpers' directory of the project (it appears in red in XCode).
 
 ## Opening the project and running the app
 
