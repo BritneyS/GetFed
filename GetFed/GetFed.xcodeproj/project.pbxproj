@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		063B920921BEBC1500318D62 /* Constants-example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063B920821BEBC1500318D62 /* Constants-example.swift */; };
 		0644A0B121C16AEF00229DAF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644A0B021C16AEF00229DAF /* CoreDataManager.swift */; };
 		0663B19D219F496E000B2754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B19C219F496E000B2754 /* AppDelegate.swift */; };
 		0663B1A2219F496E000B2754 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0663B1A0219F496E000B2754 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		063B920821BEBC1500318D62 /* Constants-example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants-example.swift"; sourceTree = "<group>"; };
 		0644A0B021C16AEF00229DAF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0663B199219F496E000B2754 /* GetFed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetFed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663B19C219F496E000B2754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				06FF832021AEF3810066424C /* CustomColorTemplate.swift */,
 				06FF832221AEF8420066424C /* CustomValueFormatter.swift */,
 				06FF834C21BB03660066424C /* CustomTextField.swift */,
+				063B920821BEBC1500318D62 /* Constants-example.swift */,
 				0644A0B021C16AEF00229DAF /* CoreDataManager.swift */,
 			);
 			path = Helpers;
@@ -294,6 +297,7 @@
 				06FF832121AEF3810066424C /* CustomColorTemplate.swift in Sources */,
 				0644A0B121C16AEF00229DAF /* CoreDataManager.swift in Sources */,
 				06FF832821B6C1260066424C /* GetFed.xcdatamodeld in Sources */,
+				063B920921BEBC1500318D62 /* Constants-example.swift in Sources */,
 				0663B19D219F496E000B2754 /* AppDelegate.swift in Sources */,
 				06FF834B21B6D4010066424C /* FoodEntryViewController.swift in Sources */,
 				0663B1B5219F6A64000B2754 /* Identity.swift in Sources */,
