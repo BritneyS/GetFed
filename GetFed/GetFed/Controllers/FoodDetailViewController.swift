@@ -43,7 +43,7 @@ class FoodDetailViewController: UIViewController {
         if let food = food {
             let nutrients = food.nutrients
             let foodName = food.label
-            
+
             foodNameLabel.text = foodName
             
             if let brandName = food.brand {
@@ -53,26 +53,25 @@ class FoodDetailViewController: UIViewController {
             }
             
             if let calories = nutrients.calories {
-                let caloriesString = String(format: "%.0f", calories)
-                caloriesLabel.text = "Calories: \(caloriesString)"
+                caloriesLabel.text = "Calories: \(Int(truncating: calories))"
             } else {
                 caloriesLabel.text = "No calorie data"
             }
             
             if let protein = nutrients.protein {
-                proteinLabel.text = "\(Int(protein))g"
+                proteinLabel.text = "\(Int(truncating: protein))g"
             } else {
                 proteinLabel.isHidden = true
             }
             
             if let carbs = nutrients.carbs {
-                carbsLabel.text = "\(Int(carbs))g"
+                carbsLabel.text = "\(Int(truncating: carbs))g"
             } else {
                 carbsLabel.isHidden = true
             }
             
             if let fat = nutrients.fat {
-                fatLabel.text = "\(Int(fat))g"
+                fatLabel.text = "\(Int(truncating: fat))g"
             } else {
                 fatLabel.isHidden = true
             }
@@ -115,9 +114,9 @@ extension FoodDetailViewController {
             return nil
         }
         
-        let entryOne = PieChartDataEntry(value: proteinData, label: "Protein")
-        let entryTwo = PieChartDataEntry(value: carbsData, label: "Carbs")
-        let entryThree = PieChartDataEntry(value: fatData, label: "Fat")
+        let entryOne = PieChartDataEntry(value: Double(truncating: proteinData), label: "Protein")
+        let entryTwo = PieChartDataEntry(value: Double(truncating: carbsData), label: "Carbs")
+        let entryThree = PieChartDataEntry(value: Double(truncating: fatData), label: "Fat")
         let dataEntries = [entryOne, entryTwo, entryThree]
         
         let dataSet = PieChartDataSet(values: dataEntries, label: "per 100 grams")

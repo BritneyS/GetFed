@@ -8,12 +8,17 @@
 
 import Foundation
 import Alamofire
+import CoreData
 
 class APIClient {
     
     func parseData(_ data: Data) -> SearchResults? {
+        //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        let context = CoreDataManager.sharedManager.persistentContainer.newBackgroundContext()
+        
         do {
             let decoder = JSONDecoder()
+            decoder.userInfo[CodingUserInfoKey.context!] = context
             let result = try decoder.decode(SearchResults.self, from: data)
             return result
         } catch {

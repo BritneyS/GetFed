@@ -56,8 +56,9 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Fatal error: No cell")
         }
         if let searchResults = searchResults {
-            cell.foodLabel.text = searchResults.results[indexPath.row].food.label
-            cell.brandLabel.text = searchResults.results[indexPath.row].food.brand
+            guard let food = searchResults.results[indexPath.row].food else { fatalError() }
+            cell.foodLabel.text = food.label
+            cell.brandLabel.text = food.brand
         } else {
             cell.foodLabel.text = "No food data"
             cell.brandLabel.isHidden = true
