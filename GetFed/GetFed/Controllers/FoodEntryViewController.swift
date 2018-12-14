@@ -87,7 +87,7 @@ extension FoodEntryViewController {
         if CoreDataManager.sharedManager.isSaved == true {
             savedRecordAlert()
             clearTextFields()
-            CoreDataManager.sharedManager.fetchAllRecords()
+            //CoreDataManager.sharedManager.fetchAllRecords()
         } else {
             failedSaveRecordAlert()
         }

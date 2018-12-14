@@ -21,6 +21,7 @@ class FoodSearchViewController: UIViewController {
     var url: URL?
     var searchResults: SearchResults?
     var selectedIndex: Int?
+    var foodArray: [Food] = []
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -36,6 +37,14 @@ class FoodSearchViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
+    
+    // MARK - Methods
+    func populateFoodArray() {
+        CoreDataManager.sharedManager.fetchAllRecords { (foodRecords: [Food]) in
+            self.foodArray = foodRecords
+            self.foodTableView.reloadData()
+        }
+    }
 }
 
 // MARK - UITableViewDataSource & UITableViewDelegate Protocol Implementation
@@ -47,7 +56,8 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let rowCount = searchResults?.results.count else { return 0 }
+        //guard let rowCount = searchResults?.results.count else { return 0 }
+        let rowCount = foodArray.count
         return (rowCount == 0) ? 1 : rowCount
     }
     
@@ -55,14 +65,15 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CellID.foodSearchResultCell.rawValue, for: indexPath) as? FoodResultTableViewCell else {
             fatalError("Fatal error: No cell")
         }
-        if let searchResults = searchResults {
-            guard let food = searchResults.results[indexPath.row].food else { fatalError() }
-            cell.foodLabel.text = food.label
-            cell.brandLabel.text = food.brand
-        } else {
-            cell.foodLabel.text = "No food data"
-            cell.brandLabel.isHidden = true
-        }
+//        if let searchResults = searchResults {
+//            guard let food = searchResults.results[indexPath.row].food else { fatalError() }
+//            cell.foodLabel.text = food.label
+//            cell.brandLabel.text = food.brand
+//        } else {
+//            cell.foodLabel.text = "No food data"
+//            cell.brandLabel.isHidden = true
+//        }
+        cell.foodLabel.text = foodArray[]
         return cell
     }
     
@@ -97,6 +108,7 @@ extension FoodSearchViewController: UISearchBarDelegate {
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "ex: \"Cookies\""
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
