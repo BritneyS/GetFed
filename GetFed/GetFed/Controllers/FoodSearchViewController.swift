@@ -97,10 +97,11 @@ extension FoodSearchViewController {
         switch segue.identifier {
         case SegueID.foodSearchToFoodDetailSegue.rawValue:
             guard let foodDetailViewController = segue.destination as? FoodDetailViewController,
-                  let selectedIndex = selectedIndex,
-                  let searchResults = searchResults
+                  let selectedIndex = selectedIndex//,
+                  //let searchResults = searchResults
             else { return }
-            let selectedFood = searchResults.results[selectedIndex].food
+            //let selectedFood = searchResults.results[selectedIndex].food
+            let selectedFood = foodArray[selectedIndex]
             foodDetailViewController.food = selectedFood
         default:
             return
