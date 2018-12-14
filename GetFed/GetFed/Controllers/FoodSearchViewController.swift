@@ -96,13 +96,8 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
 //            cell.foodLabel.text = "No food data"
 //            cell.brandLabel.isHidden = true
 //        }
-        if filteredFoodArray.count == 0 {
             cell.foodLabel.text = foodArray[indexPath.row].label
             cell.brandLabel.text = foodArray[indexPath.row].brand
-        } else {
-            cell.foodLabel.text = filteredFoodArray[indexPath.row].label
-            cell.brandLabel.text = filteredFoodArray[indexPath.row].brand
-        }
         
         return cell
     }
@@ -168,7 +163,7 @@ extension FoodSearchViewController: UISearchBarDelegate, UISearchResultsUpdating
         print("🌽 Food filtered")
         if let searchText = getSearchText() {
             if !searchText.isEmpty {
-                filteredFoodArray = foodArray.filter { searchTerm in
+                filteredFoodArray = foodEntries.filter { searchTerm in
                     return searchTerm.label.lowercased().contains(searchText.lowercased())
                 }
                foodArray = filteredFoodArray
