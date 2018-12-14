@@ -79,9 +79,9 @@ extension CoreDataManager {
         let foodFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
         do {
             let records = try managedContext.fetch(foodFetch) as! [Food]
-            for record in records {
-                print("🍎 Food record: \(record.label), \(record.nutrients.calories)")
-            }
+//            for record in records {
+//                print("🍎 Food record: \(record.label), \(record.nutrients.calories)")
+//            }
             queue.async { completion(records) }
         } catch {
             print("Fetch error: \(error)")

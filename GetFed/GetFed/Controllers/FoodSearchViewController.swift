@@ -30,6 +30,7 @@ class FoodSearchViewController: UIViewController {
         foodTableView.dataSource = self
         foodTableView.delegate = self
         setupSearchBar()
+        populateFoodArray()
         definesPresentationContext = true
     }
 
@@ -40,9 +41,13 @@ class FoodSearchViewController: UIViewController {
     
     // MARK - Methods
     func populateFoodArray() {
+        print("🌸 Populating food array")
         CoreDataManager.sharedManager.fetchAllRecords { (foodRecords: [Food]) in
             self.foodArray = foodRecords
             self.foodTableView.reloadData()
+            for food in self.foodArray {
+                print("🍦 Food record: \(food.label), \(food.nutrients.calories)")
+            }
         }
     }
 }
@@ -58,7 +63,7 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //guard let rowCount = searchResults?.results.count else { return 0 }
         let rowCount = foodArray.count
-        return (rowCount == 0) ? 1 : rowCount
+        return (rowCount == 0) ? 0 : rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +78,9 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
 //            cell.foodLabel.text = "No food data"
 //            cell.brandLabel.isHidden = true
 //        }
-        cell.foodLabel.text = foodArray[]
+        cell.foodLabel.text = foodArray[indexPath.row].label
+        cell.brandLabel.text = foodArray[indexPath.row].brand
+        
         return cell
     }
     
