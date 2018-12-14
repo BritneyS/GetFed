@@ -21,7 +21,9 @@ class FoodSearchViewController: UIViewController {
     var url: URL?
     var searchResults: SearchResults?
     var selectedIndex: Int?
+    var foodEntries: [Food] = []
     var foodArray: [Food] = []
+    var filteredFoodArray: [Food] = []
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -30,7 +32,7 @@ class FoodSearchViewController: UIViewController {
         foodTableView.dataSource = self
         foodTableView.delegate = self
         setupSearchBar()
-        populateFoodArray()
+        populateFoodEntriesArray()
         definesPresentationContext = true
     }
 
@@ -40,15 +42,22 @@ class FoodSearchViewController: UIViewController {
     }
     
     // MARK - Methods
-    func populateFoodArray() {
+    func populateFoodEntriesArray() {
         print("🌸 Populating food array")
         CoreDataManager.sharedManager.fetchAllRecords { (foodRecords: [Food]) in
-            self.foodArray = foodRecords
-            self.foodTableView.reloadData()
-            for food in self.foodArray {
+            self.foodEntries = foodRecords
+            self.populateFoodArray()
+            for food in self.foodEntries {
                 print("🍦 Food record: \(food.label), \(food.nutrients.calories)")
             }
         }
+    }
+    
+    func populateFoodArray() {
+        for entry in foodEntries {
+            foodArray.append(entry)
+        }
+        self.foodTableView.reloadData()
     }
 }
 
@@ -62,8 +71,17 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //guard let rowCount = searchResults?.results.count else { return 0 }
-        let rowCount = foodArray.count
-        return (rowCount == 0) ? 0 : rowCount
+        //let rowCount = foodArray.count
+        //return (rowCount == 0) ? 0 : rowCount
+        if foodArray.count != 0 {
+            if filteredFoodArray.count == 0 {
+                return foodArray.count
+            } else {
+                return filteredFoodArray.count
+            }
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,8 +96,13 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
 //            cell.foodLabel.text = "No food data"
 //            cell.brandLabel.isHidden = true
 //        }
-        cell.foodLabel.text = foodArray[indexPath.row].label
-        cell.brandLabel.text = foodArray[indexPath.row].brand
+        if filteredFoodArray.count == 0 {
+            cell.foodLabel.text = foodArray[indexPath.row].label
+            cell.brandLabel.text = foodArray[indexPath.row].brand
+        } else {
+            cell.foodLabel.text = filteredFoodArray[indexPath.row].label
+            cell.brandLabel.text = filteredFoodArray[indexPath.row].brand
+        }
         
         return cell
     }
@@ -110,12 +133,13 @@ extension FoodSearchViewController {
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation
-extension FoodSearchViewController: UISearchBarDelegate {
+extension FoodSearchViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     func setupSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "ex: \"Cookies\""
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -141,7 +165,21 @@ extension FoodSearchViewController: UISearchBarDelegate {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        ///
+        print("🌽 Food filtered")
+        if let searchText = getSearchText() {
+            if !searchText.isEmpty {
+                filteredFoodArray = foodArray.filter { searchTerm in
+                    return searchTerm.label.lowercased().contains(searchText.lowercased())
+                }
+               foodArray = filteredFoodArray
+            }
+        } else {
+            foodArray = foodEntries
+        }
+        for food in foodArray {
+            print("🍇 \(food)")
+        }
+        foodTableView.reloadData()
     }
 }
 // MARK - API Request
@@ -158,6 +196,9 @@ extension FoodSearchViewController {
         apiClient.fetchData(url: url) { (results: SearchResults) in
             self.searchResults = results
             print(results)
+            for foodResult in (self.searchResults?.results)! {
+                self.foodArray.append(foodResult.food!)
+            }
             self.foodTableView.reloadData()
         }
     }
