@@ -46,10 +46,11 @@ class FoodSearchViewController: UIViewController {
         print("🌸 Populating food array")
         CoreDataManager.sharedManager.fetchAllRecords { (foodRecords: [Food]) in
             self.foodEntries = foodRecords
-            self.populateFoodArray()
             for food in self.foodEntries {
+                food.isUserAdded = true
                 print("🍦 Food record: \(food.label), \(food.nutrients.calories)")
             }
+            self.populateFoodArray()
         }
     }
     
@@ -83,6 +84,7 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.foodLabel.text = foodArray[indexPath.row].label
         cell.brandLabel.text = foodArray[indexPath.row].brand
+        cell.showImage(isUserAdded: foodArray[indexPath.row].isUserAdded)
         return cell
     }
     

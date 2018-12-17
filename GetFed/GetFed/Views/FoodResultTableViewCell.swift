@@ -21,4 +21,13 @@ class FoodResultTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK - Methods
+    func showImage(isUserAdded: Bool) {
+        if isUserAdded {
+            userAddedImage.image = UIImage(named: "user-created.png")
+        } else {
+            userAddedImage.image = UIImage(named: "blank-transparent.png")
+        }
+    }
+    
 }

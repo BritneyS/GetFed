@@ -35,6 +35,7 @@ class Food: NSManagedObject, Decodable {
     @NSManaged var label: String
     @NSManaged var nutrients: Nutrients
     @NSManaged var brand: String?
+    var isUserAdded: Bool = false
 
     required convenience init(from decoder: Decoder) throws {
         guard let contextUserInfoKey = CodingUserInfoKey.context,
