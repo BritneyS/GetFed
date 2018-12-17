@@ -11,10 +11,10 @@ import UIKit
 class FoodResultTableViewCell: UITableViewCell {
 
     // MARK - Outlets
-    
     @IBOutlet var foodLabel: UILabel!
     @IBOutlet var brandLabel: UILabel!
-
+    @IBOutlet var userAddedImage: UIImageView!
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
