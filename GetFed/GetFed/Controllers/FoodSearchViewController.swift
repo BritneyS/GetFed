@@ -74,13 +74,15 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         //let rowCount = foodArray.count
         //return (rowCount == 0) ? 0 : rowCount
         if foodArray.count != 0 {
-            if filteredFoodArray.count == 0 {
-                return foodArray.count
-            } else {
-                return filteredFoodArray.count
-            }
+//            if filteredFoodArray.count == 0 {
+//                return foodArray.count
+//            } else {
+//                return filteredFoodArray.count
+//            }
+            return foodArray.count
         } else {
-            return 0
+            //return 0
+            return filteredFoodArray.count
         }
     }
     
@@ -96,9 +98,8 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
 //            cell.foodLabel.text = "No food data"
 //            cell.brandLabel.isHidden = true
 //        }
-            cell.foodLabel.text = foodArray[indexPath.row].label
-            cell.brandLabel.text = foodArray[indexPath.row].brand
-        
+        cell.foodLabel.text = foodArray[indexPath.row].label
+        cell.brandLabel.text = foodArray[indexPath.row].brand
         return cell
     }
     
@@ -157,6 +158,7 @@ extension FoodSearchViewController: UISearchBarDelegate, UISearchResultsUpdating
             print("No text")
             /// TODO: alert "please enter text"
         }
+        //foodTableView.reloadData()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -167,6 +169,9 @@ extension FoodSearchViewController: UISearchBarDelegate, UISearchResultsUpdating
                     return searchTerm.label.lowercased().contains(searchText.lowercased())
                 }
                foodArray = filteredFoodArray
+//                for food in filteredFoodArray {
+//                    foodArray.append(food)
+//                }
             }
         } else {
             foodArray = foodEntries
@@ -194,7 +199,14 @@ extension FoodSearchViewController {
             for foodResult in (self.searchResults?.results)! {
                 self.foodArray.append(foodResult.food!)
             }
+            for food in self.foodArray {
+                print("🍋 \(food)")
+            }
+            DispatchQueue.main.async {
+                self.foodTableView.reloadData()
+            }
             self.foodTableView.reloadData()
         }
+        //foodTableView.reloadData()
     }
 }
