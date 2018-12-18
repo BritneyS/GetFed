@@ -24,9 +24,9 @@ class FoodResultTableViewCell: UITableViewCell {
     // MARK - Methods
     func showImage(isUserAdded: Bool) {
         if isUserAdded {
-            userAddedImage.image = UIImage(named: "user-created.png")
+            userAddedImage.image = UIImage(named: ImageID.userCreated.rawValue)
         } else {
-            userAddedImage.image = UIImage(named: "blank-transparent.png")
+            userAddedImage.image = UIImage(named: ImageID.blankTransparent.rawValue)
         }
     }
     
