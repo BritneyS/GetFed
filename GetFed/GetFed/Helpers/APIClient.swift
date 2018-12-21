@@ -10,10 +10,11 @@ import Foundation
 import Alamofire
 import CoreData
 
-class APIClient {
+final class APIClient {
     
     let appId = EdamamAppID
     let appKey = EdamamAppKey
+    static let shared = APIClient()
     
     func setURL(with searchText: String) -> URL? {
         var urlComponents = URLComponents()

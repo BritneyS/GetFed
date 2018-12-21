@@ -15,7 +15,6 @@ class FoodSearchViewController: UIViewController {
     
     // MARK - Properties
     var searchController: UISearchController!
-    let apiClient = APIClient()
     var url: URL?
     var searchResults: SearchResults?
     var selectedIndex: Int?
@@ -107,7 +106,7 @@ extension FoodSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("👍 pressed")
         guard let inputText = searchBar.text,
-              let url = apiClient.setURL(with: inputText)
+              let url = APIClient.shared.setURL(with: inputText)
         else { return }
         
         if !inputText.isEmpty {
@@ -126,7 +125,7 @@ extension FoodSearchViewController: UISearchBarDelegate {
 extension FoodSearchViewController {
     
     func makeRequest(with url: URL) {
-        apiClient.fetchData(url: url) { (results: SearchResults) in
+        APIClient.shared.fetchData(url: url) { (results: SearchResults) in
             self.searchResults = results
             print(results)
             self.foodTableView.reloadData()
