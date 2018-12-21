@@ -12,8 +12,20 @@ import CoreData
 
 class APIClient {
     
+    let appId = EdamamAppID
+    let appKey = EdamamAppKey
+    
+    func setURL(with searchText: String) -> URL? {
+        guard let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.edamam.com"
+        urlComponents.path = String(format: "api/food-database/parser?ingr=%@&app_id=\(appId)&app_key=\(appKey)", encodedText)
+        guard let url = urlComponents.url else { fatalError("Error when creating URL") }
+        return url
+    }
+    
     func parseData(_ data: Data) -> SearchResults? {
-        //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         let context = CoreDataManager.sharedManager.persistentContainer.newBackgroundContext()
         
         do {
