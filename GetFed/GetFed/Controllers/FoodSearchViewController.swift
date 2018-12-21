@@ -109,7 +109,7 @@ extension FoodSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("👍 pressed")
         guard let inputText = searchBar.text,
-              let url = setURL(with: inputText)
+              let url = apiClient.setURL(with: inputText)
         else { return }
         
         if !inputText.isEmpty {
@@ -127,12 +127,12 @@ extension FoodSearchViewController: UISearchBarDelegate {
 // MARK - API Request
 extension FoodSearchViewController {
     
-    func setURL(with searchText: String) -> URL? {
-        guard let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
-        let urlString = String(format: "https://api.edamam.com/api/food-database/parser?ingr=%@&app_id=\(appId)&app_key=\(appKey)", encodedText)
-        guard let url = URL(string: urlString) else { return nil }
-        return url
-    }
+//    func setURL(with searchText: String) -> URL? {
+//        guard let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
+//        let urlString = String(format: "https://api.edamam.com/api/food-database/parser?ingr=%@&app_id=\(appId)&app_key=\(appKey)", encodedText)
+//        guard let url = URL(string: urlString) else { return nil }
+//        return url
+//    }
     
     func makeRequest(with url: URL) {
         apiClient.fetchData(url: url) { (results: SearchResults) in

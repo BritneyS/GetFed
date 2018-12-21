@@ -16,11 +16,16 @@ class APIClient {
     let appKey = EdamamAppKey
     
     func setURL(with searchText: String) -> URL? {
-        guard let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "api.edamam.com"
-        urlComponents.path = String(format: "api/food-database/parser?ingr=%@&app_id=\(appId)&app_key=\(appKey)", encodedText)
+        urlComponents.path = "/api/food-database/parser"
+        
+        let queryIngredient = URLQueryItem(name: "ingr", value: searchText)
+        let queryAppId = URLQueryItem(name: "app_id", value: appId)
+        let queryAppKey = URLQueryItem(name: "app_key", value: appKey)
+        urlComponents.queryItems = [queryAppKey, queryAppId, queryIngredient]
+        
         guard let url = urlComponents.url else { fatalError("Error when creating URL") }
         return url
     }
