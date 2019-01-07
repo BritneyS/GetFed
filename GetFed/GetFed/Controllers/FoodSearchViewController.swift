@@ -21,6 +21,9 @@ class FoodSearchViewController: UIViewController {
     var url: URL?
     var searchResults: SearchResults?
     var selectedIndex: Int?
+    var foodEntries: [Food] = []
+    var foodArray: [Food] = []
+    var filteredFoodArray: [Food] = []
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -29,12 +32,33 @@ class FoodSearchViewController: UIViewController {
         foodTableView.dataSource = self
         foodTableView.delegate = self
         setupSearchBar()
+        populateFoodEntriesArray()
         definesPresentationContext = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    // MARK - Methods
+    func populateFoodEntriesArray() {
+        print("🌸 Populating food array")
+        CoreDataManager.sharedManager.fetchAllRecords { (foodRecords: [Food]) in
+            self.foodEntries = foodRecords
+            for food in self.foodEntries {
+                food.isUserAdded = true
+                print("🍦 Food record: \(food.label), \(food.nutrients.calories)")
+            }
+            self.populateFoodArray()
+        }
+    }
+    
+    func populateFoodArray() {
+        for entry in foodEntries {
+            foodArray.append(entry)
+        }
+        self.foodTableView.reloadData()
     }
 }
 
@@ -47,22 +71,20 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let rowCount = searchResults?.results.count else { return 0 }
-        return (rowCount == 0) ? 1 : rowCount
+        if foodArray.count != 0 {
+            return foodArray.count
+        } else {
+            return filteredFoodArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CellID.foodSearchResultCell.rawValue, for: indexPath) as? FoodResultTableViewCell else {
             fatalError("Fatal error: No cell")
         }
-        if let searchResults = searchResults {
-            guard let food = searchResults.results[indexPath.row].food else { fatalError() }
-            cell.foodLabel.text = food.label
-            cell.brandLabel.text = food.brand
-        } else {
-            cell.foodLabel.text = "No food data"
-            cell.brandLabel.isHidden = true
-        }
+        cell.foodLabel.text = foodArray[indexPath.row].label
+        cell.brandLabel.text = foodArray[indexPath.row].brand
+        cell.showImage(isUserAdded: foodArray[indexPath.row].isUserAdded)
         return cell
     }
     
@@ -79,10 +101,9 @@ extension FoodSearchViewController {
         switch segue.identifier {
         case SegueID.foodSearchToFoodDetailSegue.rawValue:
             guard let foodDetailViewController = segue.destination as? FoodDetailViewController,
-                  let selectedIndex = selectedIndex,
-                  let searchResults = searchResults
+                  let selectedIndex = selectedIndex
             else { return }
-            let selectedFood = searchResults.results[selectedIndex].food
+            let selectedFood = foodArray[selectedIndex]
             foodDetailViewController.food = selectedFood
         default:
             return
@@ -91,12 +112,14 @@ extension FoodSearchViewController {
 }
 
 // MARK - UISearchBarDelegate Protocol Implementation
-extension FoodSearchViewController: UISearchBarDelegate {
+extension FoodSearchViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     func setupSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "ex: \"Cookies\""
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
@@ -121,7 +144,21 @@ extension FoodSearchViewController: UISearchBarDelegate {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        ///
+        print("🌽 Food filtered")
+        if let searchText = getSearchText() {
+            if !searchText.isEmpty {
+                filteredFoodArray = foodEntries.filter { searchTerm in
+                    return searchTerm.label.lowercased().contains(searchText.lowercased())
+                }
+               foodArray = filteredFoodArray
+            }
+        } else {
+            foodArray = foodEntries
+        }
+        for food in foodArray {
+            print("🍇 \(food)")
+        }
+        foodTableView.reloadData()
     }
 }
 // MARK - API Request
@@ -137,8 +174,18 @@ extension FoodSearchViewController {
     func makeRequest(with url: URL) {
         apiClient.fetchData(url: url) { (results: SearchResults) in
             self.searchResults = results
-            print(results)
-            self.foodTableView.reloadData()
+            if let searchResults = self.searchResults {
+                print(results)
+                for foodResult in searchResults.results {
+                    self.foodArray.append(foodResult.food!)
+                }
+                for food in self.foodArray {
+                    print("🍋 \(food)")
+                }
+                self.foodTableView.reloadData()
+            } else {
+                print("No results!")
+            }
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060E4C7221C845BC00A3F353 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 060E4C7121C845BC00A3F353 /* Images.xcassets */; };
 		063B920921BEBC1500318D62 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063B920821BEBC1500318D62 /* Constants.swift */; };
 		0644A0B121C16AEF00229DAF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644A0B021C16AEF00229DAF /* CoreDataManager.swift */; };
 		0663B19D219F496E000B2754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B19C219F496E000B2754 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		060E4C7121C845BC00A3F353 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		063B920821BEBC1500318D62 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0644A0B021C16AEF00229DAF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0663B199219F496E000B2754 /* GetFed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetFed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 				0663B1A8219F4970000B2754 /* Info.plist */,
 				06FF832421B1981D0066424C /* Colors.xcassets */,
 				06FF832621B6C1260066424C /* GetFed.xcdatamodeld */,
+				060E4C7121C845BC00A3F353 /* Images.xcassets */,
 			);
 			path = GetFed;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				06FF832521B1981D0066424C /* Colors.xcassets in Resources */,
 				0663B1A7219F4970000B2754 /* LaunchScreen.storyboard in Resources */,
 				0663B1A4219F4970000B2754 /* Assets.xcassets in Resources */,
+				060E4C7221C845BC00A3F353 /* Images.xcassets in Resources */,
 				0663B1C621A63000000B2754 /* FoodResultTableViewCell.xib in Resources */,
 				0663B1A2219F496E000B2754 /* Main.storyboard in Resources */,
 			);

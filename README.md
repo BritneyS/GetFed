@@ -13,3 +13,6 @@
 - In the `Constants-example.swift` file, replace the values for `EdamamAppID` and `EdamamAppKey` with those provided with the Edamam developer account, found in the Dashboard. The Application ID and Application Key that come with the initial 'API Signup' sample app should be fine to use.
 - Change the name of this file to `Constants.swift`
 - App should be ready to run!
+
+## Credits
+- `user-created.png` - icon used to indicate custom user food entry: made by [Becris](https://www.flaticon.com/authors/becris) from [www.flaticon.com](https://www.flaticon.com/free-icon/creativity_349382)

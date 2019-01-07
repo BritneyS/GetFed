@@ -25,3 +25,8 @@ enum ColorID: String {
     case AccentColorA
     case AccentColorB
 }
+
+enum ImageID: String {
+    case userCreated = "user-created.png"
+    case blankTransparent = "blank-transparent.png"
+}
