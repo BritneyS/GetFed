@@ -27,6 +27,7 @@ class FoodDetailViewController: UIViewController {
     // MARK - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkMacronutrientData()
         populateLabels()
         chartSetup()
     }
@@ -37,13 +38,21 @@ class FoodDetailViewController: UIViewController {
     }
 
     // MARK - Methods
+    func checkMacronutrientData() {
+        if food?.nutrients.protein == nil || food?.nutrients.carbs == nil || food?.nutrients.fat == nil {
+            proteinLabel.isHidden = true
+            carbsLabel.isHidden = true
+            fatLabel.isHidden = true
+        }
+    }
+    
     func populateLabels() {
-        print("Food: \(food)")
+        print("🍞 Food: \(food)")
         
         if let food = food {
             let nutrients = food.nutrients
             let foodName = food.label
-
+            
             foodNameLabel.text = foodName
             
             if let brandName = food.brand {
