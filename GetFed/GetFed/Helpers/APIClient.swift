@@ -10,10 +10,28 @@ import Foundation
 import Alamofire
 import CoreData
 
-class APIClient {
+final class APIClient {
+    
+    let appId = EdamamAppID
+    let appKey = EdamamAppKey
+    static let shared = APIClient()
+    
+    func setURL(with searchText: String) -> URL? {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.edamam.com"
+        urlComponents.path = "/api/food-database/parser"
+        
+        let queryIngredient = URLQueryItem(name: "ingr", value: searchText)
+        let queryAppId = URLQueryItem(name: "app_id", value: appId)
+        let queryAppKey = URLQueryItem(name: "app_key", value: appKey)
+        urlComponents.queryItems = [queryAppKey, queryAppId, queryIngredient]
+        
+        guard let url = urlComponents.url else { fatalError("Error when creating URL") }
+        return url
+    }
     
     func parseData(_ data: Data) -> SearchResults? {
-        //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         let context = CoreDataManager.sharedManager.persistentContainer.newBackgroundContext()
         
         do {
