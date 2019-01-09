@@ -90,6 +90,16 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         selectedIndex = indexPath.row
         performSegue(withIdentifier: SegueID.foodSearchToFoodDetailSegue.rawValue, sender: cell)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+        }
+    }
 }
 
 // MARK - Segue Data Passing
