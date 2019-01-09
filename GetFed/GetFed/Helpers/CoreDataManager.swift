@@ -87,4 +87,16 @@ extension CoreDataManager {
             print("Fetch error: \(error)")
         }
     }
+    
+    func deleteEntryByLabel(foodLabel: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+        fetchRequest.predicate = NSPredicate(format: "label = %@", foodLabel)
+        
+        let result = try? managedContext.fetch(fetchRequest)
+        let resultData = result as! [NSManagedObject]
+        
+        for foodResult in resultData {
+            managedContext.delete(foodResult)
+        }
+    }
 }

@@ -99,16 +99,7 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let foodEntryToDelete = foodArray[indexPath.row]
-            let managedContext = CoreDataManager.sharedManager.managedContext
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
-            fetchRequest.predicate = NSPredicate(format: "label = %@", foodEntryToDelete.label)
-            
-            let result = try? managedContext.fetch(fetchRequest)
-            let resultData = result as! [NSManagedObject]
-            
-            for foodResult in resultData {
-                managedContext.delete(foodResult)
-            }
+            CoreDataManager.sharedManager.deleteEntryByLabel(foodLabel: foodEntryToDelete.label)
             
             foodArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
