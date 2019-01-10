@@ -381,7 +381,7 @@
                                         <color key="textColor" red="0.43968416960000001" green="0.44130747129999998" blue="0.41126847030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-XM-Q4W" customClass="PieChartView" customModule="Charts">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-XM-Q4W" customClass="PieChartView" customModule="Charts">
                                         <rect key="frame" x="30" y="51" width="315" height="421"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
