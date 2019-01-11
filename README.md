@@ -1,5 +1,5 @@
 # GetFed
-**Last Updated: 12-13-18**
+**README Last Updated: 1-11-19**
 
 ## Project Setup
 
