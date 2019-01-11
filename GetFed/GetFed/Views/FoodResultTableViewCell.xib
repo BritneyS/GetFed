@@ -30,7 +30,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Ohe-X7-kog">
-                                <rect key="frame" x="50" y="0.0" width="270" height="60"/>
+                                <rect key="frame" x="30" y="0.0" width="290" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrO-w4-0W9">
                                         <rect key="frame" x="0.0" y="0.0" width="82" height="30"/>
@@ -48,7 +48,7 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Ohe-X7-kog" firstAttribute="leading" secondItem="dGK-WW-5Ts" secondAttribute="trailing" constant="20" id="80l-3A-wfA"/>
+                            <constraint firstItem="Ohe-X7-kog" firstAttribute="leading" secondItem="dGK-WW-5Ts" secondAttribute="trailing" id="80l-3A-wfA"/>
                             <constraint firstAttribute="trailing" secondItem="Ohe-X7-kog" secondAttribute="trailing" id="OBi-pj-dGC"/>
                             <constraint firstAttribute="bottom" secondItem="dGK-WW-5Ts" secondAttribute="bottom" id="R0c-oZ-Z9C"/>
                             <constraint firstItem="dGK-WW-5Ts" firstAttribute="top" secondItem="n5S-RF-kbq" secondAttribute="top" id="qdU-uu-KiO"/>
