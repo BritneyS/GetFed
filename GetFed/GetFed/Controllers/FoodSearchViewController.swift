@@ -60,7 +60,7 @@ class FoodSearchViewController: UIViewController {
         self.foodTableView.reloadData()
     }
     
-    func deleteFoodEntry(alertAction: UIAlertAction) {
+    func deleteFoodEntry(deleteAlertAction: UIAlertAction) {
         if let indexPath = foodEntryIndexPath {
             foodTableView.beginUpdates()
             let foodEntryToDelete = foodArray[indexPath.row]
@@ -74,10 +74,14 @@ class FoodSearchViewController: UIViewController {
         }
     }
     
+    func cancelFoodEntryDeletion(cancelAlertAction: UIAlertAction) {
+        foodEntryIndexPath = nil
+    }
+    
     func deleteConfirmationAlert(for entry: Food) {
         let alert = UIAlertController(title: "Delete Food Entry?", message: "Are you sure that you want to delete this food entry for \(entry.label)?", preferredStyle: .alert)
         let confirmDeletion = UIAlertAction(title: "Delete", style: .destructive, handler: deleteFoodEntry)
-        let cancelDeletion = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelDeletion = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelFoodEntryDeletion)
         
         alert.addAction(confirmDeletion)
         alert.addAction(cancelDeletion)
