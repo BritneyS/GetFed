@@ -22,6 +22,7 @@ class FoodSearchViewController: UIViewController {
     var foodEntries: [Food] = []
     var foodArray: [Food] = []
     var filteredFoodArray: [Food] = []
+    var foodEntryIndexPath: IndexPath? = nil
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -58,6 +59,33 @@ class FoodSearchViewController: UIViewController {
         }
         self.foodTableView.reloadData()
     }
+    
+    func deleteFoodEntry(alertAction: UIAlertAction) {
+        if let indexPath = foodEntryIndexPath {
+            foodTableView.beginUpdates()
+            let foodEntryToDelete = foodArray[indexPath.row]
+            CoreDataManager.sharedManager.deleteEntryByLabel(foodLabel: foodEntryToDelete.label)
+            
+            foodArray.remove(at: indexPath.row)
+            foodTableView.deleteRows(at: [indexPath], with: .fade)
+            
+            CoreDataManager.sharedManager.saveContext()
+            foodTableView.endUpdates()
+        }
+    }
+    
+    func deleteConfirmationAlert(for entry: Food) {
+        let alert = UIAlertController(title: "Delete Food Entry?", message: "Are you sure that you want to delete this food entry for \(entry.label)?", preferredStyle: .alert)
+        let confirmDeletion = UIAlertAction(title: "Delete", style: .destructive, handler: deleteFoodEntry)
+        let cancelDeletion = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(confirmDeletion)
+        alert.addAction(cancelDeletion)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 // MARK - UITableViewDataSource & UITableViewDelegate Protocol Implementation
@@ -98,13 +126,9 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let foodEntryToDelete = foodArray[indexPath.row]
-            CoreDataManager.sharedManager.deleteEntryByLabel(foodLabel: foodEntryToDelete.label)
-            
-            foodArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            CoreDataManager.sharedManager.saveContext()
+            foodEntryIndexPath = indexPath
+            let foodEntry = foodArray[indexPath.row]
+            deleteConfirmationAlert(for: foodEntry)
         }
     }
 }
