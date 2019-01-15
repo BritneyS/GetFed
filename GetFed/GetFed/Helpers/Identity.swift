@@ -30,3 +30,7 @@ enum ImageID: String {
     case userCreated = "user-created.png"
     case blankTransparent = "blank-transparent.png"
 }
+
+enum ViewControllerID: String {
+    case foodEntryVC
+}

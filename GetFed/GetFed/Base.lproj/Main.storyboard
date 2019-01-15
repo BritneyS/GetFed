@@ -89,7 +89,7 @@
         <!--Food Entry View Controller-->
         <scene sceneID="YDY-92-eQv">
             <objects>
-                <viewController id="GUX-mL-Ygv" customClass="FoodEntryViewController" customModule="GetFed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="foodEntryVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GUX-mL-Ygv" customClass="FoodEntryViewController" customModule="GetFed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sMa-4f-rWs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -382,7 +382,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-XM-Q4W" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="30" y="51" width="315" height="421"/>
+                                        <rect key="frame" x="30" y="51" width="315" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="315" id="Uuz-Bc-NYq"/>
@@ -390,7 +390,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dga-vQ-3Df">
-                                        <rect key="frame" x="50" y="472" width="275" height="61.5"/>
+                                        <rect key="frame" x="50" y="51" width="275" height="61.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="proteinLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-t2-S3O">
                                                 <rect key="frame" x="0.0" y="2" width="5.5" height="57.5"/>
@@ -413,7 +413,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caloriesLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJc-Io-5qD">
-                                        <rect key="frame" x="116.5" y="533.5" width="142" height="49.5"/>
+                                        <rect key="frame" x="116.5" y="112.5" width="142" height="470.5"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="21"/>
                                         <color key="textColor" red="0.0062921650150000001" green="0.37506285919999999" blue="0.028588568389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
