@@ -16,7 +16,7 @@
 
 **Tests won't run!**
 
-- Check the scheme: `GetFed > Edit Scheme... > Test`, then click `+` and select `GetFedTests`
+- Check the scheme: `GetFed > Edit Scheme... > Test` OR `Product > Scheme > Edit Scheme... > Test`, then click `+` and select `GetFedTests`
 
 See this link for more details: https://stackoverflow.com/questions/30481630/scheme-is-not-configured-for-the-test-action-ios-xcode-project
 
