@@ -16,6 +16,8 @@
 
 **Tests won't run!**
 
+- Check the deployment target: `GetFed in Project Navigator > GetFed Target > General > Deployment Info`, then make sure the `Deployment Target` value is set to at least `12.0`
+
 - Check the scheme: `GetFed > Edit Scheme... > Test` OR `Product > Scheme > Edit Scheme... > Test`, then click `+` and select `GetFedTests`
 
 See this link for more details: https://stackoverflow.com/questions/30481630/scheme-is-not-configured-for-the-test-action-ios-xcode-project
