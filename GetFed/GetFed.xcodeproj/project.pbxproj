@@ -22,7 +22,6 @@
 		0663B1C521A63000000B2754 /* FoodResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C321A63000000B2754 /* FoodResultTableViewCell.swift */; };
 		0663B1C621A63000000B2754 /* FoodResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */; };
 		0663B1C821AC8F58000B2754 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C721AC8F58000B2754 /* FoodDetailViewController.swift */; };
-		06760DC521EE37C2006B6594 /* GetFedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06760DC421EE37C2006B6594 /* GetFedTests.swift */; };
 		06760DD021EE40C3006B6594 /* FoodEntryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06760DCF21EE40C3006B6594 /* FoodEntryTest.swift */; };
 		06FF832121AEF3810066424C /* CustomColorTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832021AEF3810066424C /* CustomColorTemplate.swift */; };
 		06FF832321AEF8430066424C /* CustomValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832221AEF8420066424C /* CustomValueFormatter.swift */; };
@@ -62,7 +61,6 @@
 		0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodResultTableViewCell.xib; sourceTree = "<group>"; };
 		0663B1C721AC8F58000B2754 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		06760DC221EE37C2006B6594 /* GetFedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetFedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		06760DC421EE37C2006B6594 /* GetFedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFedTests.swift; sourceTree = "<group>"; };
 		06760DC621EE37C2006B6594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06760DCF21EE40C3006B6594 /* FoodEntryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntryTest.swift; sourceTree = "<group>"; };
 		06FF832021AEF3810066424C /* CustomColorTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorTemplate.swift; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 		06760DC321EE37C2006B6594 /* GetFedTests */ = {
 			isa = PBXGroup;
 			children = (
-				06760DC421EE37C2006B6594 /* GetFedTests.swift */,
 				06760DC621EE37C2006B6594 /* Info.plist */,
 				06760DCF21EE40C3006B6594 /* FoodEntryTest.swift */,
 			);
@@ -381,7 +378,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				06760DD021EE40C3006B6594 /* FoodEntryTest.swift in Sources */,
-				06760DC521EE37C2006B6594 /* GetFedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
