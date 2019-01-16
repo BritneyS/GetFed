@@ -89,7 +89,7 @@
         <!--Food Entry View Controller-->
         <scene sceneID="YDY-92-eQv">
             <objects>
-                <viewController storyboardIdentifier="foodEntryVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GUX-mL-Ygv" customClass="FoodEntryViewController" customModule="GetFed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FoodEntryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GUX-mL-Ygv" customClass="FoodEntryViewController" customModule="GetFed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sMa-4f-rWs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

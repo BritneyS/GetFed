@@ -19,8 +19,8 @@ class FoodEntryTest: XCTestCase {
         super.setUp()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        foodEntryVC = storyboard.instantiateViewController(withIdentifier: "foodEntryVC") as? FoodEntryViewController
-        //_ = foodEntryVC.view // to call viewDidLoad
+        foodEntryVC = storyboard.instantiateViewController(withIdentifier: ViewControllerID.FoodEntryViewController.rawValue) as? FoodEntryViewController
+        XCTAssertNotNil(foodEntryVC.view) // to call viewDidLoad
     }
 
     override func tearDown() {
@@ -28,27 +28,27 @@ class FoodEntryTest: XCTestCase {
         super.tearDown()
     }
     
-    func testFoodEntryViewControllerExists() {
-        XCTAssertNotNil(foodEntryVC.view)
+    func testFoodTextFieldExists() {
+        XCTAssertNotNil(foodEntryVC.foodTextField)
     }
     
-//    func testAllTextFieldsExist() {
-//        XCTAssertTrue(foodEntryVC.foodTextField.exists, "Food Name textfield missing") // error
-//
-//    }
-
-//    func testInputForLabelFieldRecieved() {
-//        // 1. given
-//        let foodLabelField = foodEntryVC.foodTextField
-//        let brandField = foodEntryVC.brandTextField
-//        let caloriesField = foodEntryVC.caloriesTextField
-//        let proteinField = foodEntryVC.proteinTextField
-//        let carbsField = foodEntryVC.carbsTextField
-//        let fatField = foodEntryVC.fatTextField
-//
-//        // 2. when
-//
-//
-//        // 3. then
-//    }
+    func testBrandTextFieldExists() {
+        XCTAssertNotNil(foodEntryVC.brandTextField)
+    }
+    
+    func testCaloriesTextFieldExists() {
+        XCTAssertNotNil(foodEntryVC.caloriesTextField)
+    }
+    
+    func testProteinTextFieldExists() {
+        XCTAssertNotNil(foodEntryVC.proteinTextField)
+    }
+    
+    func testCarbsTextFieldExists() {
+        XCTAssertNotNil(foodEntryVC.carbsTextField)
+    }
+    
+    func testFoodFatFieldExists() {
+        XCTAssertNotNil(foodEntryVC.fatTextField)
+    }
 }

@@ -32,5 +32,5 @@ enum ImageID: String {
 }
 
 enum ViewControllerID: String {
-    case foodEntryVC
+    case FoodEntryViewController
 }
