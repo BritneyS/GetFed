@@ -79,7 +79,7 @@ class FoodSearchViewController: UIViewController {
     }
     
     func deleteConfirmationAlert(for entry: Food) {
-        let alert = UIAlertController(title: "Delete Food Entry?", message: "Are you sure that you want to delete this food entry for \(entry.label)?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delete Food Entry?", message: "Delete the food entry for \(entry.label)?", preferredStyle: .actionSheet)
         let confirmDeletion = UIAlertAction(title: "Delete", style: .destructive, handler: deleteFoodEntry)
         let cancelDeletion = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelFoodEntryDeletion)
         
