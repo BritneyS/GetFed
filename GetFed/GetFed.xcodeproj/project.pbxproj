@@ -22,6 +22,7 @@
 		0663B1C521A63000000B2754 /* FoodResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C321A63000000B2754 /* FoodResultTableViewCell.swift */; };
 		0663B1C621A63000000B2754 /* FoodResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */; };
 		0663B1C821AC8F58000B2754 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C721AC8F58000B2754 /* FoodDetailViewController.swift */; };
+		06760DD021EE40C3006B6594 /* FoodEntryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06760DCF21EE40C3006B6594 /* FoodEntryTest.swift */; };
 		06FF832121AEF3810066424C /* CustomColorTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832021AEF3810066424C /* CustomColorTemplate.swift */; };
 		06FF832321AEF8430066424C /* CustomValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832221AEF8420066424C /* CustomValueFormatter.swift */; };
 		06FF832521B1981D0066424C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06FF832421B1981D0066424C /* Colors.xcassets */; };
@@ -30,6 +31,16 @@
 		06FF834D21BB03660066424C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF834C21BB03660066424C /* CustomTextField.swift */; };
 		4EBFAFE8A5DF71DB25281C1F /* Pods_GetFed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47EB7B8A39DA18E491DD2D1 /* Pods_GetFed.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06760DC721EE37C2006B6594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0663B191219F496E000B2754 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0663B198219F496E000B2754;
+			remoteInfo = GetFed;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		060E4C7121C845BC00A3F353 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -49,6 +60,9 @@
 		0663B1C321A63000000B2754 /* FoodResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodResultTableViewCell.swift; sourceTree = "<group>"; };
 		0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodResultTableViewCell.xib; sourceTree = "<group>"; };
 		0663B1C721AC8F58000B2754 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
+		06760DC221EE37C2006B6594 /* GetFedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetFedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06760DC621EE37C2006B6594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06760DCF21EE40C3006B6594 /* FoodEntryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntryTest.swift; sourceTree = "<group>"; };
 		06FF832021AEF3810066424C /* CustomColorTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorTemplate.swift; sourceTree = "<group>"; };
 		06FF832221AEF8420066424C /* CustomValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValueFormatter.swift; sourceTree = "<group>"; };
 		06FF832421B1981D0066424C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -69,6 +83,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06760DBF21EE37C2006B6594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -76,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				0663B19B219F496E000B2754 /* GetFed */,
+				06760DC321EE37C2006B6594 /* GetFedTests */,
 				0663B19A219F496E000B2754 /* Products */,
 				2834A264C031C29B38030684 /* Pods */,
 				9324ADD00EAFBE06C0CBB8B2 /* Frameworks */,
@@ -86,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				0663B199219F496E000B2754 /* GetFed.app */,
+				06760DC221EE37C2006B6594 /* GetFedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +174,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		06760DC321EE37C2006B6594 /* GetFedTests */ = {
+			isa = PBXGroup;
+			children = (
+				06760DC621EE37C2006B6594 /* Info.plist */,
+				06760DCF21EE40C3006B6594 /* FoodEntryTest.swift */,
+			);
+			path = GetFedTests;
+			sourceTree = "<group>";
+		};
 		2834A264C031C29B38030684 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +222,24 @@
 			productReference = 0663B199219F496E000B2754 /* GetFed.app */;
 			productType = "com.apple.product-type.application";
 		};
+		06760DC121EE37C2006B6594 /* GetFedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06760DCB21EE37C2006B6594 /* Build configuration list for PBXNativeTarget "GetFedTests" */;
+			buildPhases = (
+				06760DBE21EE37C2006B6594 /* Sources */,
+				06760DBF21EE37C2006B6594 /* Frameworks */,
+				06760DC021EE37C2006B6594 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06760DC821EE37C2006B6594 /* PBXTargetDependency */,
+			);
+			name = GetFedTests;
+			productName = GetFedTests;
+			productReference = 06760DC221EE37C2006B6594 /* GetFedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -202,6 +252,10 @@
 				TargetAttributes = {
 					0663B198219F496E000B2754 = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					06760DC121EE37C2006B6594 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 0663B198219F496E000B2754;
 					};
 				};
 			};
@@ -219,6 +273,7 @@
 			projectRoot = "";
 			targets = (
 				0663B198219F496E000B2754 /* GetFed */,
+				06760DC121EE37C2006B6594 /* GetFedTests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,6 +289,13 @@
 				060E4C7221C845BC00A3F353 /* Images.xcassets in Resources */,
 				0663B1C621A63000000B2754 /* FoodResultTableViewCell.xib in Resources */,
 				0663B1A2219F496E000B2754 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06760DC021EE37C2006B6594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +373,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06760DBE21EE37C2006B6594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06760DD021EE40C3006B6594 /* FoodEntryTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		06760DC821EE37C2006B6594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0663B198219F496E000B2754 /* GetFed */;
+			targetProxy = 06760DC721EE37C2006B6594 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0663B1A0219F496E000B2754 /* Main.storyboard */ = {
@@ -485,6 +563,44 @@
 			};
 			name = Release;
 		};
+		06760DC921EE37C2006B6594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GetFedTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.britneysmith.GetFedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GetFed.app/GetFed";
+			};
+			name = Debug;
+		};
+		06760DCA21EE37C2006B6594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GetFedTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.britneysmith.GetFedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GetFed.app/GetFed";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -502,6 +618,15 @@
 			buildConfigurations = (
 				0663B1AC219F4970000B2754 /* Debug */,
 				0663B1AD219F4970000B2754 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06760DCB21EE37C2006B6594 /* Build configuration list for PBXNativeTarget "GetFedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06760DC921EE37C2006B6594 /* Debug */,
+				06760DCA21EE37C2006B6594 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
