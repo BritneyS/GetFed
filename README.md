@@ -1,5 +1,5 @@
 # GetFed
-**README Last Updated: 1-11-19**
+**README Last Updated: 1-16-19**
 
 ## Project Setup
 
@@ -11,6 +11,14 @@
 - In XCode, open the `GetFed.xcworkspace` file
 - In the `Constants.swift` file, replace the string values for `EdamamAppID` and `EdamamAppKey` with those provided with the Edamam developer account, found in the Dashboard. The Application ID and Application Key that come with the initial 'API Signup' sample app should be fine to use.
 - App should be ready to run!
+
+## Troubleshooting
+
+**Tests won't run!**
+
+- Check the scheme: `GetFed > Edit Scheme... > Test`, then click `+` and select `GetFedTests`
+
+See this link for more details: https://stackoverflow.com/questions/30481630/scheme-is-not-configured-for-the-test-action-ios-xcode-project
 
 ## Credits
 - `user-created.png` - icon used to indicate custom user food entry: made by [Becris](https://www.flaticon.com/authors/becris) from [www.flaticon.com](https://www.flaticon.com/free-icon/creativity_349382)
