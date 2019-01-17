@@ -91,16 +91,21 @@ class FoodStorageManagerTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testCreateFoodEntry() {
+        
+        // given
+        let label = "Food6"
+        let brand = "Brand6"
+        let calories = 600.0
+        let protein = 30.0
+        let carbs = 15.0
+        let fat = 10.0
+        
+        // when
+        let insertedFood = systemUnderTest.insertFood(label: label, brand: brand, calories: calories, protein: protein, carbs: carbs, fat: fat)
+        
+        // then
+        XCTAssertNotNil(insertedFood)
     }
 
 }
