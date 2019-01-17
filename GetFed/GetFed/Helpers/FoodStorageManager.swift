@@ -12,6 +12,7 @@ import CoreData
 class FoodStorageManager {
     
     let persistentContainer: NSPersistentContainer!
+    var isSaved = false
     
     // MARK: Init with dependency
     init(persistentContainer: NSPersistentContainer) {
@@ -29,7 +30,7 @@ class FoodStorageManager {
         return self.persistentContainer.newBackgroundContext()
     }()
     
-    var isSaved = false
+    
 }
 
 // MARK: CRUD
@@ -79,7 +80,9 @@ extension FoodStorageManager {
         if backgroundContext.hasChanges {
             do {
                 try backgroundContext.save()
+                 isSaved = true
             } catch {
+                isSaved = false
                 print("Save error \(error)")
             }
         }
