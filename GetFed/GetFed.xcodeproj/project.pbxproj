@@ -23,6 +23,7 @@
 		0663B1C621A63000000B2754 /* FoodResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0663B1C421A63000000B2754 /* FoodResultTableViewCell.xib */; };
 		0663B1C821AC8F58000B2754 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663B1C721AC8F58000B2754 /* FoodDetailViewController.swift */; };
 		06760DD021EE40C3006B6594 /* FoodEntryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06760DCF21EE40C3006B6594 /* FoodEntryTest.swift */; };
+		06760DE121F0D5BA006B6594 /* FoodStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06760DE021F0D5BA006B6594 /* FoodStorageManager.swift */; };
 		06FF832121AEF3810066424C /* CustomColorTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832021AEF3810066424C /* CustomColorTemplate.swift */; };
 		06FF832321AEF8430066424C /* CustomValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF832221AEF8420066424C /* CustomValueFormatter.swift */; };
 		06FF832521B1981D0066424C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06FF832421B1981D0066424C /* Colors.xcassets */; };
@@ -63,6 +64,7 @@
 		06760DC221EE37C2006B6594 /* GetFedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetFedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06760DC621EE37C2006B6594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06760DCF21EE40C3006B6594 /* FoodEntryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntryTest.swift; sourceTree = "<group>"; };
+		06760DE021F0D5BA006B6594 /* FoodStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStorageManager.swift; sourceTree = "<group>"; };
 		06FF832021AEF3810066424C /* CustomColorTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorTemplate.swift; sourceTree = "<group>"; };
 		06FF832221AEF8420066424C /* CustomValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValueFormatter.swift; sourceTree = "<group>"; };
 		06FF832421B1981D0066424C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				06FF834C21BB03660066424C /* CustomTextField.swift */,
 				063B920821BEBC1500318D62 /* Constants.swift */,
 				0644A0B021C16AEF00229DAF /* CoreDataManager.swift */,
+				06760DE021F0D5BA006B6594 /* FoodStorageManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				0663B1B5219F6A64000B2754 /* Identity.swift in Sources */,
 				0663B1C521A63000000B2754 /* FoodResultTableViewCell.swift in Sources */,
 				0663B1BF21A339F6000B2754 /* FoodSearchViewController.swift in Sources */,
+				06760DE121F0D5BA006B6594 /* FoodStorageManager.swift in Sources */,
 				0663B1C221A347FD000B2754 /* APIClient.swift in Sources */,
 				06FF832321AEF8430066424C /* CustomValueFormatter.swift in Sources */,
 				0663B1BC21A0731A000B2754 /* Food.swift in Sources */,
