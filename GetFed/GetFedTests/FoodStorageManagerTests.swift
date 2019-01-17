@@ -35,14 +35,60 @@ class FoodStorageManagerTests: XCTestCase {
         }
         return container
     }()
+    
+    func createTestStubs() {
+        func insertTestFood(label: String, brand: String, calories: Double, protein: Double, carbs: Double, fat: Double) -> Food? {
+            let foodItem = NSEntityDescription.insertNewObject(forEntityName: "Food", into: mockPersistentContainer.viewContext) as! Food
+            let nutrientItem = NSEntityDescription.insertNewObject(forEntityName: "Nutrients", into: mockPersistentContainer.viewContext) as! Nutrients
+            let caloriesInt = Int(calories)
+            let proteinInt = Int(protein)
+            let carbsInt = Int(carbs)
+            let fatInt = Int(fat)
+            
+            foodItem.label = label
+            foodItem.brand = brand
+            
+            nutrientItem.calories = NSNumber(value: caloriesInt)
+            nutrientItem.protein = NSNumber(value: proteinInt)
+            nutrientItem.carbs = NSNumber(value: carbsInt)
+            nutrientItem.fat = NSNumber(value: fatInt)
+            
+            foodItem.nutrients = nutrientItem
+            
+            return foodItem
+        }
+        
+        insertTestFood(label: "food1", brand: "brand1", calories: 500, protein: 30, carbs: 15, fat: 10)
+        insertTestFood(label: "food2", brand: "brand2", calories: 400, protein: 50, carbs: 20, fat: 8)
+        insertTestFood(label: "food3", brand: "brand3", calories: 800, protein: 8, carbs: 80, fat: 50)
+        insertTestFood(label: "food4", brand: "brand4", calories: 300, protein: 50, carbs: 8, fat: 30)
+        insertTestFood(label: "food5", brand: "brand5", calories: 600, protein: 10, carbs: 50, fat: 25)
+        
+        do {
+            try mockPersistentContainer.viewContext.save()
+        } catch {
+            print("Save error: \(error)")
+        }
+    }
+    
+    func flushData() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+        let records = try! mockPersistentContainer.viewContext.fetch(fetchRequest)
+        for case let record as NSManagedObject in records {
+            mockPersistentContainer.viewContext.delete(record)
+        }
+        try! mockPersistentContainer.viewContext.save()
+    }
 
     override func setUp() {
         super.setUp()
+        createTestStubs()
         systemUnderTest = FoodStorageManager(persistentContainer: mockPersistentContainer)
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        flushData()
+        super.tearDown()
     }
 
     func testExample() {
