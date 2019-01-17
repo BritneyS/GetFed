@@ -30,7 +30,7 @@ final class CoreDataManager {
     private init() {}
     
     // MARK- Methods
-    func saveContext () {
+    func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -85,6 +85,18 @@ extension CoreDataManager {
             queue.async { completion(records) }
         } catch {
             print("Fetch error: \(error)")
+        }
+    }
+    
+    func deleteEntryByLabel(foodLabel: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+        fetchRequest.predicate = NSPredicate(format: "label = %@", foodLabel)
+        
+        let result = try? managedContext.fetch(fetchRequest)
+        let resultData = result as! [NSManagedObject]
+        
+        for foodResult in resultData {
+            managedContext.delete(foodResult)
         }
     }
 }

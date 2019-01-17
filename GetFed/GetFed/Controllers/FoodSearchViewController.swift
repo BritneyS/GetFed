@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FoodSearchViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class FoodSearchViewController: UIViewController {
     var foodEntries: [Food] = []
     var foodArray: [Food] = []
     var filteredFoodArray: [Food] = []
+    var foodEntryIndexPath: IndexPath? = nil
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -57,6 +59,37 @@ class FoodSearchViewController: UIViewController {
         }
         self.foodTableView.reloadData()
     }
+    
+    func deleteFoodEntry(deleteAlertAction: UIAlertAction) {
+        if let indexPath = foodEntryIndexPath {
+            foodTableView.beginUpdates()
+            let foodEntryToDelete = foodArray[indexPath.row]
+            CoreDataManager.sharedManager.deleteEntryByLabel(foodLabel: foodEntryToDelete.label)
+            
+            foodArray.remove(at: indexPath.row)
+            foodTableView.deleteRows(at: [indexPath], with: .fade)
+            
+            CoreDataManager.sharedManager.saveContext()
+            foodTableView.endUpdates()
+        }
+    }
+    
+    func cancelFoodEntryDeletion(cancelAlertAction: UIAlertAction) {
+        foodEntryIndexPath = nil
+    }
+    
+    func deleteConfirmationAlert(for entry: Food) {
+        let alert = UIAlertController(title: "Delete Food Entry?", message: "Delete the food entry for \(entry.label)?", preferredStyle: .actionSheet)
+        let confirmDeletion = UIAlertAction(title: "Delete", style: .destructive, handler: deleteFoodEntry)
+        let cancelDeletion = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelFoodEntryDeletion)
+        
+        alert.addAction(confirmDeletion)
+        alert.addAction(cancelDeletion)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 // MARK - UITableViewDataSource & UITableViewDelegate Protocol Implementation
@@ -89,6 +122,18 @@ extension FoodSearchViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as? FoodResultTableViewCell
         selectedIndex = indexPath.row
         performSegue(withIdentifier: SegueID.foodSearchToFoodDetailSegue.rawValue, sender: cell)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            foodEntryIndexPath = indexPath
+            let foodEntry = foodArray[indexPath.row]
+            deleteConfirmationAlert(for: foodEntry)
+        }
     }
 }
 
