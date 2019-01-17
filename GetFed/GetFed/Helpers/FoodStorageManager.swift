@@ -55,4 +55,38 @@ extension FoodStorageManager {
         
         return foodItem
     }
+    
+    func fetchAllRecords(queue: DispatchQueue = .main, completion: @escaping ([Food]) -> ()) {
+        let foodFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+        do {
+            let records = try backgroundContext.fetch(foodFetch) as! [Food]
+            //            for record in records {
+            //                print("🍎 Food record: \(record.label), \(record.nutrients.calories)")
+            //            }
+            queue.async { completion(records) }
+        } catch {
+            print("Fetch error: \(error)")
+        }
+    }
+    /// for testing
+    func fetchAll() -> [Food] {
+        let request: NSFetchRequest<NSFetchRequestResult> = Food.fetchRequest()
+        let results = try? persistentContainer.viewContext.fetch(request) as! [Food]
+        return results ?? [Food]()
+    }
+    
+    func saveRecord() {
+        if backgroundContext.hasChanges {
+            do {
+                try backgroundContext.save()
+            } catch {
+                print("Save error \(error)")
+            }
+        }
+    }
+    
+    func deleteRecordBy(objectID: NSManagedObjectID) {
+        let record = backgroundContext.object(with: objectID)
+        backgroundContext.delete(record)
+    }
 }
