@@ -10,15 +10,25 @@ import XCTest
 import CoreData
 @testable import GetFed
 
+public extension NSManagedObject {
+    
+    convenience init(context: NSManagedObjectContext) {
+        let name = String(describing: type(of: self))
+        let entity = NSEntityDescription.entity(forEntityName: name, in: context)!
+        self.init(entity: entity, insertInto: context)
+    }
+    
+}
+
 class FoodStorageManagerTests: XCTestCase {
     
     var systemUnderTest: FoodStorageManager!
-    lazy var managedObjectModel: NSManagedObjectModel = {
-        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
-        return managedObjectModel
-    }()
+//    lazy var managedObjectModel: NSManagedObjectModel = {
+//        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
+//        return managedObjectModel
+//    }()
     lazy var mockPersistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "GetFed", managedObjectModel: self.managedObjectModel)
+        let container = NSPersistentContainer(name: "GetFed")//, managedObjectModel: self.managedObjectModel)
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType /// in-memory store separate from production persistent store
         description.shouldAddStoreAsynchronously = false /// for testing
@@ -92,7 +102,7 @@ class FoodStorageManagerTests: XCTestCase {
     }
 
     func testCreateFoodEntry() {
-        
+
         // given
         let label = "Food6"
         let brand = "Brand6"
@@ -100,12 +110,22 @@ class FoodStorageManagerTests: XCTestCase {
         let protein = 30.0
         let carbs = 15.0
         let fat = 10.0
-        
+
         // when
         let insertedFood = systemUnderTest.insertFood(label: label, brand: brand, calories: calories, protein: protein, carbs: carbs, fat: fat)
-        
+
         // then
         XCTAssertNotNil(insertedFood)
     }
-
+    
+    func testFetchAllFoodEntries() {
+        
+        // given
+        
+        // when
+        let results = systemUnderTest.fetchAll()
+        
+        // then
+        XCTAssertEqual(results.count, 5)
+    }
 }

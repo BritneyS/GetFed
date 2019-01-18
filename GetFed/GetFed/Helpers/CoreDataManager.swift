@@ -47,10 +47,12 @@ final class CoreDataManager {
 extension CoreDataManager {
     
     func insertNewFood(label: String, brand: String, calories: Double, protein: Double, carbs: Double, fat: Double) {
-        guard let foodEntity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext) else { return }
-        guard let nutrientsEntity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedContext) else { return }
-        let enteredFood = NSManagedObject(entity: foodEntity, insertInto: managedContext)
-        let enteredNutrients = NSManagedObject(entity: nutrientsEntity, insertInto: managedContext)
+//        guard let foodEntity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext) else { return }
+//        guard let nutrientsEntity = NSEntityDescription.entity(forEntityName: "Nutrients", in: managedContext) else { return }
+//        let enteredFood = NSManagedObject(entity: foodEntity, insertInto: managedContext)
+//        let enteredNutrients = NSManagedObject(entity: nutrientsEntity, insertInto: managedContext)
+        let enteredFood = NSEntityDescription.insertNewObject(forEntityName: "Food", into: managedContext)
+        let enteredNutrients = NSEntityDescription.insertNewObject(forEntityName: "Nutrients", into: managedContext)
         let caloriesInt = Int(calories)
         let proteinInt = Int(protein)
         let carbsInt = Int(carbs)
