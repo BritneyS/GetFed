@@ -165,6 +165,10 @@ class FoodStorageManagerTests: XCTestCase {
         XCTAssertNotNil(insertedFood)
     }
     
+    func testSaveFoodEntry() {
+        
+    }
+    
     func testFetchAllFoodEntries() {
 
         // given
@@ -178,7 +182,7 @@ class FoodStorageManagerTests: XCTestCase {
         XCTAssertEqual(results.count, 5)
     }
     
-    func testDeleteFoodRecord() {
+    func testDeleteFoodEntry() {
         
         // given
         let foodItems = systemUnderTest.fetchAll()
