@@ -71,8 +71,8 @@ extension FoodStorageManager {
     }
     /// for testing
     func fetchAll() -> [Food] {
-        let request: NSFetchRequest<NSFetchRequestResult> = Food.fetchRequest()
-        let results = try? persistentContainer.viewContext.fetch(request) as! [Food]
+        let request = NSFetchRequest<Food>(entityName: "Food")
+        let results = try? persistentContainer.viewContext.fetch(request)
         return results ?? [Food]()
     }
     

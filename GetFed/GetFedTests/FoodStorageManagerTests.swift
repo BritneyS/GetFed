@@ -24,10 +24,13 @@ class FoodStorageManagerTests: XCTestCase {
     
     var systemUnderTest: FoodStorageManager!
     var mockPersistentContainer: NSPersistentContainer? = nil
-    lazy var managedObjectModel1: NSManagedObjectModel = {
-        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
-        return managedObjectModel
-    }()
+//    lazy var managedObjectModel: NSManagedObjectModel = {
+//        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
+//        return managedObjectModel
+//    }()
+//    
+    //var managedObjectModel: NSManagedObjectModel!
+    
 //    lazy var mockPersistentContainer: NSPersistentContainer = {
 //        let container = NSPersistentContainer(name: "GetFed", managedObjectModel: self.managedObjectModel)
 //        let description = NSPersistentStoreDescription()
@@ -87,11 +90,11 @@ class FoodStorageManagerTests: XCTestCase {
             return foodItem
         }
         
-        insertTestFood(label: "food1", brand: "brand1", calories: 500, protein: 30, carbs: 15, fat: 10)
-        insertTestFood(label: "food2", brand: "brand2", calories: 400, protein: 50, carbs: 20, fat: 8)
-        insertTestFood(label: "food3", brand: "brand3", calories: 800, protein: 8, carbs: 80, fat: 50)
-        insertTestFood(label: "food4", brand: "brand4", calories: 300, protein: 50, carbs: 8, fat: 30)
-        insertTestFood(label: "food5", brand: "brand5", calories: 600, protein: 10, carbs: 50, fat: 25)
+        let _ = insertTestFood(label: "food1", brand: "brand1", calories: 500, protein: 30, carbs: 15, fat: 10)
+        let _ = insertTestFood(label: "food2", brand: "brand2", calories: 400, protein: 50, carbs: 20, fat: 8)
+        let _ = insertTestFood(label: "food3", brand: "brand3", calories: 800, protein: 8, carbs: 80, fat: 50)
+        let _ = insertTestFood(label: "food4", brand: "brand4", calories: 300, protein: 50, carbs: 8, fat: 30)
+        let _ = insertTestFood(label: "food5", brand: "brand5", calories: 600, protein: 10, carbs: 50, fat: 25)
         
         do {
             try mockPersistentContainer!.viewContext.save()
@@ -124,9 +127,14 @@ class FoodStorageManagerTests: XCTestCase {
         
         mockPersistentContainer = nil
     }
-
+    
     override func setUp() {
         super.setUp()
+        
+//        if (managedObjectModel == nil) {
+//            managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
+//        }
+        
         createMockPersistentContainer()
         createTestStubs()
         systemUnderTest = FoodStorageManager(persistentContainer: mockPersistentContainer!)
