@@ -149,7 +149,6 @@ class FoodStorageManagerTests: XCTestCase {
     func testCreateFoodEntry() {
 
         // given
-        //createMockPersistentContainer()
         let label = "Food6"
         let brand = "Brand6"
         let calories = 600.0
@@ -161,7 +160,6 @@ class FoodStorageManagerTests: XCTestCase {
         let insertedFood = systemUnderTest.insertFood(label: label, brand: brand, calories: calories, protein: protein, carbs: carbs, fat: fat)
 
         // then
-        //mockPersistentContainer = nil
         XCTAssertNotNil(insertedFood)
     }
     
@@ -172,13 +170,11 @@ class FoodStorageManagerTests: XCTestCase {
     func testFetchAllFoodEntries() {
 
         // given
-        //createMockPersistentContainer()
 
         // when
         let results = systemUnderTest.fetchAll()
 
         // then
-        //mockPersistentContainer = nil
         XCTAssertEqual(results.count, 5)
     }
     
