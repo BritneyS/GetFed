@@ -177,4 +177,27 @@ class FoodStorageManagerTests: XCTestCase {
         //mockPersistentContainer = nil
         XCTAssertEqual(results.count, 5)
     }
+    
+    func testDeleteFoodRecord() {
+        
+        // given
+        let foodItems = systemUnderTest.fetchAll()
+        let food = foodItems[0]
+        let foodCount = foodItems.count
+        
+        // when
+        systemUnderTest.deleteRecordBy(objectID: food.objectID)
+        systemUnderTest.saveRecord()
+        
+        //then
+        XCTAssertEqual(numberOfItemsInPersistentStore(), foodCount - 1)
+    }
+}
+
+extension FoodStorageManagerTests {
+    func numberOfItemsInPersistentStore() -> Int {
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Food")
+        let results = try! mockPersistentContainer!.viewContext.fetch(request)
+        return results.count
+    }
 }
