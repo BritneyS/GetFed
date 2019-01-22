@@ -154,11 +154,19 @@ class FoodStorageManagerTests: XCTestCase {
     func testFetchAllFoodEntries() {
 
         // given
-
+        var results: [Food] = []
+        let expect = expectation(description: "Food entries retrieved")
+        
         // when
-        let results = systemUnderTest.fetchAll()
+        systemUnderTest.fetchAllRecords { (foodRecords: [Food]) in
+            results = foodRecords
+            
+            expect.fulfill()
+        }
 
         // then
+        waitForExpectations(timeout: 5, handler: nil)
+        
         XCTAssertEqual(results.count, 5)
     }
     
