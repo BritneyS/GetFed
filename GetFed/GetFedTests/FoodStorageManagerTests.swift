@@ -24,37 +24,13 @@ class FoodStorageManagerTests: XCTestCase {
     
     var systemUnderTest: FoodStorageManager!
     var mockPersistentContainer: NSPersistentContainer? = nil
-//    lazy var managedObjectModel: NSManagedObjectModel = {
-//        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
-//        return managedObjectModel
-//    }()
-//    
-    //var managedObjectModel: NSManagedObjectModel!
-    
-//    lazy var mockPersistentContainer: NSPersistentContainer = {
-//        let container = NSPersistentContainer(name: "GetFed", managedObjectModel: self.managedObjectModel)
-//        let description = NSPersistentStoreDescription()
-//        description.type = NSInMemoryStoreType /// in-memory store separate from production persistent store
-//        description.shouldAddStoreAsynchronously = false /// for testing
-//
-//        container.persistentStoreDescriptions = [description]
-//        container.loadPersistentStores { (description, error) in
-//
-//            /// Check if the data store is in memory
-//            precondition(description.type == NSInMemoryStoreType, "Failure in FoodStorageManagerTest : Data store not in memory")
-//
-//            if let error = error {
-//                fatalError("Creation of in-memory coodinator failed: \(error)")
-//            }
-//        }
-//        return container
-//    }()
-    
+    var saveNotificationCompletionHandler: ((Notification) -> ())?
+
     func createMockPersistentContainer() {
-        mockPersistentContainer = NSPersistentContainer(name: "GetFed")//, managedObjectModel: self.managedObjectModel)
+        mockPersistentContainer = NSPersistentContainer(name: "GetFed")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType /// in-memory store separate from production persistent store
-        //description.shouldAddStoreAsynchronously = false /// for testing
+        description.shouldAddStoreAsynchronously = false /// for testing
         
         mockPersistentContainer!.persistentStoreDescriptions = [description]
         mockPersistentContainer!.loadPersistentStores { (description, error) in
@@ -90,11 +66,11 @@ class FoodStorageManagerTests: XCTestCase {
             return foodItem
         }
         
-        let _ = insertTestFood(label: "food1", brand: "brand1", calories: 500, protein: 30, carbs: 15, fat: 10)
-        let _ = insertTestFood(label: "food2", brand: "brand2", calories: 400, protein: 50, carbs: 20, fat: 8)
-        let _ = insertTestFood(label: "food3", brand: "brand3", calories: 800, protein: 8, carbs: 80, fat: 50)
-        let _ = insertTestFood(label: "food4", brand: "brand4", calories: 300, protein: 50, carbs: 8, fat: 30)
-        let _ = insertTestFood(label: "food5", brand: "brand5", calories: 600, protein: 10, carbs: 50, fat: 25)
+        _ = insertTestFood(label: "food1", brand: "brand1", calories: 500, protein: 30, carbs: 15, fat: 10)
+        _ = insertTestFood(label: "food2", brand: "brand2", calories: 400, protein: 50, carbs: 20, fat: 8)
+        _ = insertTestFood(label: "food3", brand: "brand3", calories: 800, protein: 8, carbs: 80, fat: 50)
+        _ = insertTestFood(label: "food4", brand: "brand4", calories: 300, protein: 50, carbs: 8, fat: 30)
+        _ = insertTestFood(label: "food5", brand: "brand5", calories: 600, protein: 10, carbs: 50, fat: 25)
         
         do {
             try mockPersistentContainer!.viewContext.save()
@@ -113,37 +89,49 @@ class FoodStorageManagerTests: XCTestCase {
     }
     
     func destroyPersistentStore() {
-//        if let storeURL = mockPersistentContainer?.persistentStoreCoordinator.persistentStores.first?.url {
-//
-//            do {
-//                try mockPersistentContainer?.persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSInMemoryStoreType, options: nil)
-//            } catch {
-//                print("Failure in destroying test store: \(error)")
-//            }
-//
-//        } else {
-//            print("No store url")
-//        }
-        
         mockPersistentContainer = nil
     }
     
     override func setUp() {
         super.setUp()
-        
-//        if (managedObjectModel == nil) {
-//            managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
-//        }
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(contextSaved(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
         createMockPersistentContainer()
         createTestStubs()
         systemUnderTest = FoodStorageManager(persistentContainer: mockPersistentContainer!)
     }
+    
+    
 
     override func tearDown() {
         flushData()
         destroyPersistentStore()
         super.tearDown()
+    }
+    
+    func testSaveFoodEntry() {
+        
+        // given
+        let label = "Food6"
+        let brand = "Brand6"
+        let calories = 600.0
+        let protein = 30.0
+        let carbs = 15.0
+        let fat = 10.0
+        
+        let expect = expectation(description: "Context saved")
+        
+        waitForSavedNotification { notification in
+            expect.fulfill()
+            
+        }
+        
+        _ = systemUnderTest.insertFood(label: label, brand: brand, calories: calories, protein: protein, carbs: carbs, fat: fat)
+        
+        // when
+        systemUnderTest.saveRecord()
+        
+        // then
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testCreateFoodEntry() {
@@ -161,10 +149,6 @@ class FoodStorageManagerTests: XCTestCase {
 
         // then
         XCTAssertNotNil(insertedFood)
-    }
-    
-    func testSaveFoodEntry() {
-        
     }
     
     func testFetchAllFoodEntries() {
@@ -195,9 +179,18 @@ class FoodStorageManagerTests: XCTestCase {
 }
 
 extension FoodStorageManagerTests {
+    
     func numberOfItemsInPersistentStore() -> Int {
         let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Food")
         let results = try! mockPersistentContainer!.viewContext.fetch(request)
         return results.count
+    }
+    
+    func contextSaved(notification: Notification) {
+        saveNotificationCompletionHandler?(notification)
+    }
+    
+    func waitForSavedNotification(completionHandler: @escaping ((Notification) -> ())) {
+        saveNotificationCompletionHandler = completionHandler
     }
 }
