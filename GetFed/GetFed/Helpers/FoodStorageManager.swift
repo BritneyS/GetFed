@@ -66,12 +66,6 @@ extension FoodStorageManager {
             print("Fetch error: \(error)")
         }
     }
-    /// for testing
-    func fetchAll() -> [Food] {
-        let request = NSFetchRequest<Food>(entityName: "Food")
-        let results = try? persistentContainer.viewContext.fetch(request)
-        return results ?? [Food]()
-    }
     
     func saveContext() {
         if backgroundContext.hasChanges {

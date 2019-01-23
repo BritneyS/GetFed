@@ -25,7 +25,8 @@ class FoodStorageManagerTests: XCTestCase {
     var systemUnderTest: FoodStorageManager!
     var mockPersistentContainer: NSPersistentContainer? = nil
     var saveNotificationCompletionHandler: ((Notification) -> ())?
-
+    
+    // MARK - Setup and Teardown Methods
     func createMockPersistentContainer() {
         mockPersistentContainer = NSPersistentContainer(name: "GetFed")
         let description = NSPersistentStoreDescription()
@@ -44,28 +45,12 @@ class FoodStorageManagerTests: XCTestCase {
         }
     }
     
+    func addSaveNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(contextSaved(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
+    }
+    
     func createTestStubs() {
-        func insertTestFood(label: String, brand: String, calories: Double, protein: Double, carbs: Double, fat: Double) -> Food? {
-            let foodItem = NSEntityDescription.insertNewObject(forEntityName: "Food", into: mockPersistentContainer!.viewContext) as! Food
-            let nutrientItem = NSEntityDescription.insertNewObject(forEntityName: "Nutrients", into: mockPersistentContainer!.viewContext) as! Nutrients
-            let caloriesInt = Int(calories)
-            let proteinInt = Int(protein)
-            let carbsInt = Int(carbs)
-            let fatInt = Int(fat)
-            
-            foodItem.label = label
-            foodItem.brand = brand
-            
-            nutrientItem.calories = NSNumber(value: caloriesInt)
-            nutrientItem.protein = NSNumber(value: proteinInt)
-            nutrientItem.carbs = NSNumber(value: carbsInt)
-            nutrientItem.fat = NSNumber(value: fatInt)
-            
-            foodItem.nutrients = nutrientItem
-            
-            return foodItem
-        }
-        
+
         _ = insertTestFood(label: "food1", brand: "brand1", calories: 500, protein: 30, carbs: 15, fat: 10)
         _ = insertTestFood(label: "food2", brand: "brand2", calories: 400, protein: 50, carbs: 20, fat: 8)
         _ = insertTestFood(label: "food3", brand: "brand3", calories: 800, protein: 8, carbs: 80, fat: 50)
@@ -80,8 +65,7 @@ class FoodStorageManagerTests: XCTestCase {
     }
     
     func flushData() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
-        let records = try! mockPersistentContainer!.viewContext.fetch(fetchRequest)
+        let records = fetchAllTestRecords()
         for case let record as NSManagedObject in records {
             mockPersistentContainer!.viewContext.delete(record)
         }
@@ -94,14 +78,12 @@ class FoodStorageManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        NotificationCenter.default.addObserver(self, selector: #selector(contextSaved(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
+        addSaveNotificationObserver()
         createMockPersistentContainer()
         createTestStubs()
         systemUnderTest = FoodStorageManager(persistentContainer: mockPersistentContainer!)
     }
     
-    
-
     override func tearDown() {
         flushData()
         destroyPersistentStore()
@@ -173,12 +155,12 @@ class FoodStorageManagerTests: XCTestCase {
     func testDeleteFoodEntry() {
         
         // given
-        let foodItems = systemUnderTest.fetchAll()
+        let foodItems = fetchAllTestRecords()
         let food = foodItems[0]
         let foodCount = foodItems.count
         
         // when
-        systemUnderTest.deleteRecordBy(objectID: food.objectID)
+        systemUnderTest.deleteRecordBy(objectID: (food.objectID))
         systemUnderTest.saveContext()
         
         //then
@@ -186,11 +168,38 @@ class FoodStorageManagerTests: XCTestCase {
     }
 }
 
+// MARK - Convienience Methods
 extension FoodStorageManagerTests {
     
+    func insertTestFood(label: String, brand: String, calories: Double, protein: Double, carbs: Double, fat: Double) -> Food? {
+        let foodItem = NSEntityDescription.insertNewObject(forEntityName: "Food", into: mockPersistentContainer!.viewContext) as! Food
+        let nutrientItem = NSEntityDescription.insertNewObject(forEntityName: "Nutrients", into: mockPersistentContainer!.viewContext) as! Nutrients
+        let caloriesInt = Int(calories)
+        let proteinInt = Int(protein)
+        let carbsInt = Int(carbs)
+        let fatInt = Int(fat)
+        
+        foodItem.label = label
+        foodItem.brand = brand
+        
+        nutrientItem.calories = NSNumber(value: caloriesInt)
+        nutrientItem.protein = NSNumber(value: proteinInt)
+        nutrientItem.carbs = NSNumber(value: carbsInt)
+        nutrientItem.fat = NSNumber(value: fatInt)
+        
+        foodItem.nutrients = nutrientItem
+        
+        return foodItem
+    }
+    
+    func fetchAllTestRecords() -> [Food] {
+        let request = NSFetchRequest<Food>(entityName: "Food")
+        let results = try? mockPersistentContainer!.viewContext.fetch(request)
+        return results ?? [Food]()
+    }
+    
     func numberOfItemsInPersistentStore() -> Int {
-        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Food")
-        let results = try! mockPersistentContainer!.viewContext.fetch(request)
+        let results = fetchAllTestRecords()
         return results.count
     }
     
