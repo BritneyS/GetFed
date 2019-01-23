@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class FoodSearchViewController: UIViewController {
     
@@ -23,6 +22,10 @@ class FoodSearchViewController: UIViewController {
     var foodArray: [Food] = []
     var filteredFoodArray: [Food] = []
     var foodEntryIndexPath: IndexPath? = nil
+    lazy var foodStorageManager = { () -> FoodStorageManager in
+        let manager = FoodStorageManager()
+        return manager
+    }()
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -43,7 +46,7 @@ class FoodSearchViewController: UIViewController {
     // MARK - Methods
     func populateFoodEntriesArray() {
         print("🌸 Populating food array")
-        CoreDataManager.sharedManager.fetchAllRecords { (foodRecords: [Food]) in
+        foodStorageManager.fetchAllRecords { (foodRecords: [Food]) in
             self.foodEntries = foodRecords
             for food in self.foodEntries {
                 food.isUserAdded = true
@@ -64,12 +67,12 @@ class FoodSearchViewController: UIViewController {
         if let indexPath = foodEntryIndexPath {
             foodTableView.beginUpdates()
             let foodEntryToDelete = foodArray[indexPath.row]
-            CoreDataManager.sharedManager.deleteEntryByLabel(foodLabel: foodEntryToDelete.label)
+            foodStorageManager.deleteRecordBy(objectID: foodEntryToDelete.objectID)
             
             foodArray.remove(at: indexPath.row)
             foodTableView.deleteRows(at: [indexPath], with: .fade)
             
-            CoreDataManager.sharedManager.saveContext()
+            foodStorageManager.saveContext()
             foodTableView.endUpdates()
         }
     }

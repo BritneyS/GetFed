@@ -11,10 +11,10 @@ import CoreData
 
 class FoodStorageManager {
     
-    let persistentContainer: NSPersistentContainer!
+    private let persistentContainer: NSPersistentContainer!
     var isSaved = false
     
-    // MARK: Init with dependency
+    // MARK: Init with dependency /// for testing
     init(persistentContainer: NSPersistentContainer) {
         self.persistentContainer = persistentContainer
         self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
@@ -60,7 +60,7 @@ extension FoodStorageManager {
     func fetchAllRecords(queue: DispatchQueue = .main, completion: @escaping ([Food]) -> ()) {
         let request = NSFetchRequest<Food>(entityName: "Food")
         do {
-            let records = try backgroundContext.fetch(request) 
+            let records = try backgroundContext.fetch(request)
             queue.async { completion(records) }
         } catch {
             print("Fetch error: \(error)")
@@ -73,7 +73,7 @@ extension FoodStorageManager {
         return results ?? [Food]()
     }
     
-    func saveRecord() {
+    func saveContext() {
         if backgroundContext.hasChanges {
             do {
                 try backgroundContext.save()

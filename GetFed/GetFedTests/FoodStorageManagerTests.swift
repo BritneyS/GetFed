@@ -128,7 +128,7 @@ class FoodStorageManagerTests: XCTestCase {
         _ = systemUnderTest.insertFood(label: label, brand: brand, calories: calories, protein: protein, carbs: carbs, fat: fat)
         
         // when
-        systemUnderTest.saveRecord()
+        systemUnderTest.saveContext()
         
         // then
         waitForExpectations(timeout: 1, handler: nil)
@@ -179,7 +179,7 @@ class FoodStorageManagerTests: XCTestCase {
         
         // when
         systemUnderTest.deleteRecordBy(objectID: food.objectID)
-        systemUnderTest.saveRecord()
+        systemUnderTest.saveContext()
         
         //then
         XCTAssertEqual(numberOfItemsInPersistentStore(), foodCount - 1)

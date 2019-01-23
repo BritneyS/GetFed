@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class FoodEntryViewController: UIViewController {
     
@@ -18,6 +17,12 @@ class FoodEntryViewController: UIViewController {
     @IBOutlet var proteinTextField: CustomTextField!
     @IBOutlet var carbsTextField: CustomTextField!
     @IBOutlet var fatTextField: CustomTextField!
+    
+    // MARK - Properties
+    lazy var foodStorageManager = { () -> FoodStorageManager in
+        let manager = FoodStorageManager()
+        return manager
+    }()
     
     // MARK - Lifecycle
     override func viewDidLoad() {
@@ -82,12 +87,12 @@ extension FoodEntryViewController {
               let fatValue = Double(fatTextField.text ?? "")
             else { return }
         
-        CoreDataManager.sharedManager.insertNewFood(label: foodLabel, brand: brand, calories: caloriesValue, protein: proteinValue, carbs: carbsValue, fat: fatValue)
+        _ = foodStorageManager.insertFood(label: foodLabel, brand: brand, calories: caloriesValue, protein: proteinValue, carbs: carbsValue, fat: fatValue)
+        foodStorageManager.saveContext()
         
-        if CoreDataManager.sharedManager.isSaved == true {
+        if foodStorageManager.isSaved == true {
             savedRecordAlert()
             clearTextFields()
-            //CoreDataManager.sharedManager.fetchAllRecords()
         } else {
             failedSaveRecordAlert()
         }
