@@ -31,13 +31,13 @@ final class APIClient {
         return url
     }
     
-    func parseData(_ data: Data) -> SearchResults? {
+    func parse<T: Decodable>(_ data: Data) -> T? {
         let context = CoreDataManager.sharedManager.persistentContainer.newBackgroundContext()
         
         do {
             let decoder = JSONDecoder()
             decoder.userInfo[CodingUserInfoKey.context!] = context
-            let result = try decoder.decode(SearchResults.self, from: data)
+            let result = try decoder.decode(T.self, from: data)
             return result
         } catch {
             print("Error in parsing: \(error)")
@@ -45,7 +45,7 @@ final class APIClient {
         }
     }
     
-    func fetchData(url: URL, queue: DispatchQueue = .main, completion: @escaping (SearchResults) -> ()) {
+    func fetchData<T: Decodable>(url: URL, queue: DispatchQueue = .main, completion: @escaping (T) -> ()) {
         Alamofire.request(url).validate().responseData { response in
             switch response.result {
             case .success:
@@ -55,7 +55,7 @@ final class APIClient {
             }
             
             if let data = response.result.value {
-                guard let result = self.parseData(data) else { return }
+                guard let result: T = self.parse(data) else { return }
                 queue.async { completion(result) }
             }
         }
