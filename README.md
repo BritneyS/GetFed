@@ -1,9 +1,9 @@
 # GetFed
-**README Last Updated: 1-16-19**
+**README Last Updated: 3-7-19**
 
 ## Project Setup
 
-- After cloning, navigate to directory `GetFed/GetFed` and run `pod install`
+- After cloning, run `pod install`
 
 ## Opening the project and running the app
 
