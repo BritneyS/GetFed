@@ -100,14 +100,18 @@ class FoodDetailViewController: UIViewController {
 extension FoodDetailViewController {
     
     func chartSetup() {
-        let dataSet = populateMacroNutrientChartData()
+        guard let food = food else {
+            //TODO error handling
+            print("No food object for chart")
+            return
+        }
+        let dataSet = populateMacroNutrientChartData(food: food)
         formatChartValues(with: dataSet)
         styleMacroNutrientChart(with: dataSet)
     }
     
-    func populateMacroNutrientChartData() -> PieChartDataSet? {
-        guard let food = food else { return nil }
-        
+    func populateMacroNutrientChartData(food: Food) -> PieChartDataSet? {
+
         guard let proteinData = food.nutrients.protein else {
             print("No protein data")
             return nil
